@@ -11,7 +11,16 @@ install();
 const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href');
 const rootElement = document.getElementById('root');
 
-const theme = createMuiTheme();
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+            main: '#aeea00'
+        },
+        secondary: {
+            main: '#1b5e20'
+        }
+    }
+});
 
 ReactDOM.render(
     <MuiThemeProvider theme={theme}>

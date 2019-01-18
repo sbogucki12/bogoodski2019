@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
 
 const styles = theme => ({
     root: {
         flexGrow: 1
+    },
+    button: {
+        margin: theme.spacing.unit
     }
 });
 
@@ -16,9 +20,9 @@ class Home extends Component {
 
         return (
             <div className={classes.root}>
-                <Typography variant="h2" align="center" gutterBottom>
-                    {`This is the main window`}
-                </Typography>
+                <Button variant="contained" color="secondary" className={classes.button}>
+                    Primary
+                </Button>
             </div>
         );
     }

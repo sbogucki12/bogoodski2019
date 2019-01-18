@@ -1,22 +1,34 @@
 import React, { Component } from 'react';
-import { Col, Grid, Row } from 'react-bootstrap';
-import { NavMenu } from './NavMenu';
+import { withStyles } from '@material-ui/core/styles';
+import TopBar from './appbar/TopBar';
+import MainWindowMain from './mainWindow/MainWindowMain';
 
-export class Layout extends Component {
-  displayName = Layout.name
+const styles = theme => ({
+    root: {
+        display: 'flex',        
+        alignItems: 'flex-start'
+    },
+    topBar: {
+        position: 'sticky',
+        top: 0
+    }
+});
 
-  render() {
-    return (
-      <Grid fluid>
-        <Row>
-          <Col sm={3}>
-            <NavMenu />
-          </Col>
-          <Col sm={9}>
-            {this.props.children}
-          </Col>
-        </Row>
-      </Grid>
-    );
-  }
+class Layout extends Component {
+    displayName = Layout.name
+
+    render() {
+        const { classes } = this.props;
+        return (
+            <React.Fragment>
+                <div className={classes.root}>
+                    <TopBar className={classes.topBar} />
+                    <div >
+                        <MainWindowMain />
+                    </div>
+                </div>
+            </React.Fragment>
+        );
+    }
 }
+export default withStyles(styles)(Layout);

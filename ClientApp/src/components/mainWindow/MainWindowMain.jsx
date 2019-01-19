@@ -6,14 +6,14 @@ import MainWindowRoux from './MainWindowRoux';
 
 const styles = theme => ({
     root: {
-        ...theme.mixins.gutters(),
+        
         paddingTop: theme.spacing.unit * 2,
         paddingBottom: theme.spacing.unit * 2,
         display: 'flex',
         justifyContent: 'center', 
-        flexDirection: 'column',
-        minWidth: '100vmax', 
-        marginTop: '5%'
+        flexDirection: 'column', 
+        marginTop: '5%',
+        minWidth: '100vw',
     }
 });
 

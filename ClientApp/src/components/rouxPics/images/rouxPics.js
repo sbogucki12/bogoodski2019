@@ -12,11 +12,16 @@ import Roux10 from './Roux10.JPG';
 const rouxPics = [
     {
         id: 0,
-        url: Roux1,
-        name: 'Roux1' 
+        url: Roux10,
+        name: 'Roux0' 
     },
     {
         id: 1,
+        url: Roux1,
+        name: 'Roux1'
+    },
+    {
+        id: 2,
         url: Roux2,
         name: 'Roux2'
     },
@@ -54,11 +59,6 @@ const rouxPics = [
         id: 9,
         url: Roux9,
         name: 'Roux9'
-    },
-    {
-        id: 10,
-        url: Roux10,
-        name: 'Roux10'
     }
 ]
 

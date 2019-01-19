@@ -1,20 +1,23 @@
 import React, { Component } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { Route } from 'react-router';
-import  Layout  from './components/Layout';
-import  Home  from './components/Home';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Home from './components/Home';
+import Layout from './components/Layout';
+import RouxMain from './components/rouxPics/RouxMain';
 
 export default class App extends Component {
     displayName = App.name
 
     render() {
         return (
-            <React.Fragment>
-                <CssBaseline />
-                <Layout>
-                    <Route exact path='/' component={Home} />
-                </Layout>
-            </React.Fragment>
+            <Router>
+                <React.Fragment>
+                    <CssBaseline />
+                    <Layout>
+                        <Route exact path='/' component={Home} />
+                    </Layout>
+                </React.Fragment>
+            </Router>
         );
     }
 }

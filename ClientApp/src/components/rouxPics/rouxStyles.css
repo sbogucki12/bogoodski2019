@@ -1,10 +1,10 @@
-﻿img {
+﻿.imgRoux {
     opacity: 0.5;
     filter: alpha(opacity=50); /* For IE8 and earlier */
     width: 75%; 
     height: 75%;
 }
-img:hover {
+.imgRoux:hover {
         opacity: 1.0;
         filter: alpha(opacity=100); /* For IE8 and earlier */
 

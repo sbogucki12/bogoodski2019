@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import TopBar from './appbar/TopBar';
 import MainWindowMain from './mainWindow/MainWindowMain';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import ResumeMain from './resume/ResumeMain';
 
 const styles = theme => ({
     root: {
@@ -23,9 +25,12 @@ class Layout extends Component {
             <React.Fragment>
                 <div className={classes.root}>
                     <TopBar className={classes.topBar} />
-                    <div >
-                        <MainWindowMain />
-                    </div>
+                    <Router>
+                        <div >
+                            <Route exact path="/resume" component={ResumeMain} />
+                            <Route exact path="/" component={MainWindowMain} />
+                        </div>
+                    </Router>
                 </div>
             </React.Fragment>
         );

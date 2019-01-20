@@ -2,7 +2,7 @@
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import rouxPics from './images/rouxPics';
-import './styles.css';
+import './rouxStyles.css';
 import RouxDialog from './RouxDialog';
 
 const styles = theme => ({
@@ -60,7 +60,7 @@ class RouxLayout extends React.Component {
         let showPics = rouxPics.map(image => {
             return (
                 <Grid item md={2} key={image.id} className={classes.imageCell}>
-                    <img src={image.url} alt={image.name} onClick={e => this.openDialog(image)} />
+                    <img class="imgRoux" src={image.url} alt={image.name} onClick={e => this.openDialog(image)} />
                 </Grid>)
         })
 

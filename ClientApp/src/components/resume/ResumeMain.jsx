@@ -10,20 +10,31 @@ import BackIcon from '@material-ui/icons/NavigateBefore';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import Slide from '@material-ui/core/Slide';
+import resumeData from './resumeData';
 
 const styles = theme => ({
     root: {
         display: 'flex',
         justifyContent: 'center',
-        marginTop: '20vh',
-        minWidth: '100vw'
+        paddingTop: '20vh',
+        minWidth: '100vw',
+        minHeight: '120vh',
+        backgroundColor: theme.palette.secondary.main
 
     },
     paper: {
         ...theme.mixins.gutters(),
-        paddingTop: theme.spacing.unit * 2,
+        paddingTop: theme.spacing.unit * 1,
         paddingBottom: theme.spacing.unit * 2,
-        width: '80%'
+        marginBottom: theme.spacing.unit * 4,        
+        
+        [theme.breakpoints.only('xs')]: {
+            marginTop: '10vh'
+        },
+        width: '80%',
+        height: '90%'
+     
     },
     content: {
         display: 'flex',
@@ -48,41 +59,7 @@ class ResumeMain extends React.Component {
     };
 
     render() {
-        const { classes } = this.props;
-
-        const resumeData =
-            [
-                {   
-                    id: 0, 
-                    header: "Introduction",
-                    summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vestibulum vehicula nunc eget tincidunt. Mauris lobortis, neque a consequat venenatis, magna purus ornare dui, vel pulvinar nulla dolor nec augue. Integer',
-                    duties: ['is eu metus sollicitudin fringilla. Proin elit orci, viver', 'mentum quis orci. Cras felis ligula, eleif', 'cursus ullamcorper erat. Duis pretium odio vel libero aliquet, id ornare magna maximus. Suspendisse pellentesque gravida ', 'sem in, convallis mi. In sagittis dictum']
-                },
-                {
-                    id: 1,
-                    header: "Job 1",
-                    summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vestibulum vehicula nunc eget tincidunt. Mauris lobortis, neque a consequat venenatis, magna purus ornare dui, vel pulvinar nulla dolor nec augue. Integer',
-                    duties: ['is eu metus sollicitudin fringilla. Proin elit orci, viver', 'mentum quis orci. Cras felis ligula, eleif', 'cursus ullamcorper erat. Duis pretium odio vel libero aliquet, id ornare magna maximus. Suspendisse pellentesque gravida ', 'sem in, convallis mi. In sagittis dictum']
-                },
-                {
-                    id: 2,
-                    header: "Job 2",
-                    summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vestibulum vehicula nunc eget tincidunt. Mauris lobortis, neque a consequat venenatis, magna purus ornare dui, vel pulvinar nulla dolor nec augue. Integer',
-                    duties: ['is eu metus sollicitudin fringilla. Proin elit orci, viver', 'mentum quis orci. Cras felis ligula, eleif', 'cursus ullamcorper erat. Duis pretium odio vel libero aliquet, id ornare magna maximus. Suspendisse pellentesque gravida ', 'sem in, convallis mi. In sagittis dictum']
-                },
-                {
-                    id: 3,
-                    header: "Job 3",
-                    summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vestibulum vehicula nunc eget tincidunt. Mauris lobortis, neque a consequat venenatis, magna purus ornare dui, vel pulvinar nulla dolor nec augue. Integer',
-                    duties: ['is eu metus sollicitudin fringilla. Proin elit orci, viver', 'mentum quis orci. Cras felis ligula, eleif', 'cursus ullamcorper erat. Duis pretium odio vel libero aliquet, id ornare magna maximus. Suspendisse pellentesque gravida ', 'sem in, convallis mi. In sagittis dictum']
-                },
-                {
-                    id: 4,
-                    header: "Job 4",
-                    summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vestibulum vehicula nunc eget tincidunt. Mauris lobortis, neque a consequat venenatis, magna purus ornare dui, vel pulvinar nulla dolor nec augue. Integer',
-                    duties: ['is eu metus sollicitudin fringilla. Proin elit orci, viver', 'mentum quis orci. Cras felis ligula, eleif', 'cursus ullamcorper erat. Duis pretium odio vel libero aliquet, id ornare magna maximus. Suspendisse pellentesque gravida ', 'sem in, convallis mi. In sagittis dictum']
-                },
-            ];
+        const { classes } = this.props;       
 
         const onNext = () => {
             this.setState((prevState) => ({
@@ -100,7 +77,7 @@ class ResumeMain extends React.Component {
                 <NextIcon />
             </Fab>;
 
-        const backArrow = 
+        const backArrow =
             <Fab onClick={onBack} color="secondary" className={classes.button} >
                 <BackIcon />
             </Fab>;
@@ -126,48 +103,63 @@ class ResumeMain extends React.Component {
         const dutiesList = resumeData[index].duties;
 
         const displayList = dutiesList.map(duty => {
-            
+
             return (
                 <List dense>
                     <ListItem key={duty}>
                         <ListItemText primary={duty} />
                     </ListItem>
                 </List>
-                )
+            )
         })
 
-        
+        const screenSize = window.screen.availWidth;
+
+        const bigHeader = 
+            <Typography variant="h2" align='center' gutterBottom>
+                {resumeData[index].header}
+            </Typography>
+
+        const mobileHeader =
+            <Typography variant="h4" align='center'  gutterBottom>
+                {resumeData[index].header}
+            </Typography>
+
+        const showHeader = () => {
+            if (screenSize > 321) {
+                return bigHeader;
+            } else {
+                return mobileHeader;
+            }
+        }
 
         return (
-
             <div className={classes.root}>
-                <Paper className={classes.paper} elevation={6}>
-                    <div className={classes.content}>
-                        <Typography variant="h2" align='center' gutterBottom>
-                            {resumeData[index].header}
-                        </Typography>
+                <Slide direction="up" in timeout={1000} >
+                    <Paper className={classes.paper} elevation={6}>
+                        <div className={classes.content}>
+                            {showHeader()}
+                            <Typography variant="body1" gutterBottom>
+                                {resumeData[index].summary}
+                            </Typography>
+                            {displayList}
+                        </div>
+                        <div className={classes.buttonContainer}>
+                            <Button
+                                variant="outlined"
+                                size="small"
+                                color="secondary"
+                                component={Link} to="/"
+                                className={classes.button}
 
-                        <Typography variant="body1" gutterBottom>
-                            {resumeData[index].summary}
-                        </Typography>
-
-                        {displayList}
-                    </div>
-                    <div className={classes.buttonContainer}>
-                        <Button
-                            variant="outlined"
-                            size="small"
-                            color="secondary"
-                            component={Link} to="/"
-                            className={classes.button}
-                          
-                        >
-                            {`Home`}
-                        </Button>
-                        {showBackArrow()}
-                        {showArrow()}
-                    </div>
-                </Paper>
+                            >
+                                {`Home`}
+                            </Button>
+                            {showBackArrow()}
+                            {showArrow()}
+                        </div>
+                    </Paper>
+                </Slide>
             </div>
         );
     }

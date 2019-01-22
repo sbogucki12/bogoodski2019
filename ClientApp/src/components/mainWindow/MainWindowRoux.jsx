@@ -6,7 +6,7 @@ const styles = {
     root: {
         minHeight: 300,
         backgroundColor: "#e4ff54",
-        marginBottom: '2%',
+        
     }
 };
 

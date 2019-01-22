@@ -12,7 +12,7 @@ const styles = theme => ({
     icon: {
         maxWidth: 48,
         maxHeight: 48,
-        margin: theme.spacing.unit
+        margin: theme.spacing.unit    
     }
 });
 

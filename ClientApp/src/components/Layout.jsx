@@ -10,7 +10,7 @@ const styles = theme => ({
     root: {
         display: 'flex',        
         alignItems: 'flex-start',
-        backgroundColor: '#fce4ec',
+        backgroundColor: '#dcedc8',
         minHeight: '100vh'
     }
 });

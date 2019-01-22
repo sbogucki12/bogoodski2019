@@ -126,7 +126,7 @@ class ResumeMain extends React.Component {
             </Typography>
 
         const showHeader = () => {
-            if (screenSize > 321) {
+            if (screenSize > 416) {
                 return bigHeader;
             } else {
                 return mobileHeader;

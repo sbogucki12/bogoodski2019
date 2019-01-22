@@ -7,10 +7,10 @@ const screenSize = window.screen.availWidth;
 let marginTop; 
 if (screenSize <= 320)  {
     marginTop = '25vh';
-} else if (screenSize > 320) {
-    marginTop = '9vh';
+} else if (screenSize > 320 && screenSize < 415) {
+    marginTop = '20vh';
 } else {
-    marginTop = '9vh';
+    marginTop = '10vh';
 };
 
 

@@ -23,7 +23,7 @@ class RouxDialog extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            open: props.open,
+            open: true,
         }
     }
 
@@ -46,7 +46,7 @@ class RouxDialog extends React.Component {
                 >
                     <img src={pic} alt="Roux Picture" className={classes.image} />
                     <Button
-                        onClick={this.toggleDialog}
+                        onClick={this.props.closeDialog}
                         color="secondary"
                         className={classes.button}
                         variant="contained"

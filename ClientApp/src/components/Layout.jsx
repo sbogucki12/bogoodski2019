@@ -4,15 +4,12 @@ import TopBar from './appbar/TopBar';
 import MainWindowMain from './mainWindow/MainWindowMain';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import ResumeMain from './resume/ResumeMain';
+import './LayoutStyle.css';
 
 const styles = theme => ({
     root: {
         display: 'flex',        
         alignItems: 'flex-start'
-    },
-    topBar: {
-        position: 'sticky',
-        top: 0
     }
 });
 
@@ -24,7 +21,7 @@ class Layout extends Component {
         return (
             <React.Fragment>
                 <div className={classes.root}>
-                    <TopBar className={classes.topBar} />
+                    <TopBar className="sticky" />
                     <Router>
                         <div >
                             <Route exact path="/resume" component={ResumeMain} />

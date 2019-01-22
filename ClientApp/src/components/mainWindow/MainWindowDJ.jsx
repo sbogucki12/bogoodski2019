@@ -1,6 +1,7 @@
 ﻿import React from 'react';
-import Typography from '@material-ui/core/Typography';
+
 import { withStyles } from '@material-ui/core/styles';
+
 
 const styles = {
     root: {
@@ -15,18 +16,7 @@ function MainWindowDj(props) {
 
     return (
         <div className={classes.root}>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <Typography variant="h3" align="center" className={classes.text} gutterBottom>
-                {`Main Window DJ`}
-            </Typography>
-            
+       
         </div>
     );
 }

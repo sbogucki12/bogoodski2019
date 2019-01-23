@@ -13,7 +13,6 @@ if (screenSize <= 320)  {
     marginTop = '10vh';
 };
 
-
 const styles = theme => ({
     root: {        
         paddingTop: theme.spacing.unit * 2,

@@ -1,3 +1,8 @@
+
+# [BoGoodSki.com](http://bogoodski.com "BoGoodSki.com")
+
+
+
 **Day Three**
 
 

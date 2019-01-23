@@ -12,6 +12,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Slide from '@material-ui/core/Slide';
 import resumeData from './resumeData';
+import ResumeButton from './ResumeButton';
 
 const styles = theme => ({
     root: {
@@ -19,9 +20,8 @@ const styles = theme => ({
         justifyContent: 'center',
         paddingTop: '20vh',
         minWidth: '100vw',
-        minHeight: '120vh',
+        minHeight: '80vh',
         backgroundColor: theme.palette.secondary.main
-
     },
     paper: {
         ...theme.mixins.gutters(),
@@ -134,8 +134,10 @@ class ResumeMain extends React.Component {
         }
 
         return (
+            <React.Fragment>
             <div className={classes.root}>
                 <Slide direction="up" in timeout={1000} >
+
                     <Paper className={classes.paper} elevation={6}>
                         <div className={classes.content}>
                             {showHeader()}
@@ -154,13 +156,17 @@ class ResumeMain extends React.Component {
 
                             >
                                 {`Home`}
-                            </Button>
+                            </Button>                            
                             {showBackArrow()}
                             {showArrow()}
                         </div>
                     </Paper>
+
                 </Slide>
+
             </div>
+                <ResumeButton />
+                </React.Fragment>
         );
     }
 }

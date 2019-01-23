@@ -77,8 +77,8 @@ class RouxLayout extends React.Component {
             <React.Fragment>
                 <div className={classes.root}>
                     <Grid container spacing={0}>
-                        <Grid item xs={1} sm={3} md={1} />
-                        <Grid item xs={11} sm={9} md={3} className={classes.logo} >
+                        <Grid item xs={false} sm={3} md={1} />
+                        <Grid item xs={12} sm={9} md={3} className={classes.logo} >
                             <h1>{`Roux`}</h1>
                         </Grid>
                         {showPics}

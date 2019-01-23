@@ -66,14 +66,14 @@
                 'Site owner for several SharePoint sites.',
                 'Produced quarterly newsletter distributed to the FAA Aircraft Certification Service workforce (utilized Microsoft Publisher).',
                 'Performed updates to several inter - and intra - net sites, using mostly the organization’s internal content management system.',
-                'Conducted site reviews for conformance to accessibility (including 508) compliance.',
+                'Conducted site reviews for compliance to accessibility (including 508) requirements.',
                 'Produced PowerPoint presentations in support of management for briefings to federal executives and directors.'
             ]
         },
         {
             id: 6,
             header: "Management Assistant",
-            summary: 'After graduating college, I was provided an opportunity 2010 with the Federal Aviation Administration as a Management Assistant.  In the FAA, I was fortunate to be initially supervised by a progressive manager – to whom I am forever grateful! – who provided me responsibilities and challenges beyond the scope of my daily duties.',
+            summary: 'After graduating college, I was provided an opportunity in 2010 with the Federal Aviation Administration as a Management Assistant.  In the FAA, I was fortunate to be initially supervised by a progressive manager – to whom I am forever grateful! – who provided me responsibilities and challenges beyond the scope of my daily duties.',
             duties: [
                 'Provided direct administrative support to several federal offices, including their managers and staff.',
                 'Periodically provided administrative support to the FAA Aircraft Certification Service executive office.',

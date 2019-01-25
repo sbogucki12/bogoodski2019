@@ -2,6 +2,7 @@
 import { withStyles } from '@material-ui/core/styles';
 import MainWindowResume from './MainWindowResume';
 import MainWindowRoux from './MainWindowRoux';
+import MainWindowContact from './MainWindowContact';
 
 const screenSize = window.screen.availWidth;
 let marginTop; 
@@ -31,7 +32,8 @@ function MainWindowMain(props) {
     return (
         <div className={classes.root} >
             <MainWindowResume />
-            <MainWindowRoux  />
+            <MainWindowRoux />
+            <MainWindowContact />
         </div>
     );
 }

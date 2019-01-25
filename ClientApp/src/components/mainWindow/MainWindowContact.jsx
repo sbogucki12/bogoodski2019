@@ -1,22 +1,22 @@
 ﻿import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import RouxMain from '../rouxPics/RouxMain';
+import ContactFormMain from '../contactForm/ContactFormMain';
 
 const styles = {
     root: {
         minHeight: 300,
-        backgroundColor: "#e4ff54"        
+        backgroundColor: "#e4ff54"
     }
 };
 
-function MainWindowRoux(props) {
+function MainWindowContact(props) {
     const { classes } = props;
 
     return (
         <div className={classes.root}>
-            <RouxMain />
+            <ContactFormMain />
         </div>
     );
 }
 
-export default withStyles(styles)(MainWindowRoux);
+export default withStyles(styles)(MainWindowContact);

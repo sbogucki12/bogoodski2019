@@ -26,6 +26,26 @@ const styles = theme => ({
     },
     appBar: {
         position: 'relative'
+    }, 
+    icon: {
+        display: 'flex',
+        justifyContent: 'flex-end'
+    }, 
+    border: {
+        border: '2px solid #1b5e20',
+        borderRadius: 5, 
+        maxWidth: '80%', 
+        display: 'flex', 
+        
+        justifyContent: 'center',
+        marginTop: theme.spacing.unit * 3
+    }, 
+    container: {
+        display: 'flex',
+        justifyContent: 'center'
+    }, 
+    innerForm: {
+        maxWidth: '80%'
     }
 });
 
@@ -61,13 +81,17 @@ class ContactDialog extends React.Component {
                 TransitionComponent={Transition}
             >
                 <AppBar className={classes.appBar}>
-                    <Toolbar>
-                        <IconButton color="inherit" onClick={this.props.toggleDialog} aria-label="Close">
+                    <Toolbar className={classes.icon} >
+                        <IconButton color="inherit" onClick={this.props.toggleDialog} aria-label="Close" >
                             <CloseIcon />
                         </IconButton>
                     </Toolbar>
                 </AppBar>
-                <form className={classes.container} noValidate autoComplete="off">
+                <div className={classes.container}>
+                <div className={classes.border}>
+                       
+                        <div className={classes.innerForm}>
+                            <form className={classes.container} noValidate autoComplete="off">
                     <TextField
                         id="standard-name"
                         label="Name"
@@ -103,7 +127,10 @@ class ContactDialog extends React.Component {
                         className={classes.textField}
                         margin="normal"
                     />
-                </form>
+                    </form>
+                            </div>
+                    </div>
+                    </div>
             </Dialog>
         );
     }

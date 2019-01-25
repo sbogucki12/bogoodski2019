@@ -36,7 +36,6 @@ const styles = theme => ({
         borderRadius: 5, 
         maxWidth: '80%', 
         display: 'flex', 
-        
         justifyContent: 'center',
         marginTop: theme.spacing.unit * 3
     }, 
@@ -103,14 +102,14 @@ class ContactDialog extends React.Component {
                     <TextField
                         required
                         id="standard-required"
-                        label="Required"
-                        defaultValue="Hello World"
+                        label="Email"
+                        defaultValue="you@email.com"
                         className={classes.textField}
                         margin="normal"
                     />
                     <TextField
                         id="standard-multiline-flexible"
-                        label="Multiline"
+                        label="Subject"
                         multiline
                         rowsMax="4"
                         value={this.state.multiline}
@@ -120,10 +119,10 @@ class ContactDialog extends React.Component {
                     />
                     <TextField
                         id="standard-multiline-static"
-                        label="Multiline"
+                        label="Body"
                         multiline
                         rows="4"
-                        defaultValue="Default Value"
+                        defaultValue="Enter Message Here"
                         className={classes.textField}
                         margin="normal"
                     />

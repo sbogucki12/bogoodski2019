@@ -25,16 +25,33 @@ const styles = theme => ({
     }
 });
 
-function MainWindowMain(props) {
-    const { classes } = props;
+class MainWindowMain extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            showContactBar: true
+        }
+    }; 
 
-    return (
-        <div className={classes.root} >
-            <MainWindowResume />
-            <MainWindowRoux />
-            <MainWindowContact />
-        </div>
-    );
+    toggleContact = () => {
+        this.setState((prevState) => ({
+            showContactBar: !prevState.showContactBar
+        }))
+    };
+
+    render() {
+        const { classes } = this.props;
+
+        const isContactBar = this.state.showContactBar;
+
+        return (
+            <div className={classes.root} >
+                <MainWindowResume />
+                <MainWindowRoux />
+                {isContactBar ? <MainWindowContact toggleContact={this.toggleContact} /> : null}
+            </div>
+        );
+    }
 }
 
 export default withStyles(styles)(MainWindowMain);

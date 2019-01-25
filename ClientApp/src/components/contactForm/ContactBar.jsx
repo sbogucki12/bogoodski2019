@@ -51,7 +51,7 @@ function ContactBar(props) {
                     </Grid>
                     <Grid item sm={1} lg={4} />
                     <Grid item xs={1} sm={1} lg={1} >
-                        <Fab size="small" className={classes.fab} >
+                        <Fab size="small" className={classes.fab} onClick={props.toggleContact} >
                             <CancelIcon />
                         </Fab>
                         <Grid item xs={1} />

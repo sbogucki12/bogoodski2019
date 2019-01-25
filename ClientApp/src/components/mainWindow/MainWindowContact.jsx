@@ -14,7 +14,7 @@ function MainWindowContact(props) {
 
     return (
         <div className={classes.root}>
-            <ContactFormMain />
+            <ContactFormMain toggleContact={props.toggleContact} />
         </div>
     );
 }

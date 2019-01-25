@@ -29,7 +29,7 @@ class ContactFormMain extends React.Component {
 
         return (
             <div>
-                <ContactBar toggleDialog={this.toggleDialog}  />
+                <ContactBar toggleDialog={this.toggleDialog} toggleContact={this.props.toggleContact} />
                 {isDialogOpen ? <ContactDialog toggleDialog={this.toggleDialog} open={this.state.openDialog} /> : null}
             </div>
             )

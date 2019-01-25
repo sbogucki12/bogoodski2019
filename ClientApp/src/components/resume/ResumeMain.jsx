@@ -20,7 +20,7 @@ const styles = theme => ({
         justifyContent: 'center',
         paddingTop: '20vh',
         minWidth: '100vw',
-        minHeight: '80vh',
+        minHeight: '100vh',
         backgroundColor: theme.palette.secondary.main
     },
     paper: {

@@ -33,8 +33,8 @@ class ContactDialog extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            name: 'Cat in the Hat',
-            multiline: 'Controlled',
+            name: 'Name',
+            multiline: 'Email',
             open: this.props.open
         }
     }

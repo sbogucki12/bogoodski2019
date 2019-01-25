@@ -4,8 +4,8 @@ import ContactFormMain from '../contactForm/ContactFormMain';
 
 const styles = {
     root: {
-        minHeight: 300,
-        backgroundColor: "#e4ff54"
+        
+       
     }
 };
 

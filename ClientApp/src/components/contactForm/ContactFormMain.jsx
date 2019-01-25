@@ -3,7 +3,10 @@ import { withStyles } from '@material-ui/core/styles';
 import ContactDialog from './ContactDialog';
 import ContactBar from './ContactBar';
 
-const styles = theme => ({});
+const styles = theme => ({
+
+});
+
 
 class ContactFormMain extends React.Component {
     constructor(props) {
@@ -13,8 +16,7 @@ class ContactFormMain extends React.Component {
         }
     };
 
-    toggleDialog = () => {
-        alert('toggle Dialog!');
+    toggleDialog = () => {        
         this.setState((prevState) => ({
             openDialog: !prevState.openDialog
         }))
@@ -27,7 +29,7 @@ class ContactFormMain extends React.Component {
 
         return (
             <div>
-                <ContactBar toggleDialog={this.toggleDialog} />
+                <ContactBar toggleDialog={this.toggleDialog}  />
                 {isDialogOpen ? <ContactDialog toggleDialog={this.toggleDialog} open={this.state.openDialog} /> : null}
             </div>
             )

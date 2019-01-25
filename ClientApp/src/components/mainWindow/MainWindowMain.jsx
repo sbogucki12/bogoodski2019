@@ -21,8 +21,7 @@ const styles = theme => ({
         display: 'flex',
         justifyContent: 'center', 
         flexDirection: 'column', 
-        marginTop: marginTop,
-        minWidth: '100vw',
+        marginTop: marginTop,     
     }
 });
 

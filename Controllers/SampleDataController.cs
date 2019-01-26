@@ -9,36 +9,34 @@ namespace Bogoodski2019.Controllers
     [Route("api/[controller]")]
     public class SampleDataController : Controller
     {
-        private static string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
 
-        [HttpGet("[action]")]
-        public IEnumerable<WeatherForecast> WeatherForecasts()
+        public class Message
         {
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                DateFormatted = DateTime.Now.AddDays(index).ToString("d"),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            });
+            public string Name { get; set; }
+            public string Email { get; set; }
+            public string Subject { get; set; }
+            public string Body { get; set; }
         }
 
-        public class WeatherForecast
-        {
-            public string DateFormatted { get; set; }
-            public int TemperatureC { get; set; }
-            public string Summary { get; set; }
+        Message newMessage = new Message();
+        List<Message> messages = new List<Message>();   
 
-            public int TemperatureF
-            {
-                get
-                {
-                    return 32 + (int)(TemperatureC / 0.5556);
-                }
-            }
+        [HttpPost("[action]")]
+        public Message postMessage([FromBody] Message message)
+        {
+            newMessage.Name = message.Name;
+            newMessage.Email = message.Email;
+            newMessage.Subject = message.Subject;
+            newMessage.Body = message.Body;
+            messages.Add(newMessage);
+
+            return messages[0];
+        }
+
+        [HttpGet("[action]")]
+        public Message getMessage()
+        {
+            return messages[0];
         }
     }
 }

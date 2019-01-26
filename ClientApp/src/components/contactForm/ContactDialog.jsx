@@ -7,6 +7,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import CloseIcon from '@material-ui/icons/Close';
 import IconButton from '@material-ui/core/IconButton';
+import ContactForm from './ContactForm';
 
 const styles = theme => ({
     container: {
@@ -26,25 +27,22 @@ const styles = theme => ({
     },
     appBar: {
         position: 'relative'
-    }, 
+    },
     icon: {
         display: 'flex',
         justifyContent: 'flex-end'
-    }, 
+    },
     border: {
         border: '2px solid #1b5e20',
-        borderRadius: 5, 
-        maxWidth: '80%', 
-        display: 'flex', 
+        borderRadius: 5,
+        maxWidth: '80%',
+        display: 'flex',
         justifyContent: 'center',
         marginTop: theme.spacing.unit * 3
-    }, 
+    },
     container: {
         display: 'flex',
         justifyContent: 'center'
-    }, 
-    innerForm: {
-        maxWidth: '80%'
     }
 });
 
@@ -53,8 +51,9 @@ class ContactDialog extends React.Component {
         super(props)
         this.state = {
             name: 'Name',
-            multiline: 'Email',
-            open: this.props.open
+            email: 'Email',
+            subject: 'Subject',
+            body: 'body'
         }
     }
 
@@ -75,7 +74,7 @@ class ContactDialog extends React.Component {
         return (
             <Dialog
                 fullScreen
-                open={this.state.open}
+                open
                 onClose={this.props.toggleDialog}
                 TransitionComponent={Transition}
             >
@@ -87,49 +86,10 @@ class ContactDialog extends React.Component {
                     </Toolbar>
                 </AppBar>
                 <div className={classes.container}>
-                <div className={classes.border}>
-                       
-                        <div className={classes.innerForm}>
-                            <form className={classes.container} noValidate autoComplete="off">
-                    <TextField
-                        id="standard-name"
-                        label="Name"
-                        className={classes.textField}
-                        value={this.state.name}
-                        onChange={this.handleChange('name')}
-                        margin="normal"
-                    />
-                    <TextField
-                        required
-                        id="standard-required"
-                        label="Email"
-                        defaultValue="you@email.com"
-                        className={classes.textField}
-                        margin="normal"
-                    />
-                    <TextField
-                        id="standard-multiline-flexible"
-                        label="Subject"
-                        multiline
-                        rowsMax="4"
-                        value={this.state.multiline}
-                        onChange={this.handleChange('multiline')}
-                        className={classes.textField}
-                        margin="normal"
-                    />
-                    <TextField
-                        id="standard-multiline-static"
-                        label="Body"
-                        multiline
-                        rows="4"
-                        defaultValue="Enter Message Here"
-                        className={classes.textField}
-                        margin="normal"
-                    />
-                    </form>
-                            </div>
+                    <div className={classes.border}>                       
+                        <ContactForm />                        
                     </div>
-                    </div>
+                </div>
             </Dialog>
         );
     }

@@ -10,7 +10,7 @@ const styles = theme => ({
         flexGrow: 1,
         padding: theme.spacing.unit * 2,
         marginTop: '7%',
-        marginBottom: '5%',
+        //marginBottom: '5%',
         marginLeft: '20%'
     },
     logo: {

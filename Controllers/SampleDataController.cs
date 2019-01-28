@@ -53,9 +53,9 @@ namespace Bogoodski2019.Controllers
 
         static async Task Execute(string email, string name, string body, string subject)
         {
-            var apiKey = "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";
-            //_configuration.GetSection("SENDGRID_API_KEY").Value;
-            var client = new SendGridClient(apiKey);
+            //var apiKey = hidden
+           
+            //var client = new SendGridClient(apiKey);
             var from = new EmailAddress(email, name);
             var to = new EmailAddress("sbogucki@mail.usf.edu", "steve bogucki");
 
@@ -64,7 +64,7 @@ namespace Bogoodski2019.Controllers
             var htmlContent = body;
             /*var displayRecipients = false;*/ // set this to true if you want recipients to see each others mail id 
             var msg = MailHelper.CreateSingleEmail(from, to, subject, "plain text", htmlContent);
-            var response = await client.SendEmailAsync(msg);
+            //var response = await client.SendEmailAsync(msg);
             //Response response = await client.SendEmailAsync(msg);
 
         }

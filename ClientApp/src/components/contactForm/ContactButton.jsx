@@ -17,7 +17,7 @@ function ContactButton(props) {
     const { classes } = props;
     return (
         <div className={classes.root}>
-            <Button variant="outlined" color="secondary" className={classes.button}>
+            <Button variant="outlined" color="secondary" className={classes.button} onClick={props.onSubmit}>
                 {`Send`}
             </Button>
         </div>

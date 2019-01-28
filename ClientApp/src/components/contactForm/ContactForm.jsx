@@ -2,16 +2,17 @@
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import ContactButton from './ContactButton';
+import localPath from '../../helpers/localPath';
 
 const styles = theme => ({
     container: {
         display: 'flex',
         justifyContent: 'center',
-        flexDirection: 'column', 
+        flexDirection: 'column',
         minWidth: '80vw',
         padding: theme.spacing.unit * 2
     },
-    textField: {        
+    textField: {
         //marginRight: theme.spacing.unit,
         maxWidth: '80%',
         minWidth: '60%',
@@ -21,6 +22,8 @@ const styles = theme => ({
         marginBottom: theme.spacing.unit
     }
 });
+
+const baseURI = localPath();
 
 class ContactForm extends React.Component {
     constructor(props) {
@@ -39,11 +42,24 @@ class ContactForm extends React.Component {
         });
     };
 
+    onSubmit = () => {
+        fetch(`${baseURI}api/sampledata/postmessage`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(this.state)
+        })
+            .then(response => response.json())
+            .then(data => console.log('data is', data))
+            .catch(error => console.log('error is', error));
+    }
+
     render() {
         const { classes } = this.props;
 
         return (
-            
+
             <form className={classes.container} noValidate autoComplete="off">
                 <TextField
                     id="standard-name"
@@ -81,15 +97,14 @@ class ContactForm extends React.Component {
                     label="Enter Message Here"
                     multiline
                     placeholder="Message"
-                    rows="4"                    
+                    rows="4"
                     onChange={this.handleChange('body')}
                     className={classes.textField}
                     margin="normal"
                     variant="filled"
                 />
-                <ContactButton /> 
-                </form>
-           
+                <ContactButton onSubmit={this.onSubmit} />
+            </form>
         );
     }
 }

@@ -3,12 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using SendGrid;
+using SendGrid.Helpers.Mail;
+using Microsoft.Extensions.Configuration;
 
 namespace Bogoodski2019.Controllers
 {
+
     [Route("api/[controller]")]
+    [ApiController]
     public class SampleDataController : Controller
     {
+        //private readonly IConfiguration _configuration;
+
+        //public SampleDataController(IConfiguration configuration)
+        //{
+        //    _configuration = configuration;
+        //}
 
         public class Message
         {
@@ -18,25 +29,53 @@ namespace Bogoodski2019.Controllers
             public string Body { get; set; }
         }
 
-        Message newMessage = new Message();
-        List<Message> messages = new List<Message>();   
+        //Message newMessage = new Message();
+        //List<Message> messages = new List<Message>();
 
-        [HttpPost("[action]")]
-        public Message postMessage([FromBody] Message message)
+        
+        [HttpPost("sendnotification")]
+        public Task PostMessage([FromBody] Message message)
         {
-            newMessage.Name = message.Name;
-            newMessage.Email = message.Email;
-            newMessage.Subject = message.Subject;
-            newMessage.Body = message.Body;
-            messages.Add(newMessage);
+            string name = message.Name;
+            string email = message.Email;
+            string subject = message.Subject;
+            string body = message.Body;
 
-            return messages[0];
+            Task response = Execute(name, email, subject, body);
+
+            return response; 
+            //newMessage.Name = message.Name;
+            //newMessage.Email = message.Email;
+            //newMessage.Subject = message.Subject;
+            //newMessage.Body = message.Body;
+            //messages.Add(newMessage);
         }
 
-        [HttpGet("[action]")]
-        public Message getMessage()
+        static async Task Execute(string email, string name, string body, string subject)
         {
-            return messages[0];
+            var apiKey = "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";
+            //_configuration.GetSection("SENDGRID_API_KEY").Value;
+            var client = new SendGridClient(apiKey);
+            var from = new EmailAddress(email, name);
+            var to = new EmailAddress("sbogucki@mail.usf.edu", "steve bogucki");
+
+
+
+            var htmlContent = body;
+            /*var displayRecipients = false;*/ // set this to true if you want recipients to see each others mail id 
+            var msg = MailHelper.CreateSingleEmail(from, to, subject, "plain text", htmlContent);
+            var response = await client.SendEmailAsync(msg);
+            //Response response = await client.SendEmailAsync(msg);
+
         }
+
+
+
+
+        //[HttpGet("[action]")]
+        //public Message getMessage()
+        //{
+        //    return newMessage;
+        //}
     }
 }

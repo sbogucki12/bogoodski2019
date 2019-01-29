@@ -1,7 +1,6 @@
 ﻿import React from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import { withStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
 import Slide from '@material-ui/core/Slide';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -43,6 +42,9 @@ const styles = theme => ({
     container: {
         display: 'flex',
         justifyContent: 'center'
+    },
+    close: {
+        padding: theme.spacing.unit / 2,
     }
 });
 
@@ -53,7 +55,8 @@ class ContactDialog extends React.Component {
             name: 'Name',
             email: 'Email',
             subject: 'Subject',
-            body: 'body'
+            body: 'body',
+            open: true            
         }
     }
 
@@ -63,6 +66,13 @@ class ContactDialog extends React.Component {
         });
     };
 
+    closeOnSend = () => {
+        this.setState({
+            open: false
+        })
+    };
+
+
     render() {
         const { classes } = this.props;
 
@@ -71,10 +81,12 @@ class ContactDialog extends React.Component {
             return <Slide direction="up" {...props} />;
         }
 
+        
+
         return (
             <Dialog
                 fullScreen
-                open
+                open={this.state.open}
                 onClose={this.props.toggleDialog}
                 TransitionComponent={Transition}
             >
@@ -87,7 +99,7 @@ class ContactDialog extends React.Component {
                 </AppBar>
                 <div className={classes.container}>
                     <div className={classes.border}>                       
-                        <ContactForm />                        
+                        <ContactForm closeOnSend={this.closeOnSend} />                        
                     </div>
                 </div>
             </Dialog>

@@ -29,10 +29,10 @@ class ContactForm extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            name: '',
-            email: '',
-            subject: '',
-            body: ''
+            name: "",
+            email: "",
+            subject: "",
+            body: ""
         }
     }
 
@@ -43,16 +43,39 @@ class ContactForm extends React.Component {
     };
 
     onSubmit = () => {
-        fetch(`${baseURI}api/sampledata/postmessage`, {
+        const validateEmail = (email) => {
+            var re = /\S+@\S+\.\S+/;
+            return re.test(email);
+        }
+
+       
+        if (this.state.email === null || this.state.email === "") {
+            return alert("Please enter email address!");
+        };
+
+        if (validateEmail(this.state.email) === false) {
+            return alert("Please enter valid email address!");
+        };
+
+        fetch(`${baseURI}api/sendemail`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                "Content-Type": "application/json"
             },
             body: JSON.stringify(this.state)
         })
             .then(response => response.json())
-            .then(data => console.log('data is', data))
-            .catch(error => console.log('error is', error));
+            .then(data => {
+                console.log(`data is ${data}`);
+                alert("Message Sent!");
+                this.props.closeOnSend();
+            })
+            .catch(error => {
+                console.log('error is', error);
+                alert(`Message Failed! due to ${error}`);
+            });
+
+       
     }
 
     render() {
@@ -96,7 +119,7 @@ class ContactForm extends React.Component {
                     id="standard-multiline-static"
                     label="Enter Message Here"
                     multiline
-                    placeholder="Message"
+                    value={this.state.body}
                     rows="4"
                     onChange={this.handleChange('body')}
                     className={classes.textField}

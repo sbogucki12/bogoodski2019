@@ -23,7 +23,8 @@ namespace Bogoodski2019.Controllers
         [HttpPost]
         public async Task<IActionResult> SendMail([FromBody] Message message)
         {
-            var key = System.Environment.GetEnvironmentVariable("SENDGRID_KEY");
+
+            string key = System.Environment.GetEnvironmentVariable("SENDGRID_APIKEY");
             var apiKey = key;
             var client = new SendGridClient(apiKey);
             string email = message.Email;
@@ -41,7 +42,7 @@ namespace Bogoodski2019.Controllers
             msg.AddTo(new EmailAddress("sbogucki@mail.usf.edu", "Steve Bogucki"));
             var response = await client.SendEmailAsync(msg);
 
-            return Ok();
+            return Ok(response);
         }
     }
 }

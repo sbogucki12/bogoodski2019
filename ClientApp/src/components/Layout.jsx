@@ -9,9 +9,9 @@ import './LayoutStyle.css';
 const styles = theme => ({
     root: {
         display: 'flex',        
-        alignItems: 'flex-start',
-        backgroundColor: '#dcedc8',
-        minHeight: '100vh'
+        alignItems: 'flex-start',        
+        backgroundImage: 'linear-gradient(#dcedc8 75%, #e4ff54 25%)',
+        minHeight: '100%'
     }
 });
 

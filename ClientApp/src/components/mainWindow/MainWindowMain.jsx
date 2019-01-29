@@ -2,6 +2,9 @@
 import { withStyles } from '@material-ui/core/styles';
 import MainWindowResume from './MainWindowResume';
 import MainWindowRoux from './MainWindowRoux';
+import MainWindowContact from './MainWindowContact';
+import Fab from '@material-ui/core/Fab';
+import MessageIcon from '@material-ui/icons/MessageTwoTone';
 
 const screenSize = window.screen.availWidth;
 let marginTop; 
@@ -20,20 +23,51 @@ const styles = theme => ({
         display: 'flex',
         justifyContent: 'center', 
         flexDirection: 'column', 
-        marginTop: marginTop,
-        minWidth: '100vw',
+        marginTop: marginTop,     
+    },
+    fab: {
+        margin: theme.spacing.unit *1,
+        position: 'sticky',
+        bottom: theme.spacing.unit * 2,
+        right: theme.spacing.unit * 2,        
+    },
+    icon: {
+        color: '#dcedc8'
     }
 });
 
-function MainWindowMain(props) {
-    const { classes } = props;
+class MainWindowMain extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            showContactBar: true
+        }
+    };
 
-    return (
-        <div className={classes.root} >
-            <MainWindowResume />
-            <MainWindowRoux  />
-        </div>
-    );
+    toggleContact = () => {
+        this.setState((prevState) => ({
+            showContactBar: !prevState.showContactBar
+        }))
+    };
+
+    render() {
+        const { classes } = this.props;
+
+        const isContactBar = this.state.showContactBar;
+
+        const contactFab =
+                <Fab color="secondary" size="small" aria-label="Add" className={classes.fab} onClick={this.toggleContact}>
+                    <MessageIcon className={classes.icon} />
+                </Fab >
+
+        return (
+            <div className={classes.root} >
+                <MainWindowResume />
+                <MainWindowRoux />
+                {isContactBar ? <MainWindowContact toggleContact={this.toggleContact} /> : contactFab}
+            </div>
+        );
+    }
 }
 
 export default withStyles(styles)(MainWindowMain);

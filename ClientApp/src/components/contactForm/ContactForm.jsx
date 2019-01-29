@@ -47,7 +47,6 @@ class ContactForm extends React.Component {
             var re = /\S+@\S+\.\S+/;
             return re.test(email);
         }
-
        
         if (this.state.email === null || this.state.email === "") {
             return alert("Please enter email address!");
@@ -74,15 +73,12 @@ class ContactForm extends React.Component {
                 console.log('error is', error);
                 alert(`Message Failed! due to ${error}`);
             });
-
-       
     }
 
     render() {
         const { classes } = this.props;
 
         return (
-
             <form className={classes.container} noValidate autoComplete="off">
                 <TextField
                     id="standard-name"

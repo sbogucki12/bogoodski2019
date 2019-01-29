@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using SendGrid;
 using SendGrid.Helpers.Mail;
@@ -24,7 +25,23 @@ namespace Bogoodski2019.Controllers
         public async Task<IActionResult> SendMail([FromBody] Message message)
         {
 
-            string key = System.Environment.GetEnvironmentVariable("SENDGRID_APIKEY");
+
+            string key;
+            string env = System.Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+
+            if (env == "Development")
+            {
+                key = System.Environment.GetEnvironmentVariable("SENDGRID_APIKEY");
+            } else if (env == "Production")
+            {
+                key = Environment.GetEnvironmentVariable("SENDGRID_APIKEY");
+            } else
+            {
+                key = System.Environment.GetEnvironmentVariable("SENDGRID_APIKEY");
+            };
+
+     
+            
             var apiKey = key;
             var client = new SendGridClient(apiKey);
             string email = message.Email;

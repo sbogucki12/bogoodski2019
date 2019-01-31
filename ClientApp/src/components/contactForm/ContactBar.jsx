@@ -40,7 +40,7 @@ function ContactBar(props) {
     const { classes } = props;
     return (
         <React.Fragment>
-            <AppBar position="fixed" className={classes.appBar} toggleDialog={props.toggleDialog}>
+            <AppBar position="fixed" className={classes.appBar} >
 
                 <Grid container className={classes.root} spacing={0}>
                     <Grid item xs={2} sm={5} lg={2}/>

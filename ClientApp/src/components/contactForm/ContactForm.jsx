@@ -92,8 +92,7 @@ class ContactForm extends React.Component {
                 <TextField
                     required
                     id="standard-required"
-                    label="Email"
-                    defaultValue="you@email.com"
+                    label="Email"                    
                     className={classes.textField}
                     value={this.state.email}
                     onChange={this.handleChange('email')}

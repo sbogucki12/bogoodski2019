@@ -6,7 +6,7 @@ const styles = theme => ({
     root: {
         minHeight: 300,
         backgroundColor: "#e4ff54", 
-        marginBottom: theme.spacing.unit
+        marginBottom: "2%"
     }
 });
 

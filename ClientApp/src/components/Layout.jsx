@@ -10,7 +10,7 @@ const styles = theme => ({
     root: {
         display: 'flex',        
         alignItems: 'flex-start',        
-        backgroundImage: 'linear-gradient(#dcedc8 75%, #e4ff54 25%)',
+        backgroundImage: 'linear-gradient(#dcedc8 70%, #e4ff54)',
         minHeight: '100%'
     }
 });

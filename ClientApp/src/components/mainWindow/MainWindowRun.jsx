@@ -4,9 +4,8 @@ import RunMain from '../runLog/RunMain';
 
 const styles = theme => ({
     root: {
-        minHeight: 300,
-        backgroundColor: "#1b5e20",
-        //marginBottom: theme.spacing.unit
+        backgroundImage: 'linear-gradient(#1b5e20, #e4ff54)',
+        minHeight: 300
     }
 });
 

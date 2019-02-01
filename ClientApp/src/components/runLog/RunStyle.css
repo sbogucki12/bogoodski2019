@@ -1,30 +1,6 @@
 ﻿
 
-.runner {
+.runnerIcon {
     font-size: 18vh;
-    /*animation-name: runner;
-    animation-duration: 4s;
-    right: 0;
-    -webkit-animation: runner 1 2 forwards;
-    animation: runner 1 2 forwards;*/ 
 }
 
-@-webkit-keyframes runner {
-    0% {
-        width: 0;
-    }
-
-    100% {
-        width: 100%;
-    }
-}
-
-@keyframes runner {
-    0% {
-        width: 0;
-    }
-
-    100% {
-        width: 100%;
-    }
-}

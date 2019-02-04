@@ -3,6 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import TopBar from './appbar/TopBar';
 import MainWindowMain from './mainWindow/MainWindowMain';
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import RunLogMain from './runLog/RunLogMain';
 import ResumeMain from './resume/ResumeMain';
 import './LayoutStyle.css';
 
@@ -23,9 +24,10 @@ class Layout extends Component {
         return (
             <React.Fragment>
                 <div className={classes.root}>
-                    <TopBar className="sticky" />
+                    <TopBar className="sticky" />                    
                     <Router>
                         <div >
+                            <Route exact path="/runlog" component={RunLogMain} />
                             <Route exact path="/resume" component={ResumeMain} />
                             <Route exact path="/" component={MainWindowMain} />
                         </div>

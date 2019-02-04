@@ -1,6 +1,7 @@
 ﻿import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import RunnerIcon from './RunnerIcon';
 import './RunStyle.css';
 
 const styles = theme => ({
@@ -49,8 +50,7 @@ class RunMain extends React.Component {
 
     render() {
         const { classes } = this.props;
-
-        const RunnerIcon = String.fromCodePoint(0x1F3C3);
+        
         const runner =
             <div className="runnerIcon">
                 {RunnerIcon}

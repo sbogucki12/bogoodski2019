@@ -19,44 +19,95 @@ const styles = theme => ({
         ...theme.mixins.gutters(),
         paddingTop: theme.spacing.unit * 2,
         paddingBottom: theme.spacing.unit * 2,
-        
+
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         minWidth: '80vw',
         minHeight: '80%'
-    }, 
+    },
     content: {
         display: 'flex',
-        flexDirection: 'row', 
-        justifyContent: 'center', 
+        flexDirection: 'row',
+        justifyContent: 'center',
         width: '80%'
-    }, 
+    },
     image: {
         maxHeight: '600px',
         marginTop: theme.spacing.unit * 5,
         marginBottom: theme.spacing.unit * 5,
         //height: '90%',
-        maxWidth: '290px', 
+        maxWidth: '290px',
         position: 'relative',
         transform: 'rotate(90deg)'
-    }
+    },
+    contentMobile: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '80%', 
+    },
+    paperRootMobile: {
+        ...theme.mixins.gutters(),
+        marginTop: "50%",
+        paddingBottom: theme.spacing.unit * 2,
+
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        //minWidth: '80vw',
+        maxWidth: '95vw',
+        minHeight: '50%'
+    },
 });
 
-function RunLogMain(props) {
-    const { classes } = props;
+class RunLogMain extends React.Component {
+    constructor(props) {
+        super(props);
+        const screenWidth = window.screen.availWidth;
+        if (screenWidth < 450) {
+            this.state = {
+                isMobile: true
+            }
+        } else {
+            this.state = {
+                isMobile: false
+            }
+        }
+    }
 
-    return (
-        <div className={classes.root}>
-            <Paper className={classes.paperRoot} elevation={6}>
+    render() {
+        const { classes } = this.props;
+        const mobile =
+            <div className={classes.root}>
+                <Paper className={classes.paperRootMobile} elevation={6}>
+                    <div className={classes.contentMobile}>
+                        <span className="runnerAnimated">{RunnerIcon}</span>
+                        <span><img src={RunPic} className={classes.image} /></span>
+                    </div>
+                </Paper>
+            </div>
 
-                <div className={classes.content}>
-                    <span className="runnerAnimated">{RunnerIcon}</span>
-                    <span><img src={RunPic} className={classes.image} /></span>
-                </div>
-            </Paper>
-        </div>
-    );
+        const desktop =
+            <div className={classes.root}>
+                <Paper className={classes.paperRoot} elevation={6}>
+                    <div className={classes.content}>
+                        <span className="runnerAnimated">{RunnerIcon}</span>
+                        <span><img src={RunPic} className={classes.image} /></span>
+                    </div>
+                </Paper>
+            </div>
+
+        const isMobile = this.state.isMobile;
+
+
+
+
+        return (
+            isMobile ? mobile : desktop
+        );
+    }
 }
 
 export default withStyles(styles)(RunLogMain);

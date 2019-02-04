@@ -8,21 +8,21 @@
 @media only screen and (max-width: 600px) {
     @keyframes move {
         from {
-            opacity: 0;
+            left: 110%;
         }
 
         to {
-            opacity: 1;
+            left: 0;
         }
     }
 
     @-webkit-keyframes move {
         from {
-            opacity: 0;
+            left: 110%;
         }
 
         to {
-            opacity: 1;
+            left: 110%;
         }
     }
 
@@ -30,8 +30,8 @@
         position: relative;
         font-size: 25vh;
         animation-name: move;
-        animation-duration: 2s;
-        animation-fill-mode: forwards;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;        
     }
 }
 
@@ -94,7 +94,37 @@
         animation-fill-mode: forwards;
     }
 }
-@media only screen and (min-height: 1001px) and (min-width: 600px) {
+@media only screen and (min-width: 683px) and (max-width: 1000px) {
+    @keyframes move {
+        from {
+            left: 150vw;
+        }
+
+        to {
+            left: 50vw;
+        }
+    }
+
+    @-webkit-keyframes move {
+        from {
+            left: 150vw;
+        }
+
+        to {
+            left: 50vw;
+        }
+    }
+
+    .runnerAnimated {
+        position: relative;
+        font-size: 15vh;
+        animation-name: move;
+        animation-duration: 3s;
+        animation-fill-mode: forwards;
+    }
+}
+
+@media only screen and (min-width: 601px) {
     @keyframes move {
         from {
             left: 150vw;
@@ -117,7 +147,7 @@
 
     .runnerAnimated {
         position: relative;
-        font-size: 15vh;
+        font-size: 30vh;
         animation-name: move;
         animation-duration: 3s;
         animation-fill-mode: forwards;

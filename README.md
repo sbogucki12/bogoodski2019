@@ -3,6 +3,10 @@
 
 
 
+![Currently in Progress Feb. 4 2019](http://g.recordit.co/MMX18OjxL6.gif "Feature in Progress")
+
+
+
 **Day Three**
 
 

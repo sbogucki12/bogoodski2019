@@ -4,3 +4,123 @@
     font-size: 18vh;
 }
 
+
+@media only screen and (max-width: 600px) {
+    @keyframes move {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    @-webkit-keyframes move {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    .runnerAnimated {
+        position: relative;
+        font-size: 25vh;
+        animation-name: move;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+    }
+}
+
+@media only screen and (min-width: 601px) {
+    @keyframes move {
+        from {
+            left: 150vw;
+        }
+
+        to {
+            left: -180%;
+        }
+    }
+
+    @-webkit-keyframes move {
+        from {
+            left: 150vw;
+        }
+
+        to {
+            left: -180%;
+        }
+    }
+
+    .runnerAnimated {
+        position: relative;
+        font-size: 30vh;
+        animation-name: move;
+        animation-duration: 3s;
+        animation-fill-mode: forwards;
+    }
+}
+
+@media only screen and (min-height: 680px) and (max-height: 1000px) and (min-width: 600px) {
+    @keyframes move {
+        from {
+            left: 150vw;
+        }
+
+        to {
+            left: -70%;
+        }
+    }
+
+    @-webkit-keyframes move {
+        from {
+            left: 150vw;
+        }
+
+        to {
+            left: -70%;
+        }
+    }
+
+    .runnerAnimated {
+        position: relative;
+        font-size: 15vh;
+        animation-name: move;
+        animation-duration: 3s;
+        animation-fill-mode: forwards;
+    }
+}
+@media only screen and (min-height: 1001px) and (min-width: 600px) {
+    @keyframes move {
+        from {
+            left: 150vw;
+        }
+
+        to {
+            left: -135%;
+        }
+    }
+
+    @-webkit-keyframes move {
+        from {
+            left: 150vw;
+        }
+
+        to {
+            left: -135%;
+        }
+    }
+
+    .runnerAnimated {
+        position: relative;
+        font-size: 15vh;
+        animation-name: move;
+        animation-duration: 3s;
+        animation-fill-mode: forwards;
+    }
+}
+    

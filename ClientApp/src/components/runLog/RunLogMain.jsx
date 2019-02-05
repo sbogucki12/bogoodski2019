@@ -83,20 +83,37 @@ class RunLogMain extends React.Component {
         fetch("/api/runlog/getimage")
             .then(response => {
                 const reader = response.body.getReader();
-                return reader.read().then(value => {
-                    this.setState({
-                        image: value
-                    })
-                    console.log(this.state.image)
+                return new ReadableStream({
+                    start(controller) {
+                        return pump();
+                        function pump() {
+                            return reader.read().then(({ done, value }) => {
+                                if (done) {
+                                    controller.close();
+                                    return;
+                                }
+                                controller.enqueue(value);
+                                return pump();
+                            });
+                        }
+                    }
                 })
             })
+            .then(stream => new Response(stream))
+            .then(response => response.blob())
+            .then(blob => URL.createObjectURL(blob))
+            .then(url => {
+                this.setState({
+                    image: url
+                })
+            })
+            .catch(err => console.error(err));
     }
-
-
 
     render() {
         const { classes } = this.props;
-        const RunPic = this.state.image;
+        const RunPic = this.state.image;        
+
         const mobile =
             <div className={classes.root}>
                 <Paper className={classes.paperRootMobile} elevation={6}>

@@ -4,7 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import RunnerIcon from './RunnerIcon';
 import './RunStyle.css';
-import RunPic from './images/runfeb32019.jpg';
+//import RunPic from './images/runfeb32019.jpg';
 
 const styles = theme => ({
     root: {
@@ -46,7 +46,7 @@ const styles = theme => ({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        width: '80%', 
+        width: '80%',
     },
     paperRootMobile: {
         ...theme.mixins.gutters(),
@@ -68,17 +68,35 @@ class RunLogMain extends React.Component {
         const screenWidth = window.screen.availWidth;
         if (screenWidth < 450) {
             this.state = {
-                isMobile: true
+                isMobile: true,
+                image: ''
             }
         } else {
             this.state = {
-                isMobile: false
+                isMobile: false,
+                image: ''
             }
         }
     }
 
+    componentDidMount() {
+        fetch("/api/runlog/getimage")
+            .then(response => {
+                const reader = response.body.getReader();
+                return reader.read().then(value => {
+                    this.setState({
+                        image: value
+                    })
+                    console.log(this.state.image)
+                })
+            })
+    }
+
+
+
     render() {
         const { classes } = this.props;
+        const RunPic = this.state.image;
         const mobile =
             <div className={classes.root}>
                 <Paper className={classes.paperRootMobile} elevation={6}>

@@ -5,6 +5,7 @@ import MainWindowMain from './mainWindow/MainWindowMain';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import RunLogMain from './runLog/RunLogMain';
 import ResumeMain from './resume/ResumeMain';
+import RunUploader from './runLog/RunUploader';
 import './LayoutStyle.css';
 
 const styles = theme => ({
@@ -27,6 +28,7 @@ class Layout extends Component {
                     <TopBar className="sticky" />                    
                     <Router>
                         <div >
+                            <Route exact path="/runlog/upload" component={RunUploader} />
                             <Route exact path="/runlog" component={RunLogMain} />
                             <Route exact path="/resume" component={ResumeMain} />
                             <Route exact path="/" component={MainWindowMain} />

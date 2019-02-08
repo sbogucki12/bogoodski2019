@@ -39,7 +39,7 @@ const styles = theme => ({
         //height: '90%',
         maxWidth: '290px',
         position: 'relative',
-        transform: 'rotate(90deg)'
+        //transform: 'rotate(90deg)'
     },
     contentMobile: {
         display: 'flex',

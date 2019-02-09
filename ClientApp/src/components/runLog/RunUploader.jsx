@@ -11,9 +11,9 @@ const styles = theme => ({
         paddingBottom: theme.spacing.unit * 2,
     },
     root: {
-        minWidth: '100vw', 
-        minHeight: '100vh', 
-        display: 'flex', 
+        minWidth: '100vw',
+        minHeight: '100vh',
+        display: 'flex',
         justifyContent: 'center',
         alignItems: 'center'
     },
@@ -23,6 +23,10 @@ const styles = theme => ({
     input: {
         display: 'none',
     },
+    image: {
+        maxWidth: 200, 
+        maxHeight: 350
+    }
 });
 
 class RunUploader extends React.Component {
@@ -47,55 +51,66 @@ class RunUploader extends React.Component {
             });
         }
 
-        reader.readAsDataURL(file); 
+        reader.readAsDataURL(file);
 
-        
+
         console.log(`this is image ${this.state.image}`)
     };
 
-    //handleSubmit(e) {
-    //    console.log(`handlesubmit triggered`);
-    //    const file = document.getElementById('contained-button-file').files[0];
-    //    const reader = new FileReader(); 
-    //    reader.readAsArrayBuffer(file)
-    //    this.setState({
-    //        image: reader.result
-    //    })
-    //    console.log(`this is image: ${this.state.image}`)
-    //    e.preventDefault();
+    handleSubmit(e) {
+        console.log(`handlesubmit triggered`);
+        const formData = new FormData();
+        const fileField = document.getElementById('contained-button-file').files[0];
+        formData.append('file', fileField);
+        fetch('/api/run/postimage', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.json())
+            .catch(error => console.error('Error:', error))
+            .then(response => console.log('Success:', response));
+        e.preventDefault();
 
-        
-    //}
+
+    }
 
     render() {
         const { classes } = this.props;
-        const image = this.state.image; 
+        const image = this.state.image;
+        const imageContent = this.state.image ?
+            <React.Fragment>
+                <img src={image} className={classes.image} />
+                <Button variant="contained" component="span" className={classes.button} onClick={this.handleSubmit}>
+                    Submit
+                </Button>
+            </React.Fragment> : null;
+            
 
         return (
             <div className={classes.root}>
                 <Paper className={classes.paperRoot} elevation={1}>
-                    <form /*onSubmit={this.handleSubmit}*/>
-                    <input
+                    <form onSubmit={this.handleSubmit}>
+                        <input
                             accept="image/*"
                             className={classes.input}
                             id="contained-button-file"
                             multiple
-                            type="file"                            
+                            type="file"
                             onChange={this.handleChange}
-                            ref={this.fileInput}                            
+                            ref={this.fileInput}
                         />
 
-                    <label htmlFor="contained-button-file">
+                        <label htmlFor="contained-button-file">
                             <Button variant="contained" component="span" className={classes.button} >
-                            Upload
-                        </Button>
+                                Browse
+                            </Button>
                         </label>
+                        {imageContent}
                     </form>
-                    <img src={image} />
                 </Paper>
             </div>
         );
-    }       
+    }
 }
 
 export default withStyles(styles)(RunUploader);

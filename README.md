@@ -8,7 +8,9 @@
 <p>This is what the feature on the imageLoader branch looks like, so far (as of Feb. 8, 2019):</p>
 
 
-![Currently in Progress Feb. 8 2019](http://g.recordit.co/PFLFl6WB7h.gif "Feature in Progress")
+Embedded gif is too long for GitHub, but you can view it here: 
+
+[Currently in Progress Feb. 8 2019](http://g.recordit.co/PFLFl6WB7h.gif)
 
 
 

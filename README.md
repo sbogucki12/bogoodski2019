@@ -3,7 +3,14 @@
 
 
 
-![Currently in Progress Feb. 4 2019](http://g.recordit.co/MMX18OjxL6.gif "Feature in Progress")
+**In Progress** 
+
+<p>This is what the feature on the imageLoader branch looks like, so far (as of Feb. 8, 2019):</p>
+
+
+![Currently in Progress Feb. 8 2019](http://g.recordit.co/PFLFl6WB7h.gif "Feature in Progress")
+
+
 
 
 

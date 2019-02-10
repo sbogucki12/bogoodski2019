@@ -34,7 +34,7 @@ const styles = theme => ({
     border: {
         border: '2px solid #1b5e20',
         borderRadius: 5,
-        maxWidth: '80%',
+        maxWidth: '95%',
         display: 'flex',
         justifyContent: 'center',
         marginTop: theme.spacing.unit * 3
@@ -80,8 +80,6 @@ class ContactDialog extends React.Component {
         function Transition(props) {
             return <Slide direction="up" {...props} />;
         }
-
-        
 
         return (
             <Dialog

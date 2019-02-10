@@ -45,7 +45,7 @@ namespace Bogoodski2019.Controllers
         {
             try
             {
-                string Token = Request.Headers["code"];
+                string Token = Request.Headers["code"];                
                 string key = Environment.GetEnvironmentVariable("UPLOADKEY");
 
                 if(Token == key)
@@ -56,7 +56,8 @@ namespace Bogoodski2019.Controllers
                         file.CopyTo(filestream);
                         filestream.Flush();
                         string message = String.Format("uploaded to {0}", domain + "\\App_Data");
-                        return Ok(message);
+                        string date = DateTime.Now.ToString("M/d/yyyy");                        
+                        return Ok(date);
                     }
                 }  else
                 {

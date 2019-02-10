@@ -42,9 +42,8 @@ class RunUploader extends React.Component {
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleCodeChange = this.handleCodeChange.bind(this);             
-        this.fileInput = React.createRef();
-        
+        this.handleCodeChange = this.handleCodeChange.bind(this);   
+        this.fileInput = React.createRef();        
     };
 
     handleCodeChange(e) {
@@ -64,16 +63,11 @@ class RunUploader extends React.Component {
                 image: uploadedImage.src
             });
         }
-
-        reader.readAsDataURL(file);
-
-
-        console.log(`this is image ${this.state.image}`)
+        reader.readAsDataURL(file);       
     };
 
-    handleSubmit(e) {
-        console.log(`handlesubmit triggered`);
-        const secret = this.state.code;
+    handleSubmit(e) {        
+        const secret = this.state.code;         
         const formData = new FormData();
         const fileField = document.getElementById('contained-button-file').files[0];
         formData.append('file', fileField);        
@@ -84,25 +78,21 @@ class RunUploader extends React.Component {
                 code: secret
             }
         })
-            //.then(response => response.json())
-            //.catch(error => alert(error + " try a different password"))
-            .then(response => {
+           .then(response => {
                 if (response.status === 200) {
                     alert('image uploaded')
                 } else {
                     alert('try a different password')
                 }})
+
         e.preventDefault();
-
-
     }
 
     render() {
         const { classes } = this.props;
         const displayForm =
             <form>
-                <label>
-                    Code:
+                Code:
                     <TextField
                         id="standard-password-input"
                         label="Password"
@@ -112,9 +102,7 @@ class RunUploader extends React.Component {
                         margin="normal"
                         value={this.state.code}
                         onChange={this.handleCodeChange}
-                    />
-                  
-                </label>                
+                    />                 
             </form>
 
 
@@ -122,12 +110,11 @@ class RunUploader extends React.Component {
         const image = this.state.image;
         const imageContent = this.state.image ?
             <React.Fragment>
-                <img src={image} className={classes.image} />
+                <img src={image} className={classes.image} />     
                 <Button variant="contained" component="span" className={classes.button} onClick={this.handleSubmit}>
                     Submit
                 </Button>
             </React.Fragment> : null;
-            
 
         return (
             <div className={classes.root}>

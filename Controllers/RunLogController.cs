@@ -41,21 +41,32 @@ namespace Bogoodski2019.Controllers
 
         [HttpPost]
         [Route("api/run/postimage")]
-        public string Post(IFormFile file)
+        public IActionResult Post(IFormFile file)
         {
             try
             {
-                var domain = _environment.ContentRootPath;
-                using (FileStream filestream = System.IO.File.Create(domain + "/App_Data/" + file.FileName))
+                string Token = Request.Headers["code"];
+                string key = Environment.GetEnvironmentVariable("UPLOADKEY");
+
+                if(Token == key)
                 {
-                    file.CopyTo(filestream);
-                    filestream.Flush();
-                    return string.Format("uploaded to {0}", domain + "\\App_Data"); 
-                }
+                    var domain = _environment.ContentRootPath;
+                    using (FileStream filestream = System.IO.File.Create(domain + "/App_Data/" + file.FileName))
+                    {
+                        file.CopyTo(filestream);
+                        filestream.Flush();
+                        string message = String.Format("uploaded to {0}", domain + "\\App_Data");
+                        return Ok(message);
+                    }
+                }  else
+                {
+                    string message = "Bad Password";
+                    return BadRequest(message);
+                }               
             }
             catch (Exception ex)
             {
-                return ex.ToString();
+                return NotFound(ex);
             }
         }      
     }

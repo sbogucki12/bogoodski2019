@@ -5,8 +5,8 @@ import MainWindowMain from './mainWindow/MainWindowMain';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import RunLogMain from './runLog/RunLogMain';
 import ResumeMain from './resume/ResumeMain';
-import RunUploader from './runLog/RunUploader';
 import './LayoutStyle.css';
+import RunUploader from './runLog/RunUploader';
 
 const styles = theme => ({
     root: {

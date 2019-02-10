@@ -2,7 +2,7 @@
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
 
 const styles = theme => ({
     paperRoot: {
@@ -26,6 +26,10 @@ const styles = theme => ({
     image: {
         maxWidth: 200, 
         maxHeight: 350
+    },
+    textField: {
+        marginLeft: theme.spacing.unit,
+        marginRight: theme.spacing.unit
     }
 });
 
@@ -33,12 +37,22 @@ class RunUploader extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            image: ''
+            image: '',
+            code: ''
         };
-        //this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleCodeChange = this.handleCodeChange.bind(this);             
         this.fileInput = React.createRef();
+        
     };
+
+    handleCodeChange(e) {
+        this.setState({
+            code: e.target.value
+        })
+        e.preventDefault();
+    };       
 
     handleChange(e) {
         const file = document.getElementById('contained-button-file').files[0];
@@ -59,16 +73,25 @@ class RunUploader extends React.Component {
 
     handleSubmit(e) {
         console.log(`handlesubmit triggered`);
+        const secret = this.state.code;
         const formData = new FormData();
         const fileField = document.getElementById('contained-button-file').files[0];
-        formData.append('file', fileField);
+        formData.append('file', fileField);        
         fetch('/api/run/postimage', {
             method: 'POST',
-            body: formData
+            body: formData, 
+            headers: {
+                code: secret
+            }
         })
-            .then(response => response.json())
-            .catch(error => console.error('Error:', error))
-            .then(response => console.log('Success:', response));
+            //.then(response => response.json())
+            //.catch(error => alert(error + " try a different password"))
+            .then(response => {
+                if (response.status === 200) {
+                    alert('image uploaded')
+                } else {
+                    alert('try a different password')
+                }})
         e.preventDefault();
 
 
@@ -76,6 +99,26 @@ class RunUploader extends React.Component {
 
     render() {
         const { classes } = this.props;
+        const displayForm =
+            <form>
+                <label>
+                    Code:
+                    <TextField
+                        id="standard-password-input"
+                        label="Password"
+                        className={classes.textField}
+                        type="password"
+                        autoComplete="current-password"
+                        margin="normal"
+                        value={this.state.code}
+                        onChange={this.handleCodeChange}
+                    />
+                  
+                </label>                
+            </form>
+
+
+
         const image = this.state.image;
         const imageContent = this.state.image ?
             <React.Fragment>
@@ -89,6 +132,7 @@ class RunUploader extends React.Component {
         return (
             <div className={classes.root}>
                 <Paper className={classes.paperRoot} elevation={1}>
+                    {displayForm}
                     <form onSubmit={this.handleSubmit}>
                         <input
                             accept="image/*"

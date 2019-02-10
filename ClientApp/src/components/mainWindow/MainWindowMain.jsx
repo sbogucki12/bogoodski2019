@@ -63,8 +63,7 @@ class MainWindowMain extends React.Component {
         return (
             <div className={classes.root} >
                 <MainWindowResume />
-                <MainWindowRoux />
-                {isContactBar ? <MainWindowContact toggleContact={this.toggleContact} /> : contactFab}
+                <MainWindowRoux />                
             </div>
         );
     }

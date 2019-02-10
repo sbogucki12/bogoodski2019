@@ -69,7 +69,7 @@ class RouxLayout extends React.Component {
         let showPics = rouxPics.map(image => {
             return (
                 <Grid item xs={5} md={2} key={image.id} className={classes.imageCell}>
-                    <img class="imgRoux" src={image.url} alt={image.name} onClick={e => this.openDialog(image)} />
+                    <img className="imgRoux" src={image.url} alt={image.name} onClick={e => this.openDialog(image)} />
                 </Grid>)
         })
 

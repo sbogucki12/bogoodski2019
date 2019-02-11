@@ -3,6 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import RunnerIcon from './RunnerIcon';
 import './RunStyle.css';
+import { Link } from 'react-router-dom';
 
 const styles = theme => ({
     root: {
@@ -69,7 +70,14 @@ class RunMain extends React.Component {
                         </h3>
                     </div>
                     <div className={classes.rightBottom}>
-                        <Button variant="contained" color="primary" size="small" className={classes.button}>
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            size="small"
+                            className={classes.button}
+                            component={Link}
+                            to="/runlog"
+                        >
                             {`Click to View`}
                         </Button>
                     </div>

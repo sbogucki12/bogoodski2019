@@ -1,4 +1,4 @@
-﻿import React, { Fragment } from 'react';
+﻿import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
@@ -9,30 +9,23 @@ import Grid from '@material-ui/core/Grid';
 const primaryColor = '#b0bec5';
 const secondaryColor = '#aeea00';
 
-const winSize = window.screen.availWidth;
-
 const styles = theme => ({
     appBar: {
         top: 'auto',
         bottom: 0,
         backgroundImage: `linear-gradient(${primaryColor}, ${secondaryColor})`,
-        borderTop: '1px solid black',
-        //maxHeight: '10vh',
-        //maxWidth: '100vw'
+        borderTop: '1px solid black'
     },
 
     root: {
-        flexGrow: 1,
+        flexGrow: 1
     },
     button: {
-        margin: theme.spacing.unit * 1,
-        //padding: theme.spacing.unit * 3        
+        margin: theme.spacing.unit * 1      
     },
     fab: {
         marginTop: theme.spacing.unit * 1,
-        marginBottom: theme.spacing.unit * 1,
-        //padding: theme.spacing.unit * 1
-
+        marginBottom: theme.spacing.unit * 1
     }
 });
 
@@ -41,7 +34,6 @@ function ContactBar(props) {
     return (
         <React.Fragment>
             <AppBar position="fixed" className={classes.appBar} >
-
                 <Grid container className={classes.root} spacing={0}>
                     <Grid item xs={2} sm={5} lg={2}/>
                     <Grid item xs={8} sm={5} lg={5}>

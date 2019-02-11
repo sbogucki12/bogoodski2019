@@ -1,12 +1,6 @@
-﻿import React, { Fragment } from 'react';
-import { withStyles } from '@material-ui/core/styles';
+﻿import React from 'react';
 import ContactDialog from './ContactDialog';
 import ContactBar from './ContactBar';
-
-const styles = theme => ({
-
-});
-
 
 class ContactFormMain extends React.Component {
     constructor(props) {
@@ -23,8 +17,6 @@ class ContactFormMain extends React.Component {
     };
 
     render() {
-        const { classes } = this.props;
-
         const isDialogOpen = this.state.openDialog;
 
         return (
@@ -36,4 +28,4 @@ class ContactFormMain extends React.Component {
     }
 }
 
-export default withStyles(styles)(ContactFormMain);
+export default ContactFormMain;

@@ -110,7 +110,7 @@ class RunUploader extends React.Component {
         const image = this.state.image;
         const imageContent = this.state.image ?
             <React.Fragment>
-                <img src={image} className={classes.image} />     
+                <img src={image} className={classes.image} alt="Run Pic" />     
                 <Button variant="contained" component="span" className={classes.button} onClick={this.handleSubmit}>
                     Submit
                 </Button>

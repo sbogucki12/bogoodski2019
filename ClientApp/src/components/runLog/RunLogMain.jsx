@@ -4,7 +4,8 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import RunnerIcon from './RunnerIcon';
 import './RunStyle.css';
-//import RunPic from './images/runfeb32019.jpg';
+import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
 
 const styles = theme => ({
     root: {
@@ -13,16 +14,13 @@ const styles = theme => ({
         minWidth: '100vw',
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center', 
+        flexDirection: 'column'
     },
     paperRoot: {
         ...theme.mixins.gutters(),
         paddingTop: theme.spacing.unit * 2,
         paddingBottom: theme.spacing.unit * 2,
-
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
         minWidth: '80vw',
         minHeight: '80%'
     },
@@ -30,36 +28,42 @@ const styles = theme => ({
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',
-        width: '80%'
+        width: '100%'
     },
     image: {
         maxHeight: '600px',
         marginTop: theme.spacing.unit * 5,
         marginBottom: theme.spacing.unit * 5,
-        //height: '90%',
         maxWidth: '290px',
         position: 'relative',
-        //transform: 'rotate(90deg)'
+        transform: 'rotate(90deg)'
     },
     contentMobile: {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        width: '80%',
+        width: '100%',
     },
     paperRootMobile: {
         ...theme.mixins.gutters(),
         marginTop: "50%",
         paddingBottom: theme.spacing.unit * 2,
-
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        //minWidth: '80vw',
         maxWidth: '95vw',
         minHeight: '50%'
     },
+    date: {
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center',
+        margin: theme.spacing.unit,
+        paddingTop: theme.spacing.unit
+    },
+    button: {
+        margin: theme.spacing.unit,
+        marginTop: theme.spacing.unit * 3,
+        marginBottom: theme.spacing.unit * 3
+    }
 });
 
 class RunLogMain extends React.Component {
@@ -117,30 +121,56 @@ class RunLogMain extends React.Component {
         const mobile =
             <div className={classes.root}>
                 <Paper className={classes.paperRootMobile} elevation={6}>
+                    <div className={classes.date}>
+                        <Typography variant="h4" gutterBottom>
+                            {`Feb., 10, 2019`}
+                        </Typography>
+                    </div>                    
                     <div className={classes.contentMobile}>
                         <span className="runnerAnimated">{RunnerIcon}</span>
-                        <span><img src={RunPic} className={classes.image} /></span>
+                        <span><img src={RunPic} className={classes.image} alt="Run Pic" /></span>
                     </div>
                 </Paper>
+                <Button
+                    variant="contained"
+                    color="secondary"
+                    className={classes.button}
+                    component={Link}
+                    to="/"
+                >
+                    {`Home`}
+                </Button>
             </div>
 
         const desktop =
             <div className={classes.root}>
                 <Paper className={classes.paperRoot} elevation={6}>
+                        <div className={classes.date}>
+                        <Typography variant="h2" gutterBottom>
+                            {`Feb., 10, 2019`}
+                        </Typography>
+                        </div>                    
                     <div className={classes.content}>
                         <span className="runnerAnimated">{RunnerIcon}</span>
-                        <span><img src={RunPic} className={classes.image} /></span>
+                        <span><img src={RunPic} className={classes.image} alt="Run Pic" /></span>
                     </div>
                 </Paper>
+                <Button
+                    variant="contained"
+                    color="secondary"
+                    className={classes.button}
+                    size="large"
+                    component={Link}
+                    to="/"
+                >
+                    {`Home`}
+                </Button>
             </div>
 
         const isMobile = this.state.isMobile;
 
-
-
-
         return (
-            isMobile ? mobile : desktop
+            isMobile ? mobile : desktop 
         );
     }
 }

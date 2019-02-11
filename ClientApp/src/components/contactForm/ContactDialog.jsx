@@ -11,6 +11,7 @@ import ContactForm from './ContactForm';
 const styles = theme => ({
     container: {
         display: 'flex',
+        justifyContent: 'center',
         flexWrap: 'wrap',
     },
     textField: {
@@ -38,10 +39,6 @@ const styles = theme => ({
         display: 'flex',
         justifyContent: 'center',
         marginTop: theme.spacing.unit * 3
-    },
-    container: {
-        display: 'flex',
-        justifyContent: 'center'
     },
     close: {
         padding: theme.spacing.unit / 2,

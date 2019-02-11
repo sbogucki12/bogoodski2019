@@ -13,7 +13,6 @@ const styles = theme => ({
         padding: theme.spacing.unit * 2
     },
     textField: {
-        //marginRight: theme.spacing.unit,
         maxWidth: '80%',
         minWidth: '60%',
         marginLeft: 'auto',

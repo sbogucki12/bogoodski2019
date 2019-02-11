@@ -1,14 +1,7 @@
 ﻿import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
 import RouxLayout from './RouxLayout';
 
-const styles = theme => ({
-    root: {}
-});
-
-function RouxMain(props) {
-    const { classes } = props;
-
+function RouxMain() { 
     return (
         <div>
             <RouxLayout />
@@ -16,4 +9,4 @@ function RouxMain(props) {
     );
 }
 
-export default withStyles(styles)(RouxMain);
+export default RouxMain;

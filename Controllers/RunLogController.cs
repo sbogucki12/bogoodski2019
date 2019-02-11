@@ -55,9 +55,8 @@ namespace Bogoodski2019.Controllers
                     {
                         file.CopyTo(filestream);
                         filestream.Flush();
-                        string message = String.Format("uploaded to {0}", domain + "\\App_Data");
-                        string date = DateTime.Now.ToString("M/d/yyyy");                        
-                        return Ok(date);
+                        string message = String.Format("uploaded to {0}", domain + "\\App_Data");                                             
+                        return Ok(message);
                     }
                 }  else
                 {

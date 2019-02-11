@@ -44,7 +44,7 @@ class RouxDialog extends React.Component {
                     onClose={this.toggleDialog}                     
                     fullWidth
                 >
-                    <img src={pic} alt="Roux Picture" className={classes.image} />
+                    <img src={pic} alt="Roux" className={classes.image} />
                     <Button
                         onClick={this.props.closeDialog}
                         color="secondary"

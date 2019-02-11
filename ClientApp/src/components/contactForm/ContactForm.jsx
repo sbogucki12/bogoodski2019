@@ -94,14 +94,7 @@ class ContactForm extends React.Component {
 
     render() {
         const { classes } = this.props;
-        let captchaKey;
-        const getCaptchaKey = () => {
-            if (process.env.ASPNETCORE_ENVIRONMENT === 'Production') {
-                captchaKey = process.env.CAPTCHA_CLIENT_KEY
-            } else {
-                captchaKey = CAPTCHA_CLIENT_KEY
-            }
-        }
+        const key = "6LdWdZAUAAAAAF6kNUNYvBxdVyJglPWaAgcCdzF3"
 
         return (
             <form className={classes.container} noValidate autoComplete="off">
@@ -146,10 +139,9 @@ class ContactForm extends React.Component {
                     margin="normal"
                     variant="filled"
                 />
-                <ContactButton onSubmit={this.onSubmit} />
-                {getCaptchaKey()}
+                <ContactButton onSubmit={this.onSubmit} />                
                 <ReCAPTCHA
-                    sitekey={captchaKey}
+                    sitekey={key}
                     onChange={this.submitCaptcha}
                     className={classes.captcha}
                 />

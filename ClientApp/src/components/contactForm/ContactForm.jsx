@@ -3,6 +3,8 @@ import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import ContactButton from './ContactButton';
 import localPath from '../../helpers/localPath';
+import ReCAPTCHA from "react-google-recaptcha";
+import { CAPTCHA_CLIENT_KEY } from '../../keys';
 
 const styles = theme => ({
     container: {
@@ -19,6 +21,12 @@ const styles = theme => ({
         marginRight: 'auto',
         marginTop: theme.spacing.unit,
         marginBottom: theme.spacing.unit
+    }, 
+    captcha: {
+        display: 'flex', 
+        justifyContent: 'center', 
+        alingItems: 'center',
+        margin: theme.spacing.unit        
     }
 });
 
@@ -31,7 +39,8 @@ class ContactForm extends React.Component {
             name: "",
             email: "",
             subject: "",
-            body: ""
+            body: "",
+            captchaValue: null
         }
     }
 
@@ -46,7 +55,7 @@ class ContactForm extends React.Component {
             var re = /\S+@\S+\.\S+/;
             return re.test(email);
         }
-       
+
         if (this.state.email === null || this.state.email === "") {
             return alert("Please enter email address!");
         };
@@ -55,27 +64,36 @@ class ContactForm extends React.Component {
             return alert("Please enter valid email address!");
         };
 
-        fetch(`${baseURI}api/sendemail`, {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(this.state)
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log(`data is ${data}`);
-                alert("Message Sent!");
-                this.props.closeOnSend();
+        if (this.state.captchaValue != null) {
+            fetch(`${baseURI}api/sendemail`, {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(this.state)
             })
-            .catch(error => {
-                console.log('error is', error);
-                alert(`Message Failed! due to ${error}`);
-            });
+                .then(response => response.json())
+                .then(data => {
+                    alert("Message Sent!");
+                    this.props.closeOnSend();
+                })
+                .catch(error => {
+                    alert(`Message Failed! due to ${error}`);
+                });
+        } else {
+            return alert("Submit Captcha");
+        }
     }
+
+    submitCaptcha = (value) => {
+        this.setState({
+            captchaValue: value
+        })
+    };
 
     render() {
         const { classes } = this.props;
+        const key = "6LdWdZAUAAAAAF6kNUNYvBxdVyJglPWaAgcCdzF3"
 
         return (
             <form className={classes.container} noValidate autoComplete="off">
@@ -91,7 +109,7 @@ class ContactForm extends React.Component {
                 <TextField
                     required
                     id="standard-required"
-                    label="Email"                    
+                    label="Email"  
                     className={classes.textField}
                     value={this.state.email}
                     onChange={this.handleChange('email')}
@@ -120,7 +138,12 @@ class ContactForm extends React.Component {
                     margin="normal"
                     variant="filled"
                 />
-                <ContactButton onSubmit={this.onSubmit} />
+                <ContactButton onSubmit={this.onSubmit} />                
+                <ReCAPTCHA
+                    sitekey={key}
+                    onChange={this.submitCaptcha}
+                    className={classes.captcha}
+                />
             </form>
         );
     }

@@ -15,7 +15,6 @@ const styles = theme => ({
         padding: theme.spacing.unit * 2
     },
     textField: {
-        //marginRight: theme.spacing.unit,
         maxWidth: '80%',
         minWidth: '60%',
         marginLeft: 'auto',
@@ -110,7 +109,7 @@ class ContactForm extends React.Component {
                 <TextField
                     required
                     id="standard-required"
-                    label="Email"
+                    label="Email"  
                     className={classes.textField}
                     value={this.state.email}
                     onChange={this.handleChange('email')}

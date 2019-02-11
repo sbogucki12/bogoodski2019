@@ -20,7 +20,7 @@ function TopBar(props) {
     const { classes } = props;
     const showIcons = socialIcons.map(icon => {
         return (
-            <a href={icon.link} target="_blank" key={icon.id} >
+            <a href={icon.link} target="_blank" key={icon.id}>
                 <img src={icon.icon} alt={icon.alt} className={classes.icon} />
             </a>
         )

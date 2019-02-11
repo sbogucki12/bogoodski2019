@@ -1,0 +1,156 @@
+﻿
+
+.runnerIcon {
+    font-size: 18vh;
+}
+
+
+@media only screen and (max-width: 600px) {
+    @keyframes move {
+        from {
+            left: 110%;
+        }
+
+        to {
+            left: 0;
+        }
+    }
+
+    @-webkit-keyframes move {
+        from {
+            left: 110%;
+        }
+
+        to {
+            left: 110%;
+        }
+    }
+
+    .runnerAnimated {
+        position: relative;
+        font-size: 25vh;
+        animation-name: move;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;        
+    }
+}
+
+@media only screen and (min-width: 601px) {
+    @keyframes move {
+        from {
+            left: 150vw;
+        }
+
+        to {
+            left: -10%;
+        }
+    }
+
+    @-webkit-keyframes move {
+        from {
+            left: 150vw;
+        }
+
+        to {
+            left: -10%;
+        }
+    }
+
+    .runnerAnimated {
+        position: relative;
+        font-size: 30vh;
+        animation-name: move;
+        animation-duration: 3s;
+        animation-fill-mode: forwards;
+    }
+}
+
+@media only screen and (min-height: 680px) and (max-height: 1000px) and (min-width: 600px) {
+    @keyframes move {
+        from {
+            left: 150vw;
+        }
+
+        to {
+            left: -70%;
+        }
+    }
+
+    @-webkit-keyframes move {
+        from {
+            left: 150vw;
+        }
+
+        to {
+            left: -70%;
+        }
+    }
+
+    .runnerAnimated {
+        position: relative;
+        font-size: 15vh;
+        animation-name: move;
+        animation-duration: 3s;
+        animation-fill-mode: forwards;
+    }
+}
+@media only screen and (min-width: 683px) and (max-width: 1000px) {
+    @keyframes move {
+        from {
+            left: 150vw;
+        }
+
+        to {
+            left: 50vw;
+        }
+    }
+
+    @-webkit-keyframes move {
+        from {
+            left: 150vw;
+        }
+
+        to {
+            left: 50vw;
+        }
+    }
+
+    .runnerAnimated {
+        position: relative;
+        font-size: 15vh;
+        animation-name: move;
+        animation-duration: 3s;
+        animation-fill-mode: forwards;
+    }
+}
+
+@media only screen and (min-width: 601px) {
+    @keyframes move {
+        from {
+            left: 150vw;
+        }
+
+        to {
+            left: -10%;
+        }
+    }
+
+    @-webkit-keyframes move {
+        from {
+            left: 150vw;
+        }
+
+        to {
+            left: -10%;
+        }
+    }
+
+    .runnerAnimated {
+        position: relative;
+        font-size: 30vh;
+        animation-name: move;
+        animation-duration: 3s;
+        animation-fill-mode: forwards;
+    }
+}
+    

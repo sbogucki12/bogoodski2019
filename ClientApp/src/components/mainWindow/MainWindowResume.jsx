@@ -32,9 +32,7 @@ const styles = theme => ({
 });
 
 function MainWindowResume(props) {
-    const { classes } = props;
-
-    
+    const { classes } = props;   
 
     return ( 
         <div className={classes.root}>

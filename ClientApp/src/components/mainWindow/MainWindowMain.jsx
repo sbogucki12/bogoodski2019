@@ -3,6 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import MainWindowResume from './MainWindowResume';
 import MainWindowRoux from './MainWindowRoux';
 import MainWindowContact from './MainWindowContact';
+import MainWindowRun from './MainWindowRun';
 import Fab from '@material-ui/core/Fab';
 import MessageIcon from '@material-ui/icons/MessageTwoTone';
 
@@ -64,6 +65,7 @@ class MainWindowMain extends React.Component {
             <div className={classes.root} >
                 <MainWindowResume />
                 <MainWindowRoux />
+                <MainWindowRun />
                 {isContactBar ? <MainWindowContact toggleContact={this.toggleContact} /> : contactFab}
             </div>
         );

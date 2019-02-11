@@ -27,14 +27,14 @@ const styles = theme => ({
         ...theme.mixins.gutters(),
         paddingTop: theme.spacing.unit * 1,
         paddingBottom: theme.spacing.unit * 2,
-        marginBottom: theme.spacing.unit * 4,        
-        
+        marginBottom: theme.spacing.unit * 4,
+
         [theme.breakpoints.only('xs')]: {
             marginTop: '10vh'
         },
         width: '80%',
         height: '90%'
-     
+
     },
     content: {
         display: 'flex',
@@ -59,7 +59,7 @@ class ResumeMain extends React.Component {
     };
 
     render() {
-        const { classes } = this.props;       
+        const { classes } = this.props;
 
         const onNext = () => {
             this.setState((prevState) => ({
@@ -106,8 +106,8 @@ class ResumeMain extends React.Component {
 
             return (
                 <List dense>
-                    <ListItem key={duty}>
-                        <ListItemText primary={duty} />
+                    <ListItem key={duty.id}>
+                        <ListItemText primary={duty} key={duty.id} />
                     </ListItem>
                 </List>
             )
@@ -115,13 +115,13 @@ class ResumeMain extends React.Component {
 
         const screenSize = window.screen.availWidth;
 
-        const bigHeader = 
+        const bigHeader =
             <Typography variant="h2" align='center' gutterBottom>
                 {resumeData[index].header}
             </Typography>
 
         const mobileHeader =
-            <Typography variant="h4" align='center'  gutterBottom>
+            <Typography variant="h4" align='center' gutterBottom>
                 {resumeData[index].header}
             </Typography>
 
@@ -135,38 +135,36 @@ class ResumeMain extends React.Component {
 
         return (
             <React.Fragment>
-            <div className={classes.root}>
-                <Slide direction="up" in timeout={1000} >
+                <div className={classes.root}>
+                    <Slide direction="up" in timeout={1000} >
 
-                    <Paper className={classes.paper} elevation={6}>
-                        <div className={classes.content}>
-                            {showHeader()}
-                            <Typography variant="body1" gutterBottom>
-                                {resumeData[index].summary}
-                            </Typography>
-                            {displayList}
-                        </div>
-                        <div className={classes.buttonContainer}>
-                            <Button
-                                variant="outlined"
-                                size="small"
-                                color="secondary"
-                                component={Link} to="/"
-                                className={classes.button}
+                        <Paper className={classes.paper} elevation={6}>
+                            <div className={classes.content}>
+                                {showHeader()}
+                                <Typography variant="body1" gutterBottom>
+                                    {resumeData[index].summary}
+                                </Typography>
+                                {displayList}
+                            </div>
+                            <div className={classes.buttonContainer}>
+                                <Button
+                                    variant="outlined"
+                                    size="small"
+                                    color="secondary"
+                                    component={Link} to="/"
+                                    className={classes.button}
 
-                            >
-                                {`Home`}
-                            </Button>                            
-                            {showBackArrow()}
-                            {showArrow()}
-                        </div>
-                    </Paper>
-
-                </Slide>
-
-            </div>
+                                >
+                                    {`Home`}
+                                </Button>
+                                {showBackArrow()}
+                                {showArrow()}
+                            </div>
+                        </Paper>
+                    </Slide>
+                </div>
                 <ResumeButton />
-                </React.Fragment>
+            </React.Fragment>
         );
     }
 }

@@ -3,14 +3,16 @@ import { withStyles } from '@material-ui/core/styles';
 import TopBar from './appbar/TopBar';
 import MainWindowMain from './mainWindow/MainWindowMain';
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import RunLogMain from './runLog/RunLogMain';
 import ResumeMain from './resume/ResumeMain';
 import './LayoutStyle.css';
+import RunUploader from './runLog/RunUploader';
 
 const styles = theme => ({
     root: {
         display: 'flex',        
         alignItems: 'flex-start',        
-        backgroundImage: 'linear-gradient(#dcedc8 75%, #e4ff54 25%)',
+        backgroundImage: 'linear-gradient(#dcedc8 70%, #e4ff54)',
         minHeight: '100%'
     }
 });
@@ -23,9 +25,11 @@ class Layout extends Component {
         return (
             <React.Fragment>
                 <div className={classes.root}>
-                    <TopBar className="sticky" />
+                    <TopBar className="sticky" />                    
                     <Router>
                         <div >
+                            <Route exact path="/runlog/upload" component={RunUploader} />
+                            <Route exact path="/runlog" component={RunLogMain} />
                             <Route exact path="/resume" component={ResumeMain} />
                             <Route exact path="/" component={MainWindowMain} />
                         </div>

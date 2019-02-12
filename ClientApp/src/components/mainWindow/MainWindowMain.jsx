@@ -5,6 +5,7 @@ import MainWindowRoux from './MainWindowRoux';
 import MainWindowContact from './MainWindowContact';
 import Fab from '@material-ui/core/Fab';
 import MessageIcon from '@material-ui/icons/MessageTwoTone';
+import MainWindowRun from './MainWindowRun';
 
 const screenSize = window.screen.availWidth;
 let marginTop; 
@@ -63,7 +64,8 @@ class MainWindowMain extends React.Component {
         return (
             <div className={classes.root} >
                 <MainWindowResume />
-                <MainWindowRoux />                
+                <MainWindowRoux /> 
+                <MainWindowRun  />
                 {isContactBar ? <MainWindowContact toggleContact={this.toggleContact} /> : contactFab}
             </div>
         );

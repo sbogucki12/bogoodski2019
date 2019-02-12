@@ -125,7 +125,7 @@ class RunLogMain extends React.Component {
                 <Paper className={classes.paperRootMobile} elevation={6}>
                     <div className={classes.date}>
                         <Typography variant="h4" gutterBottom>
-                            {`Feb., 10, 2019`}
+                            {`Feb., 11, 2019`}
                         </Typography>
                     </div>                    
                     <div className={classes.contentMobile}>

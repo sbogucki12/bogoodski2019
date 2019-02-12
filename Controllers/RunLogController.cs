@@ -45,24 +45,49 @@ namespace Bogoodski2019.Controllers
         {
             try
             {
-                string Token = Request.Headers["code"];                
+                string Token = Request.Headers["code"];
                 string key = Environment.GetEnvironmentVariable("UPLOADKEY");
 
-                if(Token == key)
+                string environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+
+                if (environment != "Production")
                 {
-                    var domain = _environment.ContentRootPath;
-                    using (FileStream filestream = System.IO.File.Create(domain + "/App_Data/" + file.FileName))
+                    if (Token == key)
                     {
-                        file.CopyTo(filestream);
-                        filestream.Flush();
-                        string message = String.Format("uploaded to {0}", domain + "\\App_Data");                                             
-                        return Ok(message);
+                        var domain = _environment.ContentRootPath;
+                        using (FileStream filestream = System.IO.File.Create(domain + "/App_Data/" + file.FileName))
+                        {
+                            file.CopyTo(filestream);
+                            filestream.Flush();
+                            string message = String.Format("uploaded to {0}", domain + "\\App_Data");
+                            return Ok(message);
+                        }
                     }
-                }  else
+                    else
+                    {
+                        string message = "Bad Password";
+                        return BadRequest(message);
+                    }
+                }
+                else
                 {
-                    string message = "Bad Password";
-                    return BadRequest(message);
-                }               
+                    if (Token == key)
+                    {
+                        using (FileStream filestream = System.IO.File.Create("/App_Data/" + file.FileName))
+                        {
+                            file.CopyTo(filestream);
+                            filestream.Flush();
+                            string message = String.Format("uploaded to App_Data");
+                            return Ok(message);
+                        }
+
+                    }
+                    else
+                    {
+                        string message = "Bad Password";
+                        return BadRequest(message);
+                    }
+                }
             }
             catch (Exception ex)
             {

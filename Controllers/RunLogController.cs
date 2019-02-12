@@ -9,7 +9,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Hosting.Internal;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace Bogoodski2019.Controllers
 {
@@ -30,8 +31,26 @@ namespace Bogoodski2019.Controllers
         {
             try
             {
-                var image = System.IO.File.OpenRead("../Bogoodski2019/App_Data/runpic.jpg");
-                return File(image, "image/jpeg");
+                string storageConnectionString = Environment.GetEnvironmentVariable("storageconnectionstring");
+                CloudStorageAccount storageAccount = CloudStorageAccount.Parse(storageConnectionString);
+                if (CloudStorageAccount.TryParse(storageConnectionString, out storageAccount))
+                {
+                    CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+                    CloudBlobContainer container = blobClient.GetContainerReference("runlog");
+                    CloudBlockBlob blob = container.GetBlockBlobReference("runpic");
+                    using (var fileStream = System.IO.File.OpenWrite("runpic"))
+                    {
+                        blob.DownloadToStreamAsync(fileStream);
+                    }
+
+                    return Ok(blob.Uri);
+                }
+                else
+                {
+                    string message = "bad connection string";
+                    return BadRequest(message);
+
+                }
             }
             catch
             {
@@ -41,58 +60,38 @@ namespace Bogoodski2019.Controllers
 
         [HttpPost]
         [Route("api/run/postimage")]
-        public IActionResult Post(IFormFile file)
+        public async Task<IActionResult> Post(IFormFile file)
         {
             try
             {
                 string Token = Request.Headers["code"];
+                string Date = Request.Headers["date"];
                 string key = Environment.GetEnvironmentVariable("UPLOADKEY");
 
-                string environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-
-                if (environment != "Production")
+                if (Token == key)
                 {
-                    if (Token == key)
+                    string storageConnectionString = Environment.GetEnvironmentVariable("storageconnectionstring");
+                    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(storageConnectionString);
+                    CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+                    CloudBlobContainer container = blobClient.GetContainerReference("runlog");
+                    CloudBlockBlob blob = container.GetBlockBlobReference(file.FileName);                    
+                    using (var stream = file.OpenReadStream() )
                     {
-                        var domain = _environment.ContentRootPath;
-                        using (FileStream filestream = System.IO.File.Create(domain + "/App_Data/" + file.FileName))
-                        {
-                            file.CopyTo(filestream);
-                            filestream.Flush();
-                            string message = String.Format("uploaded to {0}", domain + "\\App_Data");
-                            return Ok(message);
-                        }
+                        await blob.UploadFromStreamAsync(stream);
                     }
-                    else
-                    {
-                        string message = "Bad Password";
-                        return BadRequest(message);
-                    }
+                    
+                    return Ok();
                 }
                 else
                 {
-                    if (Token == key)
-                    {
-                        using (FileStream filestream = System.IO.File.Create("/App_Data/" + file.FileName))
-                        {
-                            file.CopyTo(filestream);
-                            filestream.Flush();
-                            string message = String.Format("uploaded to App_Data");
-                            return Ok(message);
-                        }
-
-                    }
-                    else
-                    {
-                        string message = "Bad Password";
-                        return BadRequest(message);
-                    }
+                    string message = "Bad Password";
+                    return BadRequest(message);
                 }
             }
             catch (Exception ex)
             {
                 return NotFound(ex);
             }
-        }      
+        }
     }
 }

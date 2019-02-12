@@ -72,51 +72,53 @@ class RunLogMain extends React.Component {
         const screenWidth = window.screen.availWidth;
         if (screenWidth < 450) {
             this.state = {
-                isMobile: true,
-                image: ''
+                isMobile: true
+                //image: ''
             }
         } else {
             this.state = {
-                isMobile: false,
-                image: ''
+                isMobile: false
+                //image: ''
             }
         }
     }
 
-    componentDidMount() {
-        fetch("/api/runlog/getimage")
-            .then(response => {
-                const reader = response.body.getReader();
-                return new ReadableStream({
-                    start(controller) {
-                        return pump();
-                        function pump() {
-                            return reader.read().then(({ done, value }) => {
-                                if (done) {
-                                    controller.close();
-                                    return;
-                                }
-                                controller.enqueue(value);
-                                return pump();
-                            });
-                        }
-                    }
-                })
-            })
-            .then(stream => new Response(stream))
-            .then(response => response.blob())
-            .then(blob => URL.createObjectURL(blob))
-            .then(url => {
-                this.setState({
-                    image: url
-                })
-            })
-            .catch(err => console.error(err));
-    }
+    //componentDidMount() {
+    //    fetch("/api/runlog/getimage")
+    //        .then(response => {
+    //            const reader = response.body.getReader();
+    //            return new ReadableStream({
+    //                start(controller) {
+    //                    return pump();
+    //                    function pump() {
+    //                        return reader.read().then(({ done, value }) => {
+    //                            // When no more data needs to be consumed, close the stream
+    //                            if (done) {
+    //                                controller.close();
+    //                                return;
+    //                            }
+    //                            // Enqueue the next data chunk into our target stream
+    //                            controller.enqueue(value);
+    //                            return pump();
+    //                        });
+    //                    }
+    //                }
+    //            })
+    //        })
+    //        .then(stream => new Response(stream))
+    //        .then(response => response.blob())
+    //        .then(blob => URL.createObjectURL(blob))
+    //        .then(url => {
+    //            this.setState({
+    //                image: url
+    //            })
+    //        })
+    //        .catch(err => console.error(err));
+    //}
 
     render() {
         const { classes } = this.props;
-        const RunPic = this.state.image;        
+        const RunPic = `https://bogoodski.blob.core.windows.net/runlog/runpic.jpg`        
 
         const mobile =
             <div className={classes.root}>

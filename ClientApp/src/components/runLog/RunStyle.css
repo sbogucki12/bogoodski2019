@@ -1,4 +1,13 @@
-﻿
+﻿.borderWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*padding: 1rem;*/
+    position: relative;
+    background: linear-gradient(to bottom, #1b5e20 , #aeea00);
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+}
 
 .runnerIcon {
     font-size: 18vh;
@@ -22,7 +31,7 @@
         }
 
         to {
-            left: 110%;
+            left: 0;
         }
     }
 

@@ -4,7 +4,6 @@ import TextField from '@material-ui/core/TextField';
 import ContactButton from './ContactButton';
 import localPath from '../../helpers/localPath';
 import ReCAPTCHA from "react-google-recaptcha";
-import { CAPTCHA_CLIENT_KEY } from '../../keys';
 
 const styles = theme => ({
     container: {

@@ -6,6 +6,7 @@ import RunnerIcon from './RunnerIcon';
 import './RunStyle.css';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
+import RunMoreInfo from './RunMoreInfo';
 
 const styles = theme => ({
     root: {
@@ -22,7 +23,8 @@ const styles = theme => ({
         paddingTop: theme.spacing.unit * 2,
         paddingBottom: theme.spacing.unit * 2,
         minWidth: '80vw',
-        minHeight: '80%'
+        minHeight: '80%', 
+        marginTop: '15vh'
     },
     content: {
         display: 'flex',
@@ -36,7 +38,7 @@ const styles = theme => ({
         marginBottom: theme.spacing.unit * 5,
         maxWidth: '290px',
         position: 'relative',
-        transform: 'rotate(90deg)'
+        //transform: 'rotate(90deg)'
     },
     contentMobile: {
         display: 'flex',
@@ -125,13 +127,14 @@ class RunLogMain extends React.Component {
                 <Paper className={classes.paperRootMobile} elevation={6}>
                     <div className={classes.date}>
                         <Typography variant="h4" gutterBottom>
-                            {`Feb., 11, 2019`}
+                            {`Feb. 13, 2019`}
                         </Typography>
                     </div>                    
                     <div className={classes.contentMobile}>
                         <span className="runnerAnimated">{RunnerIcon}</span>
                         <span><img src={RunPic} className={classes.image} alt="Run Pic" /></span>
                     </div>
+                    <RunMoreInfo />
                 </Paper>
                 <Button
                     variant="contained"
@@ -149,13 +152,14 @@ class RunLogMain extends React.Component {
                 <Paper className={classes.paperRoot} elevation={6}>
                         <div className={classes.date}>
                         <Typography variant="h2" gutterBottom>
-                            {`Feb., 10, 2019`}
+                            {`Feb. 13, 2019`}
                         </Typography>
                         </div>                    
                     <div className={classes.content}>
                         <span className="runnerAnimated">{RunnerIcon}</span>
                         <span><img src={RunPic} className={classes.image} alt="Run Pic" /></span>
                     </div>
+                    <RunMoreInfo />
                 </Paper>
                 <Button
                     variant="contained"

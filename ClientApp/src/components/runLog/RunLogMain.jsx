@@ -74,49 +74,28 @@ class RunLogMain extends React.Component {
         const screenWidth = window.screen.availWidth;
         if (screenWidth < 450) {
             this.state = {
-                isMobile: true
-                //image: ''
+                isMobile: true,
+                date: ''
             }
         } else {
             this.state = {
-                isMobile: false
-                //image: ''
+                isMobile: false,
+                date: ''
             }
         }
     }
 
-    //componentDidMount() {
-    //    fetch("/api/runlog/getimage")
-    //        .then(response => {
-    //            const reader = response.body.getReader();
-    //            return new ReadableStream({
-    //                start(controller) {
-    //                    return pump();
-    //                    function pump() {
-    //                        return reader.read().then(({ done, value }) => {
-    //                            // When no more data needs to be consumed, close the stream
-    //                            if (done) {
-    //                                controller.close();
-    //                                return;
-    //                            }
-    //                            // Enqueue the next data chunk into our target stream
-    //                            controller.enqueue(value);
-    //                            return pump();
-    //                        });
-    //                    }
-    //                }
-    //            })
-    //        })
-    //        .then(stream => new Response(stream))
-    //        .then(response => response.blob())
-    //        .then(blob => URL.createObjectURL(blob))
-    //        .then(url => {
-    //            this.setState({
-    //                image: url
-    //            })
-    //        })
-    //        .catch(err => console.error(err));
-    //}
+    componentDidMount() {
+        fetch("/api/run/getdate")        
+            .then(response => response.blob())
+            .then(blob => console.log(blob))
+            //.then(url => {
+            //    this.setState({
+            //        image: url
+            //    })
+            //})
+            .catch(err => console.error(err));
+    }
 
     render() {
         const { classes } = this.props;

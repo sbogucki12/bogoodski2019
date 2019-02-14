@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Hosting.Internal;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Primitives;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 
@@ -64,8 +65,8 @@ namespace Bogoodski2019.Controllers
         {
             try
             {
-                string Token = Request.Headers["code"];
-                string Date = Request.Headers["date"];
+                string Token = Request.Headers["code"];                
+
                 string key = Environment.GetEnvironmentVariable("UPLOADKEY");
 
                 if (Token == key)
@@ -74,12 +75,12 @@ namespace Bogoodski2019.Controllers
                     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(storageConnectionString);
                     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
                     CloudBlobContainer container = blobClient.GetContainerReference("runlog");
-                    CloudBlockBlob blob = container.GetBlockBlobReference(file.FileName);                    
-                    using (var stream = file.OpenReadStream() )
+                    CloudBlockBlob blob = container.GetBlockBlobReference(file.FileName);
+                    using (var stream = file.OpenReadStream())
                     {
                         await blob.UploadFromStreamAsync(stream);
                     }
-                    
+
                     return Ok();
                 }
                 else
@@ -93,5 +94,64 @@ namespace Bogoodski2019.Controllers
                 return NotFound(ex);
             }
         }
-    }
+
+        [HttpPost]
+        [Route("api/run/postdate")]
+        public async Task<IActionResult> PostDate()
+        {
+            try
+            {
+                var date = Request.Body;
+
+                string storageConnectionString = Environment.GetEnvironmentVariable("storageconnectionstring");
+                CloudStorageAccount storageAccount = CloudStorageAccount.Parse(storageConnectionString);
+                CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+                CloudBlobContainer container = blobClient.GetContainerReference("runlog");
+                CloudBlockBlob blob = container.GetBlockBlobReference("date");
+
+                
+
+                    await blob.OpenWriteAsync();
+                    return Ok();
+
+                
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex);
+            }
+        }
+
+        [HttpGet]
+        [Route("api/run/getdate")]
+        public IActionResult GetDate()
+        {
+            try
+            {
+                string storageConnectionString = Environment.GetEnvironmentVariable("storageconnectionstring");
+                CloudStorageAccount storageAccount = CloudStorageAccount.Parse(storageConnectionString);
+                if (CloudStorageAccount.TryParse(storageConnectionString, out storageAccount))
+                {
+                    CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+                    CloudBlobContainer container = blobClient.GetContainerReference("runlog");
+                    CloudBlockBlob blob = container.GetBlockBlobReference("date");
+
+                    blob.DownloadTextAsync(); 
+                    
+
+                    return Ok(blob);
+                }
+                else
+                {
+                    string message = "bad connection string";
+                    return BadRequest(message);
+
+                }
+            }
+            catch
+            {
+                return NotFound();
+            }
+        }
+    }   
 }

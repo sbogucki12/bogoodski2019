@@ -24,12 +24,17 @@ const styles = theme => ({
         display: 'none',
     },
     image: {
-        maxWidth: 200, 
+        maxWidth: 200,
         maxHeight: 350
     },
     textField: {
         marginLeft: theme.spacing.unit,
         marginRight: theme.spacing.unit
+    },
+    formContainer: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
     }
 });
 
@@ -38,12 +43,25 @@ class RunUploader extends React.Component {
         super(props);
         this.state = {
             image: '',
-            code: ''
+            code: '',
+            date: ''
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleCodeChange = this.handleCodeChange.bind(this);   
-        this.fileInput = React.createRef();        
+        this.handleDateChange = this.handleDateChange.bind(this);
+        this.handleDateSubmit = this.handleDateSubmit.bind(this);
+        this.handleCodeChange = this.handleCodeChange.bind(this);
+        this.fileInput = React.createRef();
+    };
+
+
+    //TO DO: Refactor these into one function:
+    handleDateChange(e) {
+        console.log(e.target.value)
+        this.setState({
+            date: e.target.value
+        })
+        e.preventDefault()
     };
 
     handleCodeChange(e) {
@@ -51,7 +69,7 @@ class RunUploader extends React.Component {
             code: e.target.value
         })
         e.preventDefault();
-    };       
+    };
 
     handleChange(e) {
         const file = document.getElementById('contained-button-file').files[0];
@@ -63,27 +81,56 @@ class RunUploader extends React.Component {
                 image: uploadedImage.src
             });
         }
-        reader.readAsDataURL(file);       
+        reader.readAsDataURL(file);
     };
 
-    handleSubmit(e) {        
-        const secret = this.state.code;         
-        const formData = new FormData();
+    handleSubmit(e) {
+        const secret = this.state.code;        
+        const formData = new FormData();        
         const fileField = document.getElementById('contained-button-file').files[0];
-        formData.append('file', fileField);        
+        formData.append('file', fileField);
+
         fetch('/api/run/postimage', {
             method: 'POST',
-            body: formData, 
             headers: {
-                code: secret
-            }
+                'code': secret
+            },
+            body: formData
         })
-           .then(response => {
+            .then(response => {
                 if (response.status === 200) {
-                    alert('image uploaded')
-                } else {
+                    alert(`Image Uploaded!`);
+                }
+                else {
                     alert('try a different password')
-                }})
+                }
+            })
+            .catch(error => {
+                alert(`Error: ${error}`)
+            })
+
+        e.preventDefault();
+    }
+
+    handleDateSubmit(e) {
+        const date = this.state.date;  
+        const formData = new FormData();        
+        formData.append('date', date);
+        fetch('/api/run/postdate', {
+            method: 'POST',            
+            body: formData
+        })
+            .then(response => {
+                if (response.status === 200) {
+                    alert(`Date Accepted`);
+                }
+                else {
+                    alert(`Date failed`)
+                }
+            })
+            .catch(error => {
+                alert(`Error: ${error}`)
+            })
 
         e.preventDefault();
     }
@@ -91,8 +138,9 @@ class RunUploader extends React.Component {
     render() {
         const { classes } = this.props;
         const displayForm =
-            <form>
-                Code:
+            <div className={classes.formContainer}>
+                <form>
+                    {`Code:`}
                     <TextField
                         id="standard-password-input"
                         label="Password"
@@ -102,17 +150,42 @@ class RunUploader extends React.Component {
                         margin="normal"
                         value={this.state.code}
                         onChange={this.handleCodeChange}
-                    />                 
-            </form>
+                    />
+                </form>
+                <form>
+                    {`Date:`}
+                    <TextField
+                        id="standard-name"
+                        label="Date"
+                        className={classes.textField}
+                        margin="normal"
+                        value={this.state.date}
+                        onChange={this.handleDateChange}
+                    />
+                </form>
+            </div>
 
 
 
         const image = this.state.image;
         const imageContent = this.state.image ?
             <React.Fragment>
-                <img src={image} className={classes.image} alt="Run Pic" />     
-                <Button variant="contained" component="span" className={classes.button} onClick={this.handleSubmit}>
-                    Submit
+                <img src={image} className={classes.image} alt="Run Pic" />
+                <Button
+                    variant="contained"
+                    component="span"
+                    className={classes.button}
+                    onClick={this.handleSubmit}
+                >
+                    {`Submit`}
+                </Button>
+                <Button
+                    variant="contained"
+                    component="span"
+                    className={classes.button}
+                    onClick={this.handleDateSubmit}
+                >
+                    {`Submit Date`}
                 </Button>
             </React.Fragment> : null;
 
@@ -132,8 +205,12 @@ class RunUploader extends React.Component {
                         />
 
                         <label htmlFor="contained-button-file">
-                            <Button variant="contained" component="span" className={classes.button} >
-                                Browse
+                            <Button
+                                variant="contained"
+                                component="span"
+                                className={classes.button}                                
+                            >
+                                {`Browse`}
                             </Button>
                         </label>
                         {imageContent}

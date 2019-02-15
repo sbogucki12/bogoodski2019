@@ -54,7 +54,6 @@ class RunUploader extends React.Component {
         this.fileInput = React.createRef();
     };
 
-
     //TO DO: Refactor these into one function:
     handleDateChange(e) {
         console.log(e.target.value)
@@ -114,11 +113,9 @@ class RunUploader extends React.Component {
 
     handleDateSubmit(e) {
         const date = this.state.date;  
-        const formData = new FormData();        
-        formData.append('date', date);
         fetch('/api/run/postdate', {
             method: 'POST',            
-            body: formData
+            body: date
         })
             .then(response => {
                 if (response.status === 200) {
@@ -164,8 +161,6 @@ class RunUploader extends React.Component {
                     />
                 </form>
             </div>
-
-
 
         const image = this.state.image;
         const imageContent = this.state.image ?

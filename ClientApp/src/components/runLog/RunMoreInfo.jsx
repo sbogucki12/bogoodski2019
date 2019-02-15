@@ -32,7 +32,7 @@ function RunMoreInfo(props) {
                 <Typography variant="h6" gutterBottom className={classes.typography} align="center">
                     {`Use the button below to learn more about the background and implementation of this log.`}
                 </Typography>
-                <a href="https://link.medium.com/Xcdnon3RhU" target="_blank" className={classes.link}>
+                <a href="https://link.medium.com/Xcdnon3RhU" target="_blank" rel="noopener noreferrer" className={classes.link}>
                     <Button
                         variant="outlined"
                         color="secondary"

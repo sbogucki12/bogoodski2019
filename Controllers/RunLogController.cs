@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Hosting.Internal;
@@ -50,7 +51,6 @@ namespace Bogoodski2019.Controllers
                 {
                     string message = "bad connection string";
                     return BadRequest(message);
-
                 }
             }
             catch
@@ -97,23 +97,24 @@ namespace Bogoodski2019.Controllers
 
         [HttpPost]
         [Route("api/run/postdate")]
-        public async Task<IActionResult> PostDate()
+        public async Task<IActionResult> PostDate(string date)
         {
             try
-            {
-                var date = Request.Body;
+            {                
+                using (var reader = new StreamReader(Request.Body))
+                {
+                    date = reader.ReadToEnd();
+                }
 
                 string storageConnectionString = Environment.GetEnvironmentVariable("storageconnectionstring");
                 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(storageConnectionString);
                 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-                CloudBlobContainer container = blobClient.GetContainerReference("runlog");
-                CloudBlockBlob blob = container.GetBlockBlobReference("date");
+                CloudBlobContainer container = blobClient.GetContainerReference("runlog");                
+                CloudBlockBlob blob = container.GetBlockBlobReference("runpic.jpg");
+                blob.Metadata["date"] = date;
+                await blob.SetMetadataAsync();
 
-                
-
-                    await blob.OpenWriteAsync();
-                    return Ok();
-
+                return Ok(blob.Metadata);
                 
             }
             catch (Exception ex)
@@ -124,7 +125,7 @@ namespace Bogoodski2019.Controllers
 
         [HttpGet]
         [Route("api/run/getdate")]
-        public IActionResult GetDate()
+        public async Task<string> GetDate()
         {
             try
             {
@@ -134,23 +135,23 @@ namespace Bogoodski2019.Controllers
                 {
                     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
                     CloudBlobContainer container = blobClient.GetContainerReference("runlog");
-                    CloudBlockBlob blob = container.GetBlockBlobReference("date");
+                    CloudBlockBlob blob = container.GetBlockBlobReference("runpic.jpg");
+                    await blob.FetchAttributesAsync();
+                    string date = blob.Metadata["date"];
 
-                    blob.DownloadTextAsync(); 
-                    
-
-                    return Ok(blob);
+                    return date;
                 }
                 else
                 {
                     string message = "bad connection string";
-                    return BadRequest(message);
+                    return message;
 
                 }
             }
             catch
             {
-                return NotFound();
+                string message = "exception";
+                return message;
             }
         }
     }   

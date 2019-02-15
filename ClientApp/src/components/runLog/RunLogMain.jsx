@@ -74,60 +74,41 @@ class RunLogMain extends React.Component {
         const screenWidth = window.screen.availWidth;
         if (screenWidth < 450) {
             this.state = {
-                isMobile: true
-                //image: ''
+                isMobile: true,
+                date: ''
             }
         } else {
             this.state = {
-                isMobile: false
-                //image: ''
+                isMobile: false,
+                date: ''
             }
         }
     }
 
-    //componentDidMount() {
-    //    fetch("/api/runlog/getimage")
-    //        .then(response => {
-    //            const reader = response.body.getReader();
-    //            return new ReadableStream({
-    //                start(controller) {
-    //                    return pump();
-    //                    function pump() {
-    //                        return reader.read().then(({ done, value }) => {
-    //                            // When no more data needs to be consumed, close the stream
-    //                            if (done) {
-    //                                controller.close();
-    //                                return;
-    //                            }
-    //                            // Enqueue the next data chunk into our target stream
-    //                            controller.enqueue(value);
-    //                            return pump();
-    //                        });
-    //                    }
-    //                }
-    //            })
-    //        })
-    //        .then(stream => new Response(stream))
-    //        .then(response => response.blob())
-    //        .then(blob => URL.createObjectURL(blob))
-    //        .then(url => {
-    //            this.setState({
-    //                image: url
-    //            })
-    //        })
-    //        .catch(err => console.error(err));
-    //}
+    componentDidMount() {
+        fetch("/api/run/getdate")
+            .then(response => {
+                response.text().then(text => {
+                    this.setState({
+                        date: text
+                    })
+                    console.log(this.state.date)
+                })               
+            })            
+            .catch(err => console.error(err));
+    }
 
     render() {
         const { classes } = this.props;
-        const RunPic = `https://bogoodski.blob.core.windows.net/runlog/runpic.jpg`        
+        const RunPic = `https://bogoodski.blob.core.windows.net/runlog/runpic.jpg`  
+        const date = this.state.date;
 
         const mobile =
             <div className={classes.root}>
                 <Paper className={classes.paperRootMobile} elevation={6}>
                     <div className={classes.date}>
                         <Typography variant="h4" gutterBottom>
-                            {`Feb. 13, 2019`}
+                            {date}
                         </Typography>
                     </div>                    
                     <div className={classes.contentMobile}>
@@ -152,7 +133,7 @@ class RunLogMain extends React.Component {
                 <Paper className={classes.paperRoot} elevation={6}>
                         <div className={classes.date}>
                         <Typography variant="h2" gutterBottom>
-                            {`Feb. 13, 2019`}
+                            {date}
                         </Typography>
                         </div>                    
                     <div className={classes.content}>

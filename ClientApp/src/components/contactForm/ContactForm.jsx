@@ -137,12 +137,12 @@ class ContactForm extends React.Component {
                     margin="normal"
                     variant="filled"
                 />
-                <ContactButton onSubmit={this.onSubmit} />                
                 <ReCAPTCHA
                     sitekey={key}
                     onChange={this.submitCaptcha}
                     className={classes.captcha}
                 />
+                <ContactButton onSubmit={this.onSubmit} /> 
             </form>
         );
     }

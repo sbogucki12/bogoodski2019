@@ -17,21 +17,21 @@
 @media only screen and (max-width: 600px) {
     @keyframes move {
         from {
-            left: 110%;
+            opacity: 0;
         }
 
         to {
-            left: 0;
+            opacity: 1;
         }
     }
 
     @-webkit-keyframes move {
         from {
-            left: 110%;
+            opacity: 0;
         }
 
         to {
-            left: 0;
+            opacity: 1;
         }
     }
 
@@ -39,7 +39,7 @@
         position: relative;
         font-size: 25vh;
         animation-name: move;
-        animation-duration: 1s;
+        animation-duration: 4s;
         animation-fill-mode: forwards;        
     }
 }

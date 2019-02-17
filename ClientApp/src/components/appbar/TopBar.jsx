@@ -5,9 +5,17 @@ import Toolbar from '@material-ui/core/Toolbar';
 import socialIcons from './socialImages/socialIcons';
 
 const styles = theme => ({
-    toolbar: {
+    toolBar: {
+        display: 'flex', 
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100vw'
+    },
+    iconBar: {
         display: 'flex',
-        justifyContent: 'center'
+        justifyContent: 'center', 
+        alignItems: 'center',    
+        flexWrap: 'wrap'
     },
     icon: {
         maxWidth: 48,
@@ -28,8 +36,8 @@ function TopBar(props) {
     return (
         <div>
             <AppBar>
-                <Toolbar className={classes.toolbar}>
-                    <div>
+                <Toolbar className={classes.toolBar}>
+                    <div className={classes.iconBar}>
                         {showIcons}
                     </div>
                 </Toolbar>

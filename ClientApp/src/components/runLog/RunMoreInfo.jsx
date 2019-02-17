@@ -10,8 +10,9 @@ const styles = theme => ({
     }, 
     container: {
         margin: 0,
-        display: 'grid',
-        placeItems: 'center',
+        display: 'flex',
+        alignItems: 'center',
+        flexDirection: 'column',
         background: 'white', 
         width: '99%', 
         height: '99%'

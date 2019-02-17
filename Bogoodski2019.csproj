@@ -8,9 +8,12 @@
     <SpaRoot>ClientApp\</SpaRoot>
     <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
     <UserSecretsId>dd400eda-499d-43c4-bbb6-2fad47faf70e</UserSecretsId>
+    <ApplicationInsightsResourceId>/subscriptions/ad64b478-e7fb-4b2b-bd64-2c3e2cf9b69e/resourcegroups/Bogoodski201920190122023004ResourceGroup/providers/microsoft.insights/components/Bogoodski2019</ApplicationInsightsResourceId>
+    <ApplicationInsightsAnnotationResourceId>/subscriptions/ad64b478-e7fb-4b2b-bd64-2c3e2cf9b69e/resourcegroups/Bogoodski201920190122023004ResourceGroup/providers/microsoft.insights/components/Bogoodski2019</ApplicationInsightsAnnotationResourceId>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="2.1.1" />

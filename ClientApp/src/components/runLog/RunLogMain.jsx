@@ -92,7 +92,6 @@ class RunLogMain extends React.Component {
                     this.setState({
                         date: text
                     })
-                    console.log(this.state.date)
                 })               
             })            
             .catch(err => console.error(err));

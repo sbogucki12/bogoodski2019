@@ -20,11 +20,16 @@ const styles = theme => ({
     readButton: {
         display: 'flex',
         justifyContent: 'flex-end'
+    }, 
+    link: {
+        textDecoration: `none`
     }
 });
 
 function CurrentPostMainWindowDesktop(props) {
     const { classes } = props;
+    const currentPostUrl = "https://medium.com/@sbogucki12/live-blogging-the-development-of-a-new-feature-via-reactjs-and-net-core-part-6-656f81be66c9";
+
     return (
         <Card className={classes.card}>
             <CardActionArea>
@@ -34,7 +39,11 @@ function CurrentPostMainWindowDesktop(props) {
                     title="Current Post"
                 />
                 <CardContent>
-                    <Typography gutterBottom variant="h6" component="h2">
+                    <Typography
+                        gutterBottom
+                        variant="h6"
+                        component="h2"
+                    >
                         {`Live Blogging the Development of a New Feature: via ReactJS and .NET Core. Part 6.`}
                     </Typography>
                     <Typography component="p">
@@ -43,9 +52,15 @@ function CurrentPostMainWindowDesktop(props) {
                 </CardContent>
             </CardActionArea>
             <CardActions className={classes.readButton}>
-                <Button size="small" color="secondary" >
-                    {`Read`}
-        </Button>
+                <a
+                    href={currentPostUrl}
+                    target="_blank"
+                    className={classes.link}                    
+                >
+                    <Button size="small" color="secondary" >
+                        {`Read`}
+                    </Button>
+                </a>
             </CardActions>
         </Card>
     );

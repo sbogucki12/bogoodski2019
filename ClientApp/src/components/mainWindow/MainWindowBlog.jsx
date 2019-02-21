@@ -6,7 +6,7 @@ import BlogMainWindowMobile from '../blog/BlogMainWindowMobile';
 const screenSize = window.screen.availWidth;
 const mobileMaxWidth = 479; 
 
-const styles = theme => ({
+const styles = {
     root: {        
         display: 'flex',
         justifyContent: 'center',
@@ -16,7 +16,7 @@ const styles = theme => ({
         marginBottom: `2%`, 
         color: `#dcedc8`
     }
-});
+};
 
 class MainWindowBlog extends React.Component {
     constructor(props) {
@@ -27,8 +27,7 @@ class MainWindowBlog extends React.Component {
     };
 
     componentDidMount() {
-        const getWinSize = () => {
-            console.log(`This is the screensize: ${screenSize}`)
+        const getWinSize = () => {            
             if (screenSize > mobileMaxWidth) {
                 this.setState({
                     mobile: false

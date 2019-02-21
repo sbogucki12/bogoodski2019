@@ -1,31 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Hosting.Internal;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Primitives;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace Bogoodski2019.Controllers
-{
-
-    //[Route("api/[controller]")]
+{   
     [ApiController]
     public class RunLogController : ControllerBase
     {
-        public static IHostingEnvironment _environment;
+        public static IHostingEnvironment _environment;      
+
         public RunLogController(IHostingEnvironment environment)
         {
-            _environment = environment;
-        }
+            _environment = environment;          
+        }        
 
         [HttpGet]
         [Route("api/runlog/getimage")]
@@ -68,7 +60,7 @@ namespace Bogoodski2019.Controllers
                 string Token = Request.Headers["code"];                
 
                 string key = Environment.GetEnvironmentVariable("UPLOADKEY");
-
+                
                 if (Token == key)
                 {
                     string storageConnectionString = Environment.GetEnvironmentVariable("storageconnectionstring");

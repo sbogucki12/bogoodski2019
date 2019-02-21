@@ -3,9 +3,12 @@ import { withStyles } from '@material-ui/core/styles';
 import RunMain from '../runLog/RunMain';
 
 const styles = theme => ({
-    root: {
-        backgroundImage: 'linear-gradient(#1b5e20, #e4ff54)',
-        minHeight: 300
+    root: {        
+        backgroundColor: "#e4ff54",
+        minHeight: 300, 
+        marginBottom: `2%`, 
+        display: 'flex', 
+        alignItems: 'center'
     }
 });
 

@@ -3,6 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import MainWindowResume from './MainWindowResume';
 import MainWindowRoux from './MainWindowRoux';
 import MainWindowContact from './MainWindowContact';
+import MainWindowBlog from './MainWindowBlog';
 import Fab from '@material-ui/core/Fab';
 import MessageIcon from '@material-ui/icons/MessageTwoTone';
 import MainWindowRun from './MainWindowRun';
@@ -24,7 +25,9 @@ const styles = theme => ({
         display: 'flex',
         justifyContent: 'center', 
         flexDirection: 'column', 
-        marginTop: marginTop,     
+        marginTop: marginTop,  
+        marginLeft: `2%`, 
+        marginRight: `2%`
     },
     fab: {
         margin: theme.spacing.unit *1,
@@ -64,8 +67,9 @@ class MainWindowMain extends React.Component {
         return (
             <div className={classes.root} >
                 <MainWindowResume />
+                <MainWindowBlog />
+                <MainWindowRun /> 
                 <MainWindowRoux /> 
-                <MainWindowRun  />
                 {isContactBar ? <MainWindowContact toggleContact={this.toggleContact} /> : contactFab}
             </div>
         );

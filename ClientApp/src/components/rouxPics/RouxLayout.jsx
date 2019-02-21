@@ -15,7 +15,7 @@ const styles = theme => ({
     },
     logo: {
         fontFamily: `'Pacifico', cursive`,
-        color: '#003300',
+        color: 'black',
         fontSize: '2em',
         marginTop: '-2%',
         padding: 0

@@ -14,8 +14,7 @@ const styles = theme => ({
         justifyContent: 'center',
     },
     runner: {
-        alignSelf: 'flex-end',
-        marginTop: theme.spacing.unit * 3
+        alignSelf: 'flex-end'        
     },
     rightColumn: {
         flexDirection: 'column',

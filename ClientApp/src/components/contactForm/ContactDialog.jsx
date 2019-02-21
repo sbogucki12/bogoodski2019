@@ -26,7 +26,8 @@ const styles = theme => ({
         width: 200,
     },
     appBar: {
-        position: 'relative'
+        position: 'relative', 
+        
     },
     icon: {
         display: 'flex',

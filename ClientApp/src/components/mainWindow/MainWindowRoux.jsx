@@ -5,7 +5,7 @@ import RouxMain from '../rouxPics/RouxMain';
 const styles = theme => ({
     root: {
         minHeight: 300,
-        backgroundColor: "#e4ff54", 
+        backgroundImage: 'linear-gradient(#1b5e20, #e4ff54)',        
         marginBottom: "2%"
     }
 });

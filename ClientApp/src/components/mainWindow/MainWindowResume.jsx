@@ -8,16 +8,15 @@ const styles = theme => ({
     root: {
         minHeight: '30vmax',
         marginBottom: '2%',
-        paddingTop: '5%',
         background: 'linear-gradient(to bottom right, #1b5e20, white)',
         display: 'flex', 
-        justifyContent: 'center', 
-        
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     text: {
         maxWidth: '60vw',
         columnCount: 2,
-        columnWidth: '190px', 
+        columnWidth: '225px', 
         marginBottom: '2%',
     },
     button: {

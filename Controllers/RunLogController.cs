@@ -8,17 +8,16 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace Bogoodski2019.Controllers
-{
-
-    //[Route("api/[controller]")]
+{   
     [ApiController]
     public class RunLogController : ControllerBase
     {
-        public static IHostingEnvironment _environment;
+        public static IHostingEnvironment _environment;      
+
         public RunLogController(IHostingEnvironment environment)
         {
-            _environment = environment;
-        }
+            _environment = environment;          
+        }        
 
         [HttpGet]
         [Route("api/runlog/getimage")]
@@ -61,7 +60,7 @@ namespace Bogoodski2019.Controllers
                 string Token = Request.Headers["code"];                
 
                 string key = Environment.GetEnvironmentVariable("UPLOADKEY");
-
+                
                 if (Token == key)
                 {
                     string storageConnectionString = Environment.GetEnvironmentVariable("storageconnectionstring");

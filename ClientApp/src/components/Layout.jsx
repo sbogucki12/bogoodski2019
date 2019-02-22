@@ -7,6 +7,7 @@ import RunLogMain from './runLog/RunLogMain';
 import ResumeMain from './resume/ResumeMain';
 import './LayoutStyle.css';
 import RunUploader from './runLog/RunUploader';
+import BlogFullArchive from './blog/BlogFullArchive';
 
 const styles = theme => ({
     root: {
@@ -28,6 +29,7 @@ class Layout extends Component {
                     <TopBar className="sticky" />                    
                     <Router>
                         <div >
+                            <Route exact path="/blog/archive" component={BlogFullArchive} />
                             <Route exact path="/runlog/upload" component={RunUploader} />
                             <Route exact path="/runlog" component={RunLogMain} />
                             <Route exact path="/resume" component={ResumeMain} />

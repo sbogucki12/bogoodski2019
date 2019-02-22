@@ -27,13 +27,14 @@ const styles = theme => ({
 });
 
 function BlogArchiveListMobile(props) {
-    const { classes } = props;
+    const { classes } = props;    
+    const displayList = blogList.splice(1); 
 
     return (
         <div className={classes.root}>
             <Paper className={classes.paperRoot} elevation={6}>
                 <List component="nav" dense>
-                    {blogList.map(blog => (
+                    {displayList.map(blog => (
                         <a
                             href={blog.url}
                             target="_blank"

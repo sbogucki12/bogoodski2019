@@ -1,4 +1,5 @@
 ﻿const blogList = [
+    { "id": 7, "name": "Part 6: Intro to Unit Tests", "date": "Feb. 20, 2019", "url": "https://medium.com/@sbogucki12/live-blogging-the-development-of-a-new-feature-via-reactjs-and-net-core-part-6-656f81be66c9"},
     { "id": 6, "name": "Part 5.1: Staff Meeting", "date": "Feb. 18, 2019", "url": "https://medium.com/@sbogucki12/live-blogging-the-development-of-a-new-feature-via-reactjs-and-net-core-part-5-1-989995253ec2" },
     { "id": 5, "name": "Part 5: Blob Metadata", "date": "Feb. 15, 2019", "url": "https://medium.com/@sbogucki12/live-blogging-the-development-of-a-new-feature-via-reactjs-and-net-core-part-5-570aced6ef5b"},
     { "id": 4, "name": "Part 4: Blobs (Microsoft Azure)", "date": "Feb. 12, 2019", "url": "https://medium.com/@sbogucki12/live-blogging-the-development-of-a-new-feature-via-reactjs-and-net-core-part-4-ad4f4fc99052"},

@@ -30,7 +30,8 @@ const styles = {
 
 function BlogArchiveListMainWindow(props) {
     const { classes } = props;
-    const displayList = blogList.slice(1, 6);
+    let tempList = [...blogList];
+    const displayList = tempList.slice(1, 6);
 
     return (
         <div className={classes.root}>

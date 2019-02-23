@@ -26,7 +26,7 @@ const styles = theme => ({
         flexDirection: 'column',
         padding: theme.spacing.unit,
         marginBottom: '5%',
-        marginTop: theme.spacing.unit * 17,
+        marginTop: theme.spacing.unit * 18,
         backgroundImage: 'linear-gradient(#e4ff54, #1b5e20)'
     },
     background: {
@@ -54,10 +54,6 @@ const styles = theme => ({
     fab: {
         margin: theme.spacing.unit,
         maxHeight: '2vh'
-    },
-    navContainer: {         
-        marginBottom: '2%', 
-        marginTop: '2%'
     }
 });
 
@@ -74,8 +70,6 @@ class BlogFullArchive extends React.Component {
             home: !prevState.home
         }))
     };
-
-
 
     render() {
         const { classes } = this.props;

@@ -5,6 +5,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { blogList } from './blogList';
 import Paper from '@material-ui/core/Paper';
+import { Link } from 'react-router-dom';
 
 const styles = theme => ({
     root: {
@@ -27,8 +28,9 @@ const styles = theme => ({
 });
 
 function BlogArchiveListMobile(props) {
-    const { classes } = props;    
-    const displayList = blogList.splice(1); 
+    const { classes } = props; 
+    let tempList = [...blogList];
+    const displayList = tempList.splice(1);
 
     return (
         <div className={classes.root}>
@@ -46,6 +48,9 @@ function BlogArchiveListMobile(props) {
                             </ListItem>
                         </a>
                     ))}
+                    <ListItem button component={Link} to="/blog/archive">
+                        <ListItemText primary="More..." />
+                    </ListItem>
                 </List>
             </Paper>
         </div>

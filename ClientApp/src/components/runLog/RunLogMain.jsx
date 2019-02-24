@@ -105,7 +105,7 @@ class RunLogMain extends React.Component {
         //Removes animation if Android:
         let runnerIconStyle = "runnerAnimated";
         const deviceString = navigator.userAgent;
-        if (deviceString.includes("Android")) {
+        if (deviceString.includes("Android") && deviceString.includes("Mobile Safari")  === false) {
             runnerIconStyle = "runnerNoAmination";
         };
 

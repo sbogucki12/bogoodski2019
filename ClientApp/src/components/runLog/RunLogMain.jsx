@@ -99,8 +99,15 @@ class RunLogMain extends React.Component {
 
     render() {
         const { classes } = this.props;
-        const RunPic = `https://bogoodski.blob.core.windows.net/runlog/runpic.jpg`  
+        const RunPic = `https://bogoodski.blob.core.windows.net/runlog/runpic.jpg`
         const date = this.state.date;
+
+        //Removes animation if Android:
+        let runnerIconStyle = "runnerAnimated";
+        const deviceString = navigator.userAgent;
+        if (deviceString.includes("Android")) {
+            runnerIconStyle = "runnerNoAmination";
+        };
 
         const mobile =
             <div className={classes.root}>
@@ -111,7 +118,7 @@ class RunLogMain extends React.Component {
                         </Typography>
                     </div>                    
                     <div className={classes.contentMobile}>
-                        <span className="runnerAnimated">{RunnerIcon}</span>
+                        <span className={runnerIconStyle}>{RunnerIcon}</span>
                         <span><img src={RunPic} className={classes.image} alt="Run Pic" /></span>
                     </div>
                     <RunMoreInfo />

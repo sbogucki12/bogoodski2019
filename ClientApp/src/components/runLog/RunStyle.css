@@ -13,6 +13,11 @@
     font-size: 18vh;
 }
 
+.runnerNoAmination {
+    position: relative;
+    font-size: 25vh;
+}
+
 
 @media only screen and (max-width: 600px) {
     @keyframes move {
@@ -39,7 +44,7 @@
         position: relative;
         font-size: 25vh;
         -webkit-animation-name: move;
-        -webkit-animation-duration: 3s;
+        -webkit-animation-duration: 2s;
         -webkit-animation-fill-mode: forwards;        
     }
 }

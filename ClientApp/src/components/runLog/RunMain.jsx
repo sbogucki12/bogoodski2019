@@ -57,7 +57,6 @@ class RunMain extends React.Component {
             </div>;
 
         return (
-
             <div className={classes.root}>
                 <div className={classes.runner}>
                     {runner}

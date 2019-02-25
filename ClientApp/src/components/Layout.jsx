@@ -8,6 +8,7 @@ import ResumeMain from './resume/ResumeMain';
 import './LayoutStyle.css';
 import RunUploader from './runLog/RunUploader';
 import BlogFullArchive from './blog/BlogFullArchive';
+import DatingAppLayout from './dating/DatingAppLayout';
 
 const styles = theme => ({
     root: {
@@ -29,6 +30,7 @@ class Layout extends Component {
                     <TopBar className="sticky" />                    
                     <Router>
                         <div >
+                            <Route exact path="/dating/app" component={DatingAppLayout} />
                             <Route exact path="/blog/archive" component={BlogFullArchive} />
                             <Route exact path="/runlog/upload" component={RunUploader} />
                             <Route exact path="/runlog" component={RunLogMain} />

@@ -40,11 +40,7 @@ const styles = theme => ({
         //backgroundImage: `url(${GrittyPic})`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',        
-        height: 400,
-        
-
-      
-
+        height: 400
     },
     headerRightBox: {
         width: '80%',        

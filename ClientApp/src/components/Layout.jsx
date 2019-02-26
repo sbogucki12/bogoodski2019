@@ -8,7 +8,7 @@ import ResumeMain from './resume/ResumeMain';
 import './LayoutStyle.css';
 import RunUploader from './runLog/RunUploader';
 import BlogFullArchive from './blog/BlogFullArchive';
-import DatingAppLayout from './dating/DatingAppLayout';
+import DatingAppLayout from './dating/datingUI/DatingAppLayout';
 
 const styles = theme => ({
     root: {

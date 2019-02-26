@@ -1,6 +1,6 @@
 ﻿import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import GrittyPic from './images/users/gritty/gritty1.jpg'
+import GrittyPic from '../images/users/gritty/gritty1.jpg';
 import DatingTopBar from './DatingTopBar';
 import DatingPicTopRow from './DatingPicTopRow';
 import DatingPicBottomRow from './DatingPicBottomRow';

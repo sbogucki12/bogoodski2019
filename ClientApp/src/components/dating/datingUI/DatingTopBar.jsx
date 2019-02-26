@@ -8,9 +8,6 @@ const styles = theme => ({
         justifyContent: 'center',
         alignItems: 'center',
         width: '90%', 
-       
-        
-        
     },
     topBarIcons: {
         display: 'flex',

@@ -9,6 +9,7 @@ import './LayoutStyle.css';
 import RunUploader from './runLog/RunUploader';
 import BlogFullArchive from './blog/BlogFullArchive';
 import DatingAppLayout from './dating/datingUI/DatingAppLayout';
+import BlogPostLayout from './blog/posts/BlogPostLayout';
 
 const styles = theme => ({
     root: {
@@ -31,6 +32,7 @@ class Layout extends Component {
                     <Router>
                         <div >
                             <Route exact path="/dating/app" component={DatingAppLayout} />
+                            <Route exact path="/blog/posts/layout" component={BlogPostLayout} />
                             <Route exact path="/blog/archive" component={BlogFullArchive} />
                             <Route exact path="/runlog/upload" component={RunUploader} />
                             <Route exact path="/runlog" component={RunLogMain} />

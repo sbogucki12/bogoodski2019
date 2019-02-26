@@ -1,0 +1,19 @@
+﻿.headerHeartShape:before {
+    top: -15px;
+    left: 0;
+}
+
+.headerHeartShape {
+    height: 30px;
+    transform: rotate(-45deg);
+    width: 30px;
+}
+
+.headerHeartShape:after {
+    content: "";
+    background-color: red;
+    border-radius: 50%;
+    height: 30px;
+    position: absolute;
+    width: 30px;
+}

@@ -60,7 +60,7 @@ class DatingQuestionHome extends React.Component {
             {
                 "id": 1,
                 "text": "In the interim, I threw together this brief questionnaire that I promise will reveal your perfect match.",
-                "text2": "The entire exercise will only take a few minutes.  Of course, the matches are fake and none of your data is (are?) retained (and all of this absurd 😜).",
+                "text2": "The entire exercise will only take a few minutes.  Of course, the matches are fake and none of your data is (are?) retained (and all of this is absurd 😜).",
                 "buttonText": "Let's Do it!"
             }
         ]

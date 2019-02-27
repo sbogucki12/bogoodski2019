@@ -2,7 +2,6 @@
 import RouxPic from './images/roux.jpg';
 import TyoungPic from './images/tyoung.jpg';
 import CruellaPic from './images/cruella.jpg';
-import SantaPic from './images/santa.jpg';
 import SplinterPic from './images/splinter.jpg';
 import JasminePic from './images/jasmine.png';
 import RickPic from './images/rick.png';
@@ -27,7 +26,7 @@ const matchData = [
     {
         "id": 3,
         "image": TyoungPic,
-        "name": "Smartest Person Ever"
+        "name": "the Smartest Person Ever"
     },
     {
         "id": 4,

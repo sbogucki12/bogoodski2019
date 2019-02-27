@@ -14,13 +14,13 @@ const styles = theme => ({
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'column',
-        
+
     },
     contentBackground: {
         width: '90%',
-        minHeight: '90%',        
+        minHeight: '90%',
         borderRadius: '25px',
-        
+
     },
     initialContentContainer: {
         margin: '2px',
@@ -39,15 +39,15 @@ const styles = theme => ({
     },
     button: {
         margin: theme.spacing.unit,
-    }, 
+    },
     matchScreenContainer: {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: "#000000",
-        minHeight: '100vh', 
+        minHeight: '100vh',
         paddingTop: '20%'
-        
+
     },
     matchScreen: {
         marginTop: '15vh',
@@ -57,27 +57,27 @@ const styles = theme => ({
         borderStyle: 'solid',
         borderWidth: '3px',
         display: 'flex',
-        alignItems: 'center', 
+        alignItems: 'center',
         flexDirection: 'column',
-        justifyContent: 'center', 
-        backgroundColor: "#000000",  
+        justifyContent: 'center',
+        backgroundColor: "#000000",
         marginBottom: '5%'
-    }, 
+    },
     imageContainer: {
-        display: 'flex', 
+        display: 'flex',
         alignItems: 'center',
         justifyContent: 'center'
     },
     matchImage: {
         maxHeight: "600px",
-        maxWidth: "90%", 
+        maxWidth: "90%",
         margin: theme.spacing.unit
-    }, 
+    },
     matchName: {
-        color: "#FFFFFF", 
+        color: "#FFFFFF",
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center', 
+        justifyContent: 'center',
         flexDirection: 'column'
     }
 });
@@ -86,11 +86,11 @@ class DatingQuestionSetLayout extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            setNumber: 0, 
+            setNumber: 0,
             amountOfRed: 1,
             indexOfMatch: 0,
             yesCount: 0,
-            showMatchButton: false, 
+            showMatchButton: false,
             showMatchContent: false
         }
     }
@@ -105,14 +105,19 @@ class DatingQuestionSetLayout extends React.Component {
             this.setState({
                 showMatchButton: true
             })
-        }        
+        }
     };
 
     handleYesButtonClick = () => {
+        const questionSetLength = questionSet.length;
+
+        if (this.state.yesCount >= questionSetLength) {
+            return questionSetLength - 1
+        };
         if (this.state.amountOfRed <= 100) {
             this.setState((prevState) => ({
                 amountOfRed: prevState.amountOfRed + 5,
-                setNumber: prevState.setNumber + 1, 
+                setNumber: prevState.setNumber + 1,
                 yesCount: prevState.yesCount + 1
             }));
             if (this.state.yesCount % 3 === 0) {
@@ -120,7 +125,6 @@ class DatingQuestionSetLayout extends React.Component {
                     indexOfMatch: prevState.indexOfMatch + 1
                 }))
             }
-            console.log(`indexOfMatch: ${this.state.indexOfMatch}`)
         } else {
             this.setState({
                 showMatchButton: true
@@ -135,7 +139,7 @@ class DatingQuestionSetLayout extends React.Component {
     };
 
     render() {
-        const { classes } = this.props;        
+        const { classes } = this.props;
 
         const index = this.state.setNumber;
         const amountOfRedInBorder = this.state.amountOfRed;
@@ -173,8 +177,8 @@ class DatingQuestionSetLayout extends React.Component {
                 >
                     {`Show My Match!`}
                 </Button>
-            </div>; 
-        
+            </div>;
+
         const initialContent =
             <div className={classes.initialContentContainer}>
                 <Typography
@@ -188,7 +192,7 @@ class DatingQuestionSetLayout extends React.Component {
                 {showMatchButton ? ButtonShowMatch : yesNoButtons}
             </div>;
 
-        const matchContent = 
+        const matchContent =
             <div className={classes.matchScreenContainer}>
                 <div className={classes.matchScreen}>
                     <Typography variant="h6" gutterBottom align="center" style={{ color: '#FFFFFF' }}>
@@ -198,15 +202,15 @@ class DatingQuestionSetLayout extends React.Component {
                         {`You've matched with...`}
                     </Typography>
                     <div className={classes.imageContainer}>
-                        <img src={matchData[indexOfMatch].image} className={classes.matchImage} />
+                        <img src={matchData[indexOfMatch].image} className={classes.matchImage} alt={`${matchData[indexOfMatch].name}`} />
                     </div>
                     <div className={classes.matchName}>
                         <Typography variant="h3" gutterBottom align="center" style={{ color: '#FFFFFF' }}>
                             {`${matchData[indexOfMatch].name}!`}
-                        </Typography> 
+                        </Typography>
                         <Typography variant="caption" gutterBottom align="center" style={{ color: '#FFFFFF' }}>
                             {`Please direct complaints to our Department of Advanced Algorithmic Research:`}
-                            <a href="https://www.linkedin.com/in/sbogucki12/" target="_blank">
+                            <a href="https://www.linkedin.com/in/sbogucki12/" target="_blank" rel="noopener noreferrer">
                                 {`HERE`}
                             </a>
                         </Typography>
@@ -214,12 +218,11 @@ class DatingQuestionSetLayout extends React.Component {
                 </div>
             </div>
 
-        
         return (
             <div className={classes.background}>
-                <div className={classes.contentBackground} style={{ background: `linear-gradient(#FF1493 ${amountOfRedInBorder}%,  white 30%)`}}>
-                    {showMatchContent  ? matchContent : initialContent}
-                </div>                
+                <div className={classes.contentBackground} style={{ background: `linear-gradient(#FF1493 ${amountOfRedInBorder}%,  white 30%)` }}>
+                    {showMatchContent ? matchContent : initialContent}
+                </div>
             </div>
         )
     }

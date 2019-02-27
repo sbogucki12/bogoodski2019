@@ -2,6 +2,8 @@
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import DataQuestionSetLayout from './DatingQuestionSetLayout';
+import { Link } from "react-router-dom";
 
 const styles = theme => ({
     background: {
@@ -38,14 +40,21 @@ class DatingQuestionHome extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            introNumber: 0
+            introNumber: 0,
+            displayQuestionaire: false
         }
     }
 
     handleButtonClick = () => {
-        this.setState({
-            introNumber: 1
-        });
+        if (this.state.introNumber === 0) {
+            this.setState({
+                introNumber: 1
+            })
+        } else {
+            this.setState({
+                displayQuestionaire: true
+            })
+        };        
     };
 
     render() {
@@ -66,6 +75,7 @@ class DatingQuestionHome extends React.Component {
         ]
 
         const index = this.state.introNumber;
+        const showDisplayQuestionaire = this.state.displayQuestionaire;
 
         const initialContent =
             <div className={classes.initialContentContainer}>
@@ -90,7 +100,7 @@ class DatingQuestionHome extends React.Component {
                     color="primary"
                     className={classes.button}
                     onClick={this.handleButtonClick}
-                >
+                >      
                     {introContent[index].buttonText}
                 </Button>
             </div>;
@@ -99,8 +109,17 @@ class DatingQuestionHome extends React.Component {
         return (
             <div className={classes.background}>
                 <div className={classes.contentBackground}>
-                    {initialContent}
+                    {showDisplayQuestionaire ? <DataQuestionSetLayout /> : initialContent}
                 </div>
+                <Button
+                    variant="contained"
+                    color="secondary"
+                    className={classes.button}                    
+                    component={Link}
+                    to="/"
+                >
+                    {`Home`}
+                </Button>
             </div>
         )
     }

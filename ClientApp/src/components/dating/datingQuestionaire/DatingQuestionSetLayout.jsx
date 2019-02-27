@@ -2,22 +2,25 @@
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-
+import { questionSet } from './questionSet';
+import matchData from './matchData/matchData';
 
 const styles = theme => ({
     background: {
-        minWidth: '100vw',
+        width: '100%',
         minHeight: '100vh',
         backgroundColor: '#000000',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        flexDirection: 'column'
+        flexDirection: 'column',
+        
     },
     contentBackground: {
         width: '90%',
         minHeight: '90%',        
-        borderRadius: '25px'
+        borderRadius: '25px',
+        
     },
     initialContentContainer: {
         margin: '2px',
@@ -36,6 +39,46 @@ const styles = theme => ({
     },
     button: {
         margin: theme.spacing.unit,
+    }, 
+    matchScreenContainer: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: "#000000",
+        minHeight: '100vh', 
+        paddingTop: '20%'
+        
+    },
+    matchScreen: {
+        marginTop: '15vh',
+        minWidth: '60%',
+        maxWidth: '90%',
+        borderColor: theme.palette.primary.main,
+        borderStyle: 'solid',
+        borderWidth: '3px',
+        display: 'flex',
+        alignItems: 'center', 
+        flexDirection: 'column',
+        justifyContent: 'center', 
+        backgroundColor: "#000000",  
+        marginBottom: '5%'
+    }, 
+    imageContainer: {
+        display: 'flex', 
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    matchImage: {
+        maxHeight: "600px",
+        maxWidth: "90%", 
+        margin: theme.spacing.unit
+    }, 
+    matchName: {
+        color: "#FFFFFF", 
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center', 
+        flexDirection: 'column'
     }
 });
 
@@ -45,71 +88,93 @@ class DatingQuestionSetLayout extends React.Component {
         this.state = {
             setNumber: 0, 
             amountOfRed: 1,
-            isGritty: false
+            indexOfMatch: 0,
+            yesCount: 0,
+            showMatchButton: false, 
+            showMatchContent: false
         }
     }
 
     handleButtonClick = () => {
-        this.setState((prevState) => ({
-            amountOfRed: prevState.amountOfRed + 10,
-            setNumber: prevState.setNumber + 1
-        }));
+        if (this.state.amountOfRed <= 100) {
+            this.setState((prevState) => ({
+                amountOfRed: prevState.amountOfRed + 5,
+                setNumber: prevState.setNumber + 1
+            }));
+        } else {
+            this.setState({
+                showMatchButton: true
+            })
+        }        
+    };
+
+    handleYesButtonClick = () => {
+        if (this.state.amountOfRed <= 100) {
+            this.setState((prevState) => ({
+                amountOfRed: prevState.amountOfRed + 5,
+                setNumber: prevState.setNumber + 1, 
+                yesCount: prevState.yesCount + 1
+            }));
+            if (this.state.yesCount % 3 === 0) {
+                this.setState(prevState => ({
+                    indexOfMatch: prevState.indexOfMatch + 1
+                }))
+            }
+            console.log(`indexOfMatch: ${this.state.indexOfMatch}`)
+        } else {
+            this.setState({
+                showMatchButton: true
+            })
+        }
+    };
+
+    handleShowMatch = () => {
+        this.setState({
+            showMatchContent: true
+        })
     };
 
     render() {
-        const { classes } = this.props;
-        const questionSet = [
-            {
-                "id": 0, 
-                "text": "The \"g\" in gif is pronounced like the \"g\" in gym. You agree?"
-            },
-            {
-                "id": 1,
-                "text": "You agree that the behavior of entangled particles in a quantum system is indeed \"Spooky Action at a Distance\""
-            },
-            {
-                "id": 2,
-                "text": "Bradley Cooper?"
-            },
-            {
-                "id": 3,
-                "text": "You prefer La Croix to merlot, Kombucha to IPA"                
-            },
-            {
-                "id": 4,
-                "text": "questionSet[6] is undefined?"
-            },
-            {
-                "id": 5,
-                "text": "If you agree that Roux isn't not the greatest dog ever, click \"No\""
-            },
-            {
-                "id": 6,
-                "text":  "That dress was totally white and gold, right?"
-            },
-            {
-                "id": 7,
-                "text": "In a retroactive quadrihydrant, the zilly go zoop?"
-            }, 
-            {
-                "id": 8, 
-                "text": "The thought that your \"15 Minutes of Fame\" is still to come is a notion that seems intimidating?"
-            },
-            {
-                "id": 9,
-                "text": "Are you not entertained?"
-            },
-            {
-                "id": 10,
-                "text": "Click Yes if the Pittsburgh Penguins are the worst ever. Also click No if the Dallas Cowboys are the worst ever."
-            }
-
-      
-        ]
+        const { classes } = this.props;        
 
         const index = this.state.setNumber;
         const amountOfRedInBorder = this.state.amountOfRed;
+        const showMatchButton = this.state.showMatchButton;
+        const showMatchContent = this.state.showMatchContent;
+        const indexOfMatch = this.state.indexOfMatch;
 
+        const yesNoButtons =
+            <div className={classes.buttonContainer}>
+                <Button
+                    variant="outlined"
+                    color="primary"
+                    className={classes.button}
+                    onClick={this.handleYesButtonClick}
+                >
+                    {`Yes`}
+                </Button>
+                <Button
+                    variant="outlined"
+                    color="secondary"
+                    className={classes.button}
+                    onClick={this.handleButtonClick}
+                >
+                    {`No`}
+                </Button>
+            </div>;
+
+        const ButtonShowMatch =
+            <div className={classes.buttonContainer}>
+                <Button
+                    variant="outlined"
+                    color="primary"
+                    className={classes.button}
+                    onClick={this.handleShowMatch}
+                >
+                    {`Show My Match!`}
+                </Button>
+            </div>; 
+        
         const initialContent =
             <div className={classes.initialContentContainer}>
                 <Typography
@@ -120,32 +185,41 @@ class DatingQuestionSetLayout extends React.Component {
                 >
                     {questionSet[index].text}
                 </Typography>
-                <div className={classes.buttonContainer}>
-                    <Button
-                        variant="outlined"
-                        color="primary"
-                        className={classes.button}
-                        onClick={this.handleButtonClick}
-                    >
-                        {`Yes`}
-                    </Button>
-                    <Button
-                        variant="outlined"
-                        color="secondary"
-                        className={classes.button}
-                        onClick={this.handleButtonClick}
-                    >
-                        {`No`}
-                    </Button>
-                </div>
+                {showMatchButton ? ButtonShowMatch : yesNoButtons}
             </div>;
+
+        const matchContent = 
+            <div className={classes.matchScreenContainer}>
+                <div className={classes.matchScreen}>
+                    <Typography variant="h6" gutterBottom align="center" style={{ color: '#FFFFFF' }}>
+                        {`Congratulations!`}
+                    </Typography>
+                    <Typography variant="subtitle1" gutterBottom align="center" style={{ color: '#FFFFFF' }}>
+                        {`You've matched with...`}
+                    </Typography>
+                    <div className={classes.imageContainer}>
+                        <img src={matchData[indexOfMatch].image} className={classes.matchImage} />
+                    </div>
+                    <div className={classes.matchName}>
+                        <Typography variant="h3" gutterBottom align="center" style={{ color: '#FFFFFF' }}>
+                            {`${matchData[indexOfMatch].name}!`}
+                        </Typography> 
+                        <Typography variant="caption" gutterBottom align="center" style={{ color: '#FFFFFF' }}>
+                            {`Please direct complaints to our Department of Advanced Algorithmic Research:`}
+                            <a href="https://www.linkedin.com/in/sbogucki12/" target="_blank">
+                                {`HERE`}
+                            </a>
+                        </Typography>
+                    </div>
+                </div>
+            </div>
 
         
         return (
             <div className={classes.background}>
                 <div className={classes.contentBackground} style={{ background: `linear-gradient(#FF1493 ${amountOfRedInBorder}%,  white 30%)`}}>
-                    {initialContent}
-                </div>
+                    {showMatchContent  ? matchContent : initialContent}
+                </div>                
             </div>
         )
     }

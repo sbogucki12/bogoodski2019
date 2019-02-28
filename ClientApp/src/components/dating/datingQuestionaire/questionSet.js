@@ -5,7 +5,7 @@
     },
     {
         "id": 1,
-        "text": "You agree that the behavior of entangled particles in a quantum system is indeed \"Spooky Action at a Distance\""
+        "text": "You agree that the behavior of entangled particles in a quantum system is indeed \"Spooky Action at a Distance\"."
     },
     {
         "id": 2,
@@ -13,7 +13,7 @@
     },
     {
         "id": 3,
-        "text": "You prefer La Croix to merlot, Kombucha to IPA"
+        "text": "You prefer La Croix to merlot, Kombucha to IPA."
     },
     {
         "id": 4,
@@ -21,7 +21,7 @@
     },
     {
         "id": 5,
-        "text": "If you agree that Roux isn't not the greatest dog ever, click \"No\""
+        "text": "If you agree that Roux isn't not the greatest dog ever, click \"No\"."
     },
     {
         "id": 6,
@@ -49,7 +49,7 @@
     },
     {
         "id": 12,
-        "text": "You are interested in a senior FORTRAN developer position. 54 years of experience. Kloten, ND (Onsite. Locals Only.)"
+        "text": "You are interested in the position of: senior FORTRAN developer. 54 years of experience. Kloten, ND (Onsite. Locals Only)."
     },
     {
         "id": 13,

@@ -7,6 +7,7 @@ import MainWindowBlog from './MainWindowBlog';
 import Fab from '@material-ui/core/Fab';
 import MessageIcon from '@material-ui/icons/MessageTwoTone';
 import MainWindowRun from './MainWindowRun';
+import MainWindowDating from './MainWindowDating';
 
 const screenSize = window.screen.availWidth;
 let marginTop; 
@@ -26,8 +27,8 @@ const styles = theme => ({
         justifyContent: 'center', 
         flexDirection: 'column', 
         marginTop: marginTop,  
-        marginLeft: `2%`, 
-        marginRight: `2%`
+        marginLeft: '2%', 
+        marginRight: '2%'
     },
     fab: {
         margin: theme.spacing.unit *1,
@@ -69,6 +70,7 @@ class MainWindowMain extends React.Component {
                 <MainWindowResume />
                 <MainWindowBlog />
                 <MainWindowRun /> 
+                <MainWindowDating />
                 <MainWindowRoux /> 
                 {isContactBar ? <MainWindowContact toggleContact={this.toggleContact} /> : contactFab}
             </div>

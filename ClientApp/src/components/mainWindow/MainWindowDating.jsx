@@ -2,6 +2,7 @@
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import HeartIcon from '@material-ui/icons/FavoriteTwoTone';
+import { Link } from 'react-router-dom';
 
 const styles = theme => ({
     background: {
@@ -43,10 +44,13 @@ const styles = theme => ({
         display: 'flex',
         justifyContent: 'center', 
         alignItems: 'center', 
-        flexDirextion: 'column'
+        flexDirection: 'column',
+        fontFamily: `'Playfair Display', serif`,
+        fontSize: '3vh'
     },
     button: {
         margin: theme.spacing.unit,
+        backgroundImage: 'linear-gradient(to right, #FFB6C1, #FFFFFF)'
     }
 });
 
@@ -59,8 +63,15 @@ function MainWindowDating(props) {
                     <HeartIcon className={classes.heartIconStyle} />
                 </div>
                 <div className={classes.contentRightBox}>
-                    <Button variant="contained" className={classes.button}>
-                        {`DEFAULT`}
+                    {`(fake) Dating App`}
+                    <Button
+                        variant="contained"
+                        className={classes.button}
+                        size="small"
+                        component={Link}
+                        to="/dating/app"
+                    >
+                        {`Begin`}
                     </Button>
                 </div>
             </div>

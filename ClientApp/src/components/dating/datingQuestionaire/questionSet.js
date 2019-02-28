@@ -53,7 +53,7 @@
     },
     {
         "id": 13,
-        "text": "You follow @devBoGoodSki on twitter and Instragram."
+        "text": "You follow @devBoGoodSki on twitter and Instagram."
     },
     {
         "id": 14,

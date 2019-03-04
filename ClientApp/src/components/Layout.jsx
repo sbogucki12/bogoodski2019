@@ -17,8 +17,7 @@ import PotusLanding from './potus/PotusLanding';
 const styles = theme => ({
     root: {
         display: 'flex',        
-        alignItems: 'flex-start',        
-        backgroundImage: 'linear-gradient(#dcedc8 70%, #e4ff54)',
+        alignItems: 'flex-start',  
         minHeight: '100%'
     }
 });

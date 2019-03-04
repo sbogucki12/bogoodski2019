@@ -1,6 +1,7 @@
 ﻿import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import PotusBackgroundLeftBox from './PotusBackgroundLeftBox';
+import PotusBackgroundRightBox from './PotusBackgroundRightBox';
 
 const styles = theme => ({
     background: {
@@ -8,12 +9,10 @@ const styles = theme => ({
         minHeight: '100vh',
         display: 'flex', 
         flexDirection: 'row',
-        backgroundColor: theme.palette.background.default
+        backgroundColor: 'rgba(255,0,0,.08)'
     },
     backgroundRightBox: {
-        minHeight: '400px',
-        width: '70%',
-        backgroundColor: theme.palette.background.default
+        minHeight: '400px'  
     }
 });
 
@@ -23,7 +22,7 @@ function PotusDesktopLayout(props) {
         <div className={classes.background}>
             <PotusBackgroundLeftBox />
             <div className={classes.backgroundRightBox}>
-                {`BoGoodSki 2020`}
+                <PotusBackgroundRightBox />
             </div>
         </div>
         

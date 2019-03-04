@@ -1,12 +1,15 @@
 ﻿import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import PersonIcon from '@material-ui/icons/PersonTwoTone'
+import PotusBitmoji from './images/potusbitmoji.jpg';
 
 const styles = theme => ({
     backgroundLeftBox: {
         minHeight: '400px',
-        width: '30%',
-        background: 'linear-gradient(to bottom, rgb(255,0,0,.8), rgb(255,255,255,.5))'        
+        width: '25%',
+        background: 'linear-gradient(to top, rgb(0,0,255,.9), rgb(255,255,255,.5))', 
+        borderRightStyle: 'solid',
+        borderRightWidth: 2,
+        borderRightColor: 'rgba(0,255,0,.2)'
     }, 
     topBox: {
         minHeight: '70%', 
@@ -20,7 +23,19 @@ const styles = theme => ({
         justifyContent: 'center', 
         flexDirection: 'column', 
         alignItems: 'center', 
-        color: 'rgb(0,0,255)'
+        color: 'rgb(0,0,255)', 
+        fontFamily: `'Lobster', cursive`, 
+        color: '#FFFFFF', 
+        textShadow: '1px 1px #000000, 2px 2px #00FF00', 
+        fontSize: '5vh'
+    }, 
+    bitmoji: {
+        height: 300,
+        borderWidth: 1, 
+        borderStyle: 'solid',
+        borderColor: '#009900',
+        borderRadius: '25%', 
+        boxShadow: '3px 1px 5px #00FF00'
     }
 });
 
@@ -29,7 +44,7 @@ function PotusBackgroundLeftBox(props) {
     return (
         <div className={classes.backgroundLeftBox}>
             <div className={classes.topBox}>
-                <PersonIcon style={{ fontSize: '50vh' }}/>
+                <img src={PotusBitmoji} className={classes.bitmoji} />
             </div>
             <div className={classes.bottomBox}>
                 <div>
@@ -39,7 +54,6 @@ function PotusBackgroundLeftBox(props) {
                     {`2020`}
                 </div>
             </div>
-
         </div>
     )
 }

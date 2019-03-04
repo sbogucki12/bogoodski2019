@@ -10,25 +10,28 @@ import MainWindowRun from './MainWindowRun';
 import MainWindowDating from './MainWindowDating';
 
 const screenSize = window.screen.availWidth;
-let marginTop; 
+let paddingTop; 
 if (screenSize <= 320)  {
-    marginTop = '25vh';
+    paddingTop = '25vh';
 } else if (screenSize > 320 && screenSize < 415) {
-    marginTop = '20vh';
+    paddingTop = '20vh';
 } else {
-    marginTop = '10vh';
+    paddingTop = '10vh';
 };
 
 const styles = theme => ({
+    background: {
+        background: 'linear-gradient(#dcedc8 70%, #e4ff54)'       
+    },
     root: {        
         paddingTop: theme.spacing.unit * 2,
         paddingBottom: theme.spacing.unit * 2,
         display: 'flex',
         justifyContent: 'center', 
-        flexDirection: 'column', 
-        marginTop: marginTop,  
+        flexDirection: 'column',
         marginLeft: '2%', 
-        marginRight: '2%'
+        marginRight: '2%',
+        paddingTop: paddingTop
     },
     fab: {
         margin: theme.spacing.unit *1,
@@ -66,14 +69,17 @@ class MainWindowMain extends React.Component {
                 </Fab >
 
         return (
-            <div className={classes.root} >
-                <MainWindowResume />
-                <MainWindowBlog />
-                <MainWindowRun /> 
-                <MainWindowDating />
-                <MainWindowRoux /> 
-                {isContactBar ? <MainWindowContact toggleContact={this.toggleContact} /> : contactFab}
+            <div className={classes.background}>
+                <div className={classes.root} >
+                    <MainWindowResume />
+                    <MainWindowBlog />
+                    <MainWindowRun /> 
+                    <MainWindowDating />
+                    <MainWindowRoux /> 
+                    {isContactBar ? <MainWindowContact toggleContact={this.toggleContact} /> : contactFab}
+                </div>
             </div>
+
         );
     }
 }

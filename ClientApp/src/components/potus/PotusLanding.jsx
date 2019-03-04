@@ -40,7 +40,7 @@ const styles = theme => ({
     },
     contentBox: {
         marginTop: '25vh',
-        width: '70%'        
+        width: '70%',         
     },
     logoBox: {
         display: 'flex',
@@ -104,13 +104,13 @@ class PotusLanding extends React.Component {
         }
 
         let backgroundFont = `'Lobster', cursive`;
-        let fontSize = '10vw';
+        let fontSize = '8vw';
         let contentBoxHeight = '400px';
 
         if (this.state.screenNumber != 0) {
             backgroundFont = `'Roboto', sans-serif`;
             fontSize = '4vw';            
-            contentBoxHeight = '200px'
+            contentBoxHeight = '400px'
         };
 
         const index = this.state.screenNumber;

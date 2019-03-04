@@ -10,15 +10,22 @@ const styles = theme => ({
         alignItems: 'flex-start', 
         color: '#000000',
         ...theme.mixins.gutters(),
-        paddingTop: theme.spacing.unit * 2,
+        paddingTop: theme.spacing.unit * 1,        
         paddingBottom: theme.spacing.unit * 2,
-        margin: theme.spacing.unit
+        margin: theme.spacing.unit,
+        marginTop: '9%'       
     }, 
     thinkStyle: {
-        fontSize: '4vh'
+        fontSize: '4vh',
+        fontFamily: `'News Cycle', sans-serif`, 
+        margin: 0, 
+        padding: 0
     },
     biggerStyle: {
-        fontSize: '6vh'
+        fontSize: '6vh',
+        fontFamily: `'News Cycle', sans-serif`,
+        margin: 0, 
+        padding: 0
     }
 });
 

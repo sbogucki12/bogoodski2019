@@ -16,25 +16,25 @@ const styles = theme => ({
         display: 'flex', 
         paddingTop: '18vh',
         justifyContent: 'center',        
-    }, 
+    },
+    bitmoji: {
+        height: 300,
+        borderWidth: 1,
+        borderStyle: 'solid',
+        borderColor: '#009900',
+        borderRadius: '25%',
+        boxShadow: '3px 1px 5px #00FF00'
+    },
     bottomBox: {       
         display: 'flex', 
         justifyContent: 'center', 
         flexDirection: 'column', 
         alignItems: 'center', 
         color: 'rgb(0,0,255)', 
-        fontFamily: `'Lobster', cursive`, 
+        fontFamily: `'Bangers', cursive`, 
         color: '#FFFFFF', 
         textShadow: '1px 1px #000000, 2px 2px #00FF00', 
         fontSize: '5vh'
-    }, 
-    bitmoji: {
-        height: 300,
-        borderWidth: 1, 
-        borderStyle: 'solid',
-        borderColor: '#009900',
-        borderRadius: '25%', 
-        boxShadow: '3px 1px 5px #00FF00'
     }
 });
 

@@ -4,7 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import Meme from "./images/dasharezone.jpg";
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
-
+import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
     root: {
@@ -39,13 +39,13 @@ function PotusMeme(props) {
             <div>
                 <img src={Meme} alt="daShareZ0ne" className={classes.meme} />
             </div>
-            <div>
+            <Typography variant="caption" gutterBottom>
                 {`You should follow `}
                 <a href="https://twitter.com/dasharez0ne" target="_blank">
                     {`daSharez0ne`}
                 </a>
                 {` on twitter. Also, you probably shouldn't.`}
-            </div>
+            </Typography>
             <div className={classes.buttonContainer}>
                 <Button variant="outlined" color="secondary" className={classes.button} component={Link} to="/">
                     {`BoGoodSki 2020`}

@@ -4,21 +4,20 @@ import PotusBitmoji from './images/potusbitmoji.jpg';
 
 const styles = theme => ({
     backgroundLeftBox: {
-        minHeight: '400px',
-        width: '25%',
-        background: 'linear-gradient(to top, rgb(0,0,255,.9), rgb(255,255,255,.5))', 
+        minHeight: '400px',        
+        background: 'linear-gradient(to bottom, rgb(0,0,255,.9), rgb(255,255,255,1))', 
         borderRightStyle: 'solid',
         borderRightWidth: 2,
-        borderRightColor: 'rgba(0,255,0,.2)'
+        borderRightColor: 'rgba(0,255,0,.2)',
+        minWidth: '15%'
     }, 
     topBox: {
         minHeight: '70%', 
         display: 'flex', 
-        paddingTop: '20%',
+        paddingTop: '18vh',
         justifyContent: 'center',        
     }, 
-    bottomBox: {
-        minWidth: '100%',
+    bottomBox: {       
         display: 'flex', 
         justifyContent: 'center', 
         flexDirection: 'column', 

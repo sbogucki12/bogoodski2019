@@ -14,7 +14,8 @@ const styles = theme => ({
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'column', 
-        maxWidth: '90%',         
+        maxWidth: '90%', 
+        
     },
     realCliffs: {
         fontSize: '5vh'

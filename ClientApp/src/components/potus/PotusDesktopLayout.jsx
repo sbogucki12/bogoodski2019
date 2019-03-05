@@ -5,14 +5,14 @@ import PotusBackgroundRightBox from './PotusBackgroundRightBox';
 
 const styles = theme => ({
     background: {
-        minWidth: '100vw',
-        minHeight: '100vh',
+        minWidth: '100vw',        
         display: 'flex', 
         flexDirection: 'row',
-        backgroundColor: 'rgba(255,0,0,.08)'
+        backgroundColor: 'rgba(0,0,255,1)', 
+        minHeight: '100vh'
     },
     backgroundRightBox: {
-        minHeight: '400px'  
+        
     }
 });
 

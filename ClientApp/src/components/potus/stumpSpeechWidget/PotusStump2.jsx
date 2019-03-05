@@ -10,37 +10,37 @@ const styles = theme => ({
         ...theme.mixins.gutters(),
         paddingTop: theme.spacing.unit * 2,
         paddingBottom: theme.spacing.unit * 2,
-        width: '800px',
-        height: '400px',
+        width: '65vw',
+        height: '350px',
         display: 'flex',
         justifyContent: 'center',
-        flexDirection: 'column'
+        flexDirection: 'column',         
     },
     buttonContainer: {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center'
     },
-    button: {
-        margin: theme.spacing.unit,
-        fontSize: '8vh'
-    }        
+    button: {        
+        fontSize: '8vh',
+        marginTop: '7%'
+    }    
 });
 
-function PotusStump3(props) {
+function PotusStump2(props) {
     const { classes } = props;
     return (
         <Paper className={classes.root}>
             <Typography variant="body1" gutterBottom>
-                {`Every time the United States fails to take on its most daunting challenges – healthcare for all its people, improvement of its crumbling infrastructure, properly resourcing its educational system, slowing climate change, and on – because the solutions “cost too much” or “they aren’t American!” or because “the politics aren’t right”, we display a lack of courage that spits in the face of our ancestors who never allow meager challenges deter them from solving the massive ones. And betrays the promises we make to those willing to sacrifice on our behalf.`}
+                {`(A land of memes so great their message transcends eternally from Slashdot to reddit, through digg, 4chan, and StumbleUpon)...`}
             </Typography>
             <div className={classes.buttonContainer}>
                 <Button variant="outlined" color="secondary" className={classes.button} onClick={props.onNext}>
-                    {`👀`}
+                    {`🦅`}
                 </Button>
             </div>
         </Paper>
     )
 }
 
-export default withStyles(styles)(PotusStump3);
+export default withStyles(styles)(PotusStump2);

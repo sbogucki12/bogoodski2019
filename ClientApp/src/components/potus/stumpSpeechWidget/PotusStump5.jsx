@@ -10,37 +10,48 @@ const styles = theme => ({
         ...theme.mixins.gutters(),
         paddingTop: theme.spacing.unit * 2,
         paddingBottom: theme.spacing.unit * 2,
-        width: '800px',
-        height: '400px',
+        width: '90%',
+        height: '350px',
         display: 'flex',
         justifyContent: 'center',
-        flexDirection: 'column',         
+        flexDirection: 'column'
+    }, 
+    punchline: {
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center',
+        margin: theme.spacing.unit
     },
     buttonContainer: {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center'
     },
-    button: {        
-        fontSize: '8vh',
-        marginTop: '7%'
-    }    
+    button: {
+        margin: theme.spacing.unit,
+        fontSize: '8vh'
+    }          
 });
 
-function PotusStump2(props) {
+function PotusStump5(props) {
     const { classes } = props;
     return (
         <Paper className={classes.root}>
             <Typography variant="body1" gutterBottom>
-                {`(A land of memes so great their message transcends eternally from Slashdot to reddit, through digg, 4chan, and StumbleUpon)...`}
+                {`I truly believe that our world can become one of universal prosperity, peace, and technological advancement far beyond what we settle for today.  And the United States of America can lead us there.`}
             </Typography>
+            <div className={classes.punchline}>
+                <Typography variant="body1" gutterBottom>
+                    {`But only if we dare to think BIGGER.`}
+                </Typography>
+            </div>
             <div className={classes.buttonContainer}>
                 <Button variant="outlined" color="secondary" className={classes.button} onClick={props.onNext}>
-                    {`🦅`}
+                    {`🌎`}
                 </Button>
             </div>
         </Paper>
     )
 }
 
-export default withStyles(styles)(PotusStump2);
+export default withStyles(styles)(PotusStump5);

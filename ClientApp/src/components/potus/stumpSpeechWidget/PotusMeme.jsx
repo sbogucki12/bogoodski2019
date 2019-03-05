@@ -1,9 +1,8 @@
 ﻿import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
-import Meme from "./images/dasharezone.jpg";
+import Meme from "../images/dasharezone.jpg";
 import Button from '@material-ui/core/Button';
-import { Link } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
@@ -12,15 +11,23 @@ const styles = theme => ({
         ...theme.mixins.gutters(),
         paddingTop: theme.spacing.unit * 2,
         paddingBottom: theme.spacing.unit * 2,
-        maxWidth: '70%', 
+        width: '64vw',
         display: 'flex', 
         alignItems: 'center', 
         justifyContent: 'center', 
-        flexDirection: 'column'
+        flexDirection: 'column', 
+        marginTop: '10%',
+        marginBottom: '2%',
+        
     }, 
+    memeContainer: {
+        display: 'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center'
+    },
     meme: {
-        maxWidth: '100%', 
-        maxHeight: '70%'
+        maxWidth: '80%', 
+        maxHeight: '400px'
     },
     buttonContainer: {
         display: 'flex',
@@ -36,7 +43,7 @@ function PotusMeme(props) {
     const { classes } = props;
     return (
         <Paper className={classes.root}>
-            <div>
+            <div className={classes.memeContainer}>
                 <img src={Meme} alt="daShareZ0ne" className={classes.meme} />
             </div>
             <Typography variant="caption" gutterBottom>
@@ -47,7 +54,7 @@ function PotusMeme(props) {
                 {` on twitter. Also, you probably shouldn't.`}
             </Typography>
             <div className={classes.buttonContainer}>
-                <Button variant="outlined" color="secondary" className={classes.button} component={Link} to="/">
+                <Button variant="outlined" color="secondary" className={classes.button} onClick={props.onHome}>
                     {`BoGoodSki 2020`}
                 </Button>
             </div>

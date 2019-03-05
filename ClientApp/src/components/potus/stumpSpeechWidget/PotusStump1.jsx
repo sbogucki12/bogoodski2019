@@ -10,8 +10,8 @@ const styles = theme => ({
         ...theme.mixins.gutters(),
         paddingTop: theme.spacing.unit * 2,
         paddingBottom: theme.spacing.unit * 2,
-        width: '800px',
-        height: '400px',
+        width: '90%',
+        height: '350px',
         display: 'flex', 
         justifyContent: 'center', 
         flexDirection: 'column'

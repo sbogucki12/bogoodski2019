@@ -5,27 +5,24 @@
 
 **In Progress** 
 
-<p>This is what the feature on the imageLoader branch looks like, so far (as of Feb. 8, 2019):</p>
-
-
-Embedded gif is too long for GitHub, but you can view it here: 
-
-[Currently in Progress Feb. 8 2019](http://g.recordit.co/PFLFl6WB7h.gif)
+<p>This is what the feature on the chat branch looks like, so far (as of Mar. 6, 2019):</p>
 
 
 
 
-
-**Day Three**
-
-
-![Main Window](https://media.giphy.com/media/5hd957SElM6qRMYrUC/giphy.gif  "Resume Component Soon")
+![Currently in Progress Mar. 6 2019](https://i.imgur.com/bXdU92y.jpg)
 
 
-**Day Two** 
+
+![Currently in Progress Mar. 6 2019](https://i.imgur.com/j1pxvIU.jpg)
 
 
-![Roux Component](https://media.giphy.com/media/t5YniwfzGllDAiFuL4/giphy.gif "Roux Component")
+
+
+![Currently in Progress Mar. 6 2019](https://i.imgur.com/U43fgAK.jpg)
+
+
+
 
 
 

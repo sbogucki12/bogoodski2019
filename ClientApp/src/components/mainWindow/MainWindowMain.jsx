@@ -8,6 +8,7 @@ import Fab from '@material-ui/core/Fab';
 import MessageIcon from '@material-ui/icons/MessageTwoTone';
 import MainWindowRun from './MainWindowRun';
 import MainWindowDating from './MainWindowDating';
+import MainWindowChat from './MainWindowChat';
 
 const screenSize = window.screen.availWidth;
 let paddingTop; 
@@ -72,6 +73,7 @@ class MainWindowMain extends React.Component {
             <div className={classes.background}>
                 <div className={classes.root} >
                     <MainWindowResume />
+                    <MainWindowChat />
                     <MainWindowBlog />
                     <MainWindowRun /> 
                     <MainWindowDating />

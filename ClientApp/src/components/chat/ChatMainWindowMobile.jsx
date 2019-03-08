@@ -8,44 +8,49 @@ import { Link } from 'react-router-dom';
 
 const styles = theme => ({
     root: {
-        minWidth: '100%',
+        minWidth: '95%',
         minHeight: '100%',
         backgroundColor: theme.palette.secondary.main,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        flexDirection: 'row',
+        flexDirection: 'column',
         borderWidth: '1px',
         borderStyle: 'solid',
         borderColor: theme.palette.primary.main
     },
     chatBitmoji: {
         maxWidth: '225px',
-        maxHeight: '90%',
+        maxHeight: '40%',
         margin: theme.spacing.unit * 1,
         borderWidth: '1px',
         borderColor: theme.palette.primary.main,
         borderStyle: "solid",
         borderRadius: "15%"
     },
-    middleBox: {
+    arrowBox: {
         minHeight: '100%',
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        flexDirection: 'row'
     },
     icon: {
         textShadow: '2px 2px #000000',
         fontSize: '15vh',
         color: theme.palette.primary.main,
+        margin: theme.spacing.unit
     },
-    rightBox1: {
-        minHeight: '100%',
+    topBox: {
+        maxWidth: '98%',
         backgroundColor: "#FFFFFF",
-        boxShadow: `0 0 0 2px #000000, 0 0 0 4px #008811`
+        boxShadow: `0 0 0 2px #000000, 0 0 0 4px #008811`,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
     },
-    rightBox2: {
-        minHeight: '100%',
+    bottomBox: {
+        minWidth: '100%',
         display: 'flex',
         justifyContent: 'flex-start',
         alignItems: 'center',
@@ -63,11 +68,11 @@ const styles = theme => ({
     },
 });
 
-class ChatMainWindowDesktop extends React.Component {
+class ChatMainWindowMobile extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isOnline: false
+            isOnline: true
         }
     }
 
@@ -94,28 +99,26 @@ class ChatMainWindowDesktop extends React.Component {
         return (
             <div className={classes.root}>
                 <img src={ChatBitmoji} alt="Greeting Bitmoji" className={classes.chatBitmoji} />
-                <div className={classes.middleBox}>
-                    <Icon className={classes.icon}>
-                        arrow_right_alt
-                    </Icon>
-                </div>
-                <div className={classes.rightBox1}>
-                    <Typography variant="subtitle2" gutterBottom className={classes.text}>
+                <div className={classes.topBox}>
+                    <Typography variant="caption" gutterBottom className={classes.text} align="center">
                         {`I am currently`}
                     </Typography>
-                    <Typography variant="subtitle2" gutterBottom className={classes.text} style={{ color: `${styleColor}` }}>
+                    <Typography variant="caption" gutterBottom className={classes.text} style={{ color: `${styleColor}` }} align="center">
                         {`${not} Online.`}
                     </Typography>
-                    <Typography variant="subtitle2" gutterBottom className={classes.text}>
+                    <Typography variant="caption" gutterBottom className={classes.text} align="center">
                         {`When I am, you can send me an instant message here.`}
                     </Typography>
                 </div>
-                <div className={classes.middleBox}>
+                <div className={classes.arrowBox}>
                     <Icon className={classes.icon}>
-                        arrow_right_alt
-                </Icon>
+                        arrow_downward
+                    </Icon>
+                    <Icon className={classes.icon}>
+                        arrow_downward
+                    </Icon>
                 </div>
-                <div className={classes.rightBox2} >
+                <div className={classes.bottomBox} >
                     <Button variant="outlined" color="primary" disabled={disabled} className={classes.button}>
                         {`Chat`}
                     </Button>
@@ -125,4 +128,4 @@ class ChatMainWindowDesktop extends React.Component {
     }
 }
 
-export default withStyles(styles)(ChatMainWindowDesktop);
+export default withStyles(styles)(ChatMainWindowMobile);

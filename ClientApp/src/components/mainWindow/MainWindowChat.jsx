@@ -20,24 +20,40 @@ class MainWindowChat extends React.Component {
         super(props);
 
         this.state = {
+            screenSize: 0,
             isMobile: true,
             isOnline: false
-        }
+        }        
+
+        window.addEventListener('resize', this.setDeviceSize);
     }
 
-    componentDidMount() {
-        const availWidth = window.screen.availWidth;
+    setDeviceSize = () => {
+        this.setState({
+            screenSize: window.innerWidth
+        })
+
+        const width = this.state.screenSize;
         const desktopMinimum = 620;
 
-        if (availWidth > desktopMinimum) {
+        if (width > desktopMinimum) {           
             this.setState({
                 isMobile: false
             })
         } else {
+            console.log(width);
             this.setState({
                 isMobile: true
             })
         }
+    };
+    
+    componentDidMount() {        
+        this.setDeviceSize(); 
+    };
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.setDeviceSize);
     }
 
     render() {

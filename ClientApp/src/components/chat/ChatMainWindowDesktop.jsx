@@ -41,6 +41,7 @@ const styles = theme => ({
     },
     rightBox1: {
         minHeight: '100%',
+        maxHeight: '100%',
         backgroundColor: "#FFFFFF",
         boxShadow: `0 0 0 2px #000000, 0 0 0 4px #008811`
     },

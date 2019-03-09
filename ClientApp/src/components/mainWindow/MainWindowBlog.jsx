@@ -3,17 +3,14 @@ import { withStyles } from '@material-ui/core/styles';
 import BlogMainWindowDesktop from '../blog/BlogMainWindowDesktop';
 import BlogMainWindowMobile from '../blog/BlogMainWindowMobile';
 
-const screenSize = window.screen.availWidth;
-const mobileMaxWidth = 479; 
-
 const styles = {
-    root: {        
+    root: {
         display: 'flex',
         justifyContent: 'center',
         flexDirection: 'column',
-        backgroundColor: "black", 
-        width: '100%', 
-        marginBottom: `2%`, 
+        backgroundColor: "black",
+        width: '100%',
+        marginBottom: `2%`,
         color: `#dcedc8`
     }
 };
@@ -22,33 +19,45 @@ class MainWindowBlog extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            mobile: false
-        }        
+            mobile: false,
+            screenSize: window.innerWidth
+        }
+        window.addEventListener('resize', this.getWinSize);
+    };
+
+    getWinSize = () => {
+        this.setState({
+            screenSize: window.innerWidth
+        });
+
+        const screenSize = this.state.screenSize;
+        const mobileMaxWidth = 479;
+
+        if (screenSize > mobileMaxWidth) {
+            this.setState({
+                mobile: false
+            })
+        } else {
+            this.setState({
+                mobile: true
+            })
+        }
     };
 
     componentDidMount() {
-        const getWinSize = () => {            
-            if (screenSize > mobileMaxWidth) {
-                this.setState({
-                    mobile: false
-                })
-            } else {
-                this.setState({
-                    mobile: true
-                })
-            }
-        };
+        this.getWinSize();
+    };
 
-        getWinSize();
-
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.getWinSize);
     };
 
     render() {
         const { classes } = this.props;
-        const isMobile = this.state.mobile; 
+        const isMobile = this.state.mobile;
 
         const content =
-            isMobile ? <BlogMainWindowMobile /> : <BlogMainWindowDesktop />;                      
+            isMobile ? <BlogMainWindowMobile /> : <BlogMainWindowDesktop />;
 
         return (
             <div className={classes.root}>

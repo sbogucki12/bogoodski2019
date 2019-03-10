@@ -20,7 +20,7 @@ class MainWindowChat extends React.Component {
         super(props);
 
         this.state = {
-            screenSize: 0,
+            screenSize: window.innerWidth,
             isMobile: true,
             isOnline: false
         }        

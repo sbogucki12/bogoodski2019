@@ -72,8 +72,20 @@ class ChatMainWindowMobile extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isOnline: true
+            isOnline: ""
         }
+    }
+
+    componentDidMount() {
+        fetch("http://localhost:62236/api/chat/isonline")
+            .then(res => res.json())
+            .then(data => data.isOnline)
+            .then(onlineStatus => {
+                this.setState({
+                    isOnline: onlineStatus
+                })
+            })
+            .catch(err => console.error(err));
     }
 
     render() {
@@ -86,7 +98,8 @@ class ChatMainWindowMobile extends React.Component {
         const green = "#00AA33";
         const red = "#AA3333";
 
-        if (isOnline) {
+        {console.log(isOnline)}
+        if (isOnline === "yes") {
             styleColor = green;
             not = '';
             disabled = false;

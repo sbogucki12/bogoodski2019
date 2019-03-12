@@ -5,12 +5,38 @@
 
 **In Progress** 
 
-<p>This is what the feature on the imageLoader branch looks like, so far (as of Feb. 8, 2019):</p>
 
 
-Embedded gif is too long for GitHub, but you can view it here: 
 
-[Currently in Progress Feb. 8 2019](http://g.recordit.co/PFLFl6WB7h.gif)
+
+
+This is what is currently being built on the chat branch (using SignalR), as of Mar. 11, 2019:
+
+
+
+
+
+
+
+![Imgur](https://i.imgur.com/0ov78tf.gifv)
+
+
+
+
+
+
+If embedded gif is too long for GitHub, but you can view it here: 
+
+
+
+
+
+[Currently in Progress Mar. 11, 2019](https://i.imgur.com/0ov78tf.gifv)
+
+
+
+
+
 
 
 

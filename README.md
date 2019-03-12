@@ -18,7 +18,7 @@ This is what is currently being built on the chat branch (using SignalR), as of 
 
 
 
-![Imgur](https://i.imgur.com/0ov78tf.gifv)
+![Imgur](https://i.imgur.com/0ov78tf.gif)
 
 
 
@@ -31,7 +31,7 @@ If embedded gif is too long for GitHub, but you can view it here:
 
 
 
-[Currently in Progress Mar. 11, 2019](https://i.imgur.com/0ov78tf.gifv)
+[Currently in Progress Mar. 11, 2019](https://i.imgur.com/0ov78tf.gif)
 
 
 

@@ -2,6 +2,7 @@
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import * as signalR from '@aspnet/signalr';
+import update from 'react-addons-update';
 
 const styles = theme => ({
     root: {
@@ -30,17 +31,19 @@ const connection = new signalR.HubConnectionBuilder()
     .configureLogging(signalR.LogLevel.Information)
     .build();
 
-connection.start().then(() => {
-    console.log("connected");
-})
+connection.start()
+    .then(() => { console.log("connected") })
+    .catch(err => console.log(err))
 
-class ChatRoot extends React.Component {
+let chatMessages;
+
+class ChatTemplate extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             message: "",
             name: "",
-            incomingMessage: ""
+            incomingMessageList: ["",""]
         }
     }
 
@@ -70,23 +73,34 @@ class ChatRoot extends React.Component {
 
     handleClear = () => {
         this.setState({
-            incomingMessage: ""
+            incomingMessageList: []
         })
     }
 
-    componentDidMount() {
-        let encodedMessage;
+    componentDidMount() {        
         connection.on("ReceiveMessage", (user, message) => {
-            encodedMessage = `${user} says ${message}`;
+            let encodedMessage = <li key={message}> <b>{`${user}`}</b>{`: ${message}`} </li>;
+            let newArray = update(this.state.incomingMessageList, {$push: [encodedMessage] })
             this.setState({
-                incomingMessage: encodedMessage
+                incomingMessageList: newArray
             })
         })
+       
+    }
+
+    componentWillUnmount() {
+        connection.stop()
+            .then(() => {
+                console.log("connection stopped")
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 
     render() {
         const { classes } = this.props;
-        const message = this.state.incomingMessage
+        const chatMessages = this.state.incomingMessageList;
         return (
             <div className={classes.root}>
                 <div className={classes.container}>
@@ -105,8 +119,11 @@ class ChatRoot extends React.Component {
                         </button>
                     </div>
                     <div>
-                        <p>{`Incoming Messages:`}</p>
-                        {message}
+                        <p>{`Chat:`}</p>
+                        
+                        <ul>
+                            {chatMessages}
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -114,4 +131,4 @@ class ChatRoot extends React.Component {
     }
 }
 
-export default withStyles(styles)(ChatRoot);
+export default withStyles(styles)(ChatTemplate);

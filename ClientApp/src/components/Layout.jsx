@@ -13,7 +13,8 @@ import BlogPostLayout from './blog/posts/BlogPostLayout';
 import DatingQuestionSetLayout from './dating/datingQuestionaire/DatingQuestionSetLayout';
 import PotusDesktopLayout from './potus/PotusDesktopLayout';
 import PotusLanding from './potus/PotusLanding';
-import ChatRoot from './chat/ChatRoot';
+import ChatTemplate from './chat/ChatTemplate';
+import ChatHome from './chat/ChatHome';
 
 const styles = theme => ({
     root: {
@@ -34,7 +35,8 @@ class Layout extends Component {
                     <TopBar className="sticky" />                    
                     <Router>
                         <div>
-                            <Route exact path="/chat/home" component={ChatRoot} />
+                            <Route exact path="/chat/home" component={ChatHome} />
+                            <Route exact path="/chat/template" component={ChatTemplate} />
                             <Route exact path="/potus/home" component={PotusDesktopLayout} />
                             <Route exact path="/potus/intro" component={PotusLanding} />
                             <Route exact path="/dating/getyourmatch" component={DatingQuestionSetLayout} />

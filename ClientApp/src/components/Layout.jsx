@@ -15,6 +15,7 @@ import PotusDesktopLayout from './potus/PotusDesktopLayout';
 import PotusLanding from './potus/PotusLanding';
 import ChatTemplate from './chat/ChatTemplate';
 import ChatHome from './chat/ChatHome';
+import ChatUserLogin from './chat/ChatUserLogin';
 
 const styles = theme => ({
     root: {
@@ -35,7 +36,8 @@ class Layout extends Component {
                     <TopBar className="sticky" />                    
                     <Router>
                         <div>
-                            <Route exact path="/chat/home" component={ChatHome} />
+                            <Route exact path="/chat/home" component={ChatUserLogin} />
+                            <Route exact path="/chat/room" component={ChatHome} />
                             <Route exact path="/chat/template" component={ChatTemplate} />
                             <Route exact path="/potus/home" component={PotusDesktopLayout} />
                             <Route exact path="/potus/intro" component={PotusLanding} />

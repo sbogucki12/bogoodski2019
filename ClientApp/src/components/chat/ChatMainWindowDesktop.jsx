@@ -73,7 +73,7 @@ class ChatMainWindowDesktop extends React.Component {
     }
 
     componentDidMount() {       
-        fetch("http://localhost:62236/api/demo/isonline")
+        fetch("/api/chat/isonline")
             .then(res => res.json())
             .then(data => data.isOnline)            
             .then(onlineStatus => {
@@ -130,7 +130,14 @@ class ChatMainWindowDesktop extends React.Component {
                 </Icon>
                 </div>
                 <div className={classes.rightBox2} >
-                    <Button variant="outlined" color="primary" disabled={disabled} className={classes.button}>
+                    <Button
+                        variant="outlined"
+                        color="primary"
+                        disabled={disabled}
+                        className={classes.button}
+                        component={Link}
+                        to="/chat/home"
+                    >
                         {`Chat`}
                     </Button>
                 </div>

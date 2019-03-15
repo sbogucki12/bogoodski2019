@@ -9,14 +9,17 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/Inbox';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+
 
 const styles = theme => ({
     root: {
         minWidth: '100vw',
         minHeight: '100vh',
-        display: 'flex', 
-        alignItems: 'center', 
-        justifyContent: 'center', 
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
         backgroundColor: theme.palette.secondary.main
     },
     paperRoot: {
@@ -25,10 +28,10 @@ const styles = theme => ({
         paddingBottom: theme.spacing.unit * 2,
         marginTop: '18vh',
         width: '95%',
-        display: 'flex', 
-        alignItems: 'center', 
+        display: 'flex',
+        alignItems: 'center',
         justifyContent: 'center',
-        flexDirection: 'column',         
+        flexDirection: 'column',
     },
     box: {
         ...theme.mixins.gutters(),
@@ -40,30 +43,59 @@ const styles = theme => ({
         justifyContent: 'center',
         flexDirection: 'column',
         marginTop: '2vh'
-    }, 
+    },
     chatMessages: {
         display: 'flex',
         justifyContent: 'flexStart',
-        alignItems: 'center', 
+        alignItems: 'center',
         flexDirection: 'column'
-    }, 
+    },
     chatBox: {
-        width: '99%', 
+        width: '99%',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'column',
         marginTop: '2vh'
-    }, 
+    },
     chatBorder: {
         borderStyle: 'solid',
         borderSize: '3px',
         borderColor: theme.palette.primary.main,
         borderRadius: '5%',
-        width: '95%', 
+        width: '95%',
         minHeight: '300px',
-        marginTop: '2vh', 
+        marginTop: '2vh',
         marginBottom: '2vh'
+    }, 
+    messageBox: {
+        width: '99%',
+        display: 'flex', 
+        flexDirection: 'row', 
+        justifyContent: 'center', 
+        alignItems: 'center',
+        marginTop: '2vh'
+    },
+    messageContainer: {
+        width: '100%',
+        display: 'flex', 
+        justifyContent: 'space-between',
+        alignItems: 'center'
+    },
+    userName: {
+        display: 'flex', 
+        justifyContent: 'flex-start', 
+        alignItems: 'center', 
+        marginLeft: theme.spacing.unit
+    },
+    textField: {
+        display: 'flex',
+        alignItems: 'center', 
+        justifyContent: 'flex-start',
+        minWidth: '600px'
+    },
+    button: {
+        margin: theme.spacing.unit
     }
 });
 
@@ -77,47 +109,40 @@ connection.start()
     .then(() => { console.log("connected") })
     .catch(err => console.log(err))
 
+
+
 class ChatHome extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             message: "",
-            name: "",
-            incomingMessageList: ["", ""]
+            incomingMessageList: [], 
         }
     }
 
-    handleName = (e) => {
-        e.preventDefault();
-        this.setState({
-            name: e.target.value
-        })
+    handleChange = name => event => {
+        event.preventDefault();
+        this.setState({ [name]: event.target.value });
     };
 
-    handleMessage = (e) => {
-        e.preventDefault();
-        this.setState({
-            message: e.target.value
-        })
-    };
-
-    handleSubmit = () => {
-        const user = this.state.name;
+    handleSubmit = () => {        
         const message = this.state.message;
-
+        let user;
+        if (!this.props.location.state) {
+            user = "Anonymous User"
+        } else {
+            user = this.props.location.state.userName;
+        }
         connection.invoke("SendMessage", user, message)
             .catch((err) => {
                 console.error(err.toString());
             })
+        this.setState({
+            message: ""
+        });
     };
 
-    handleClear = () => {
-        this.setState({
-            incomingMessageList: []
-        })
-    }
-
-    componentDidMount() {
+    componentDidMount() {        
         connection.on("ReceiveMessage", (user, message) => {
             let encodedMessage =
                 <ListItem key={message} style={{ width: '100%' }}>
@@ -125,12 +150,15 @@ class ChatHome extends React.Component {
                         <b>{`${user}`}</b>{`: ${message}`}
                     </Typography>
                 </ListItem>;
-            let newArray = update(this.state.incomingMessageList, { $push: [encodedMessage] })
+            let newArray = [];
+            if (this.state.incomingMessageList.length >= 5) {
+                newArray = this.state.incomingMessageList.splice(0, 1);
+            }
+            newArray = update(this.state.incomingMessageList, { $push: [encodedMessage] })
             this.setState({
                 incomingMessageList: newArray
             })
         })
-
     }
 
     componentWillUnmount() {
@@ -141,18 +169,26 @@ class ChatHome extends React.Component {
             .catch(err => {
                 console.log(err)
             })
-    }    
-
+    }
+    getUser = () => {
+        if (!this.props.location.state) {
+            return "Anonymous User"
+        } else {
+            return this.props.location.state.userName;
+        }
+    }
+    
     render() {
         const { classes } = this.props;
-        const chatMessages = this.state.incomingMessageList;
-
+        const chatMessages = this.state.incomingMessageList;  
+        const user = this.getUser(); 
+        
         return (
             <div className={classes.root}>
                 <Paper className={classes.paperRoot} elevation={1}>
                     <Paper className={classes.box} elevation={6}>
                         <Typography variant="h5">
-                            {`Chat`}
+                            {`Chat`}                            
                         </Typography>
                     </Paper>
                     <Paper className={classes.box} elevation={6}>
@@ -166,16 +202,38 @@ class ChatHome extends React.Component {
                     <Paper className={classes.chatBox} elevation={6}>
                         <div className={classes.chatBorder}>
                             <List className={classes.chatMessages}>
-                             {chatMessages}
+                                {chatMessages}
                             </List>
                         </div>
-                    </Paper>
+                    </Paper> 
+                    <Paper className={classes.messageBox} elevation={6}>
+                        <div className={classes.messageContainer}>
+                            <div className={classes.userName}>
+                                {`${user}: `}
+                            </div>
+                            <form style={{ minWidth: '60%' }}>
+                                <TextField
+                                    id="standard-name"
+                                    label="Message"
+                                    style={{ margin: 8 }}
+                                    fullWidth
+                                    variant="outlined"
+                                    value={this.state.message}
+                                    onChange={this.handleChange('message')}
+                                    margin="normal"
+                                />                               
+                                </form>
+                             <Button variant="outlined" color="primary" className={classes.button} onClick={this.handleSubmit}>
+                                    {`Send`}
+                            </Button>
+                        </div>
+                    </Paper>                    
                 </Paper>
             </div>
         );
 
     }
-    
+
 }
 
 export default withStyles(styles)(ChatHome);

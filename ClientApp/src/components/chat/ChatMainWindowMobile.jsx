@@ -75,9 +75,10 @@ class ChatMainWindowMobile extends React.Component {
             isOnline: ""
         }
     }
+    abortController = new window.AbortController();
 
     componentDidMount() {
-        fetch("http://localhost:62236/api/chat/isonline")
+        fetch("/api/chat/isonline", { signal: this.abortController.signal })
             .then(res => res.json())
             .then(data => data.isOnline)
             .then(onlineStatus => {
@@ -86,6 +87,10 @@ class ChatMainWindowMobile extends React.Component {
                 })
             })
             .catch(err => console.error(err));
+    }
+
+    componentWillUnmount() {
+        this.abortController.abort();
     }
 
     render() {
@@ -132,7 +137,14 @@ class ChatMainWindowMobile extends React.Component {
                     </Icon>
                 </div>
                 <div className={classes.bottomBox} >
-                    <Button variant="outlined" color="primary" disabled={disabled} className={classes.button}>
+                    <Button
+                        variant="outlined"
+                        color="primary"
+                        disabled={disabled}
+                        className={classes.button}
+                        component={Link}
+                        to="/chat/home"
+                    >
                         {`Chat`}
                     </Button>
                 </div>

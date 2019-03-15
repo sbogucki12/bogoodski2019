@@ -11,11 +11,12 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/Inbox';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
 
 
 const styles = theme => ({
     root: {
-        minWidth: '100vw',
+        width: '100vw',
         minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
@@ -48,7 +49,7 @@ const styles = theme => ({
         display: 'flex',
         justifyContent: 'flexStart',
         alignItems: 'center',
-        flexDirection: 'column'
+        flexDirection: 'column'               
     },
     chatBox: {
         width: '99%',
@@ -72,30 +73,34 @@ const styles = theme => ({
         width: '99%',
         display: 'flex', 
         flexDirection: 'row', 
-        justifyContent: 'center', 
         alignItems: 'center',
         marginTop: '2vh'
     },
     messageContainer: {
-        width: '100%',
+        width: '97%',
         display: 'flex', 
-        justifyContent: 'space-between',
-        alignItems: 'center'
+        justifyContent: 'center',
+        alignItems: 'center', 
+        flexWrap: 'wrap'
     },
     userName: {
         display: 'flex', 
         justifyContent: 'flex-start', 
-        alignItems: 'center', 
-        marginLeft: theme.spacing.unit
+        alignItems: 'center'        
     },
     textField: {
         display: 'flex',
         alignItems: 'center', 
-        justifyContent: 'flex-start',
-        minWidth: '600px'
+        justifyContent: 'flex-start'        
     },
     button: {
-        margin: theme.spacing.unit
+        margin: theme.spacing.unit     
+    }, 
+    homeButton: {
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center', 
+        marginTop: theme.spacing.unit
     }
 });
 
@@ -109,8 +114,6 @@ connection.start()
     .then(() => { console.log("connected") })
     .catch(err => console.log(err))
 
-
-
 class ChatHome extends React.Component {
     constructor(props) {
         super(props);
@@ -121,7 +124,6 @@ class ChatHome extends React.Component {
     }
 
     handleChange = name => event => {
-        event.preventDefault();
         this.setState({ [name]: event.target.value });
     };
 
@@ -146,7 +148,7 @@ class ChatHome extends React.Component {
         connection.on("ReceiveMessage", (user, message) => {
             let encodedMessage =
                 <ListItem key={message} style={{ width: '100%' }}>
-                    <Typography variant="caption">
+                    <Typography variant="caption" style={{ wordWrap: 'break-word', maxWidth: '100%' }} >
                         <b>{`${user}`}</b>{`: ${message}`}
                     </Typography>
                 </ListItem>;
@@ -176,7 +178,7 @@ class ChatHome extends React.Component {
         } else {
             return this.props.location.state.userName;
         }
-    }
+    }    
     
     render() {
         const { classes } = this.props;
@@ -184,7 +186,7 @@ class ChatHome extends React.Component {
         const user = this.getUser(); 
         
         return (
-            <div className={classes.root}>
+            <div className={classes.root} onKeyDown={this.handleEnter}>
                 <Paper className={classes.paperRoot} elevation={1}>
                     <Paper className={classes.box} elevation={6}>
                         <Typography variant="h5">
@@ -208,10 +210,10 @@ class ChatHome extends React.Component {
                     </Paper> 
                     <Paper className={classes.messageBox} elevation={6}>
                         <div className={classes.messageContainer}>
-                            <div className={classes.userName}>
+                            <Typography variant="body1" className={classes.userName}>
                                 {`${user}: `}
-                            </div>
-                            <form style={{ minWidth: '60%' }}>
+                            </Typography>
+                            <form style={{ width: '65%', marginRight: '2%' }} onSubmit={e => { e.preventDefault(); }}>
                                 <TextField
                                     id="standard-name"
                                     label="Message"
@@ -221,19 +223,25 @@ class ChatHome extends React.Component {
                                     value={this.state.message}
                                     onChange={this.handleChange('message')}
                                     margin="normal"
+                                    inputProps={{
+                                        maxLength: 300
+                                    }}                                    
                                 />                               
                                 </form>
                              <Button variant="outlined" color="primary" className={classes.button} onClick={this.handleSubmit}>
                                     {`Send`}
                             </Button>
                         </div>
-                    </Paper>                    
+                    </Paper>
+                    <div className={classes.homeButton}>
+                        <Button variant="contained" color="secondary" className={classes.button} component={Link} to="/">
+                            {`Home`}
+                        </Button>
+                    </div>
                 </Paper>
             </div>
         );
-
     }
-
 }
 
 export default withStyles(styles)(ChatHome);

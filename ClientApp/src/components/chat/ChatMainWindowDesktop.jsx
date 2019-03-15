@@ -81,7 +81,7 @@ class ChatMainWindowDesktop extends React.Component {
                     isOnline: onlineStatus
                 })
             })
-            .catch(err => console.error(err));
+            .catch(err => console.error(`${err}`));
     }
 
     render() {
@@ -93,8 +93,7 @@ class ChatMainWindowDesktop extends React.Component {
         let disabled;
         const green = "#00AA33";
         const red = "#AA3333";
-
-        { console.log(isOnline) }
+        
         if (isOnline === "yes") {
             styleColor = green;
             not = '';

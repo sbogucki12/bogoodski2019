@@ -50,7 +50,6 @@ class ChatUserLogin extends React.Component {
             return alert("That is a restricted name.")
         }
         this.setState({ redirect: true });
-
     }
 
     render() {
@@ -72,7 +71,10 @@ class ChatUserLogin extends React.Component {
             <div className={classes.root}>
                 <Paper className={classes.paperRoot} elevation={6}>
                     <Typography variant="h5" component="h3">
-                        {`Please enter a name to use in the chat room:`}
+                        {`Enter a name to use in the chat room:`}
+                    </Typography>
+                    <Typography variant="caption">
+                        {`Maximum of 20 characters, please.`}
                     </Typography>
                     <form>
                         <TextField
@@ -81,7 +83,10 @@ class ChatUserLogin extends React.Component {
                             className={classes.textField}
                             value={this.state.userName}
                             onChange={this.handleChange('userName')}
-                            margin="normal"                            
+                            margin="normal" 
+                            inputProps={{
+                                maxLength: 20
+                            }}
                         />
                         <Button
                             variant="outlined"

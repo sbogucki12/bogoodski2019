@@ -16,6 +16,7 @@ import PotusLanding from './potus/PotusLanding';
 import ChatTemplate from './chat/ChatTemplate';
 import ChatHome from './chat/ChatHome';
 import ChatUserLogin from './chat/ChatUserLogin';
+import MyDashboardRoot from './chat/MyDashboardRoot';
 
 const styles = theme => ({
     root: {
@@ -38,7 +39,7 @@ class Layout extends Component {
                         <div>
                             <Route exact path="/chat/home" component={ChatUserLogin} />
                             <Route exact path="/chat/room" component={ChatHome} />
-                            <Route exact path="/chat/template" component={ChatTemplate} />
+                            <Route exact path="/chat/mydashboard" component={MyDashboardRoot} />
                             <Route exact path="/potus/home" component={PotusDesktopLayout} />
                             <Route exact path="/potus/intro" component={PotusLanding} />
                             <Route exact path="/dating/getyourmatch" component={DatingQuestionSetLayout} />

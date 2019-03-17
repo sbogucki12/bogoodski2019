@@ -22,5 +22,30 @@ namespace Bogoodski2019.Controllers
 
             return NotFound("Bad token");
         }
+
+        [Route("/api/chat/dashboard")]
+        [HttpPost]
+        public JsonResult LoginDashboard([FromBody]string pw)
+        {
+            string key = Environment.GetEnvironmentVariable("UPLOADKEY");
+            try
+            {
+                if (pw == key)
+                {
+                    JsonResult json = new JsonResult("true");
+                    return json;
+                }
+                else
+                {
+                    JsonResult json = new JsonResult("false");
+                    return json;
+                }
+            }
+            catch
+            {
+                throw new Exception("Error with the password API.");
+            }
+            
+        }
     }
 }

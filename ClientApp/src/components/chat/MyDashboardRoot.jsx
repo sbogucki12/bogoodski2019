@@ -1,10 +1,7 @@
 ﻿import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import { Redirect } from 'react-router-dom';
 import MyDashBoard from './MyDashBoard';
 
 const styles = theme => ({
@@ -46,14 +43,28 @@ class MyDashboardRoot extends React.Component {
     };
 
     handleSubmit = () => {
-        const password = this.state.password; 
-        if (password != "tobibobi") {
-            return alert("try a different password")
-        }
-        this.setState({
-            isLoggedIn: true
+        const password = this.state.password;
+        fetch('/api/chat/dashboard', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(password)
         })
-    }
+            .then(res => res.json())
+            .then(response => {
+                
+                if (response === "true") {
+                    this.setState({
+                        isLoggedIn: true
+                    })                    
+                } else {
+                    return alert("try a different password");
+                }
+            })
+            .catch(err => console.log(`Error: ${err}`));
+    }    
+
     render() {
         const { classes } = this.props; 
         const status = this.state.isLoggedIn

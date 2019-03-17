@@ -22,8 +22,6 @@ const styles = theme => ({
     stumpContainer: {
         display: 'flex',
         alignItems: 'center',
-        display: 'flex', 
-        alignItems: 'center', 
         justifyContent: 'center',
         minHeight: '80vh',
         minWidth: "60%"

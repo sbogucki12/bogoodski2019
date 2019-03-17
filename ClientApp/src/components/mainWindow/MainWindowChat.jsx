@@ -40,8 +40,7 @@ class MainWindowChat extends React.Component {
             this.setState({
                 isMobile: false
             })
-        } else {
-            console.log(width);
+        } else {           
             this.setState({
                 isMobile: true
             })

@@ -120,7 +120,7 @@ class ChatMainWindowDesktop extends React.Component {
                         {`${not} Online.`}
                     </Typography>
                     <Typography variant="subtitle2" gutterBottom className={classes.text}>
-                        {`When I am, you can send me an instant message here.`}
+                        {`When I am, we can chat here.`}
                     </Typography>
                 </div>
                 <div className={classes.middleBox}>

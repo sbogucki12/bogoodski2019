@@ -13,18 +13,17 @@ import BlogPostLayout from './blog/posts/BlogPostLayout';
 import DatingQuestionSetLayout from './dating/datingQuestionaire/DatingQuestionSetLayout';
 import PotusDesktopLayout from './potus/PotusDesktopLayout';
 import PotusLanding from './potus/PotusLanding';
-import ChatTemplate from './chat/ChatTemplate';
 import ChatHome from './chat/ChatHome';
 import ChatUserLogin from './chat/ChatUserLogin';
 import MyDashboardRoot from './chat/MyDashboardRoot';
 
-const styles = theme => ({
+const styles = {
     root: {
         display: 'flex',        
         alignItems: 'flex-start',  
         minHeight: '100%'
     }
-});
+};
 
 class Layout extends Component {
     displayName = Layout.name

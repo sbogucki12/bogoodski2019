@@ -1,7 +1,6 @@
 ﻿import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import RunnerIcon from './RunnerIcon';
 import './RunStyle.css';
 import { Link } from 'react-router-dom';
 
@@ -14,7 +13,8 @@ const styles = theme => ({
         justifyContent: 'center',
     },
     runner: {
-        alignSelf: 'flex-end'        
+        alignSelf: 'flex-end',
+        fontSize: '18vh'
     },
     rightColumn: {
         flexDirection: 'column',
@@ -50,16 +50,11 @@ class RunMain extends React.Component {
 
     render() {
         const { classes } = this.props;
-        
-        const runner =
-            <div className="runnerIcon">
-                {RunnerIcon}
-            </div>;
 
         return (
             <div className={classes.root}>
                 <div className={classes.runner}>
-                    {runner}
+                    {`🏃`}
                 </div>
                 <div className={classes.rightColumn}>
                     <div className={classes.rightTop}>

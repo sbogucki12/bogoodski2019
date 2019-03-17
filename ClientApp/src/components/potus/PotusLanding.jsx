@@ -107,7 +107,7 @@ class PotusLanding extends React.Component {
         let fontSize = '8vw';
         let contentBoxHeight = '400px';
 
-        if (this.state.screenNumber != 0) {
+        if (this.state.screenNumber !== 0) {
             backgroundFont = `'Roboto', sans-serif`;
             fontSize = '4vw';            
             contentBoxHeight = '400px'

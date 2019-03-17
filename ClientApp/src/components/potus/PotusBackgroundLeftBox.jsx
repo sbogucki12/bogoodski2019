@@ -32,7 +32,6 @@ const styles = theme => ({
         alignItems: 'center', 
         color: 'rgb(0,0,255)', 
         fontFamily: `'Bangers', cursive`, 
-        color: '#FFFFFF', 
         textShadow: '1px 1px #000000, 2px 2px #00FF00', 
         fontSize: '5vh'
     }
@@ -43,7 +42,7 @@ function PotusBackgroundLeftBox(props) {
     return (
         <div className={classes.backgroundLeftBox}>
             <div className={classes.topBox}>
-                <img src={PotusBitmoji} className={classes.bitmoji} />
+                <img src={PotusBitmoji} className={classes.bitmoji} alt="bitmoji" />
             </div>
             <div className={classes.bottomBox}>
                 <div>

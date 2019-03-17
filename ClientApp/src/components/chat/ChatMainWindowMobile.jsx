@@ -75,10 +75,10 @@ class ChatMainWindowMobile extends React.Component {
             isOnline: ""
         }
     }
-    abortController = new window.AbortController();
+    
 
     componentDidMount() {
-        fetch("/api/chat/isonline", { signal: this.abortController.signal })
+        fetch("/api/chat/isonline")
             .then(res => res.json())
             .then(data => data.isOnline)
             .then(onlineStatus => {
@@ -86,11 +86,7 @@ class ChatMainWindowMobile extends React.Component {
                     isOnline: onlineStatus
                 })
             })
-            .catch(err => console.error(err));
-    }
-
-    componentWillUnmount() {
-        this.abortController.abort();
+            .catch(err => console.error(`${err}`));
     }
 
     render() {
@@ -103,7 +99,6 @@ class ChatMainWindowMobile extends React.Component {
         const green = "#00AA33";
         const red = "#AA3333";
 
-        {console.log(isOnline)}
         if (isOnline === "yes") {
             styleColor = green;
             not = '';
@@ -125,7 +120,7 @@ class ChatMainWindowMobile extends React.Component {
                         {`${not} Online.`}
                     </Typography>
                     <Typography variant="caption" gutterBottom className={classes.text} align="center">
-                        {`When I am, you can send me an instant message here.`}
+                        {`When I am, we can chat here.`}
                     </Typography>
                 </div>
                 <div className={classes.arrowBox}>

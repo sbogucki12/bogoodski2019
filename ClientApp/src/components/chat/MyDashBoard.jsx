@@ -7,7 +7,6 @@ import Button from '@material-ui/core/Button';
 import { Redirect } from 'react-router-dom';
 import Switch from '@material-ui/core/Switch';
 
-
 const styles = theme => ({
     root: {
         display: 'flex',
@@ -51,13 +50,25 @@ class ChatMyDashboard extends React.Component {
     };
 
     onEnter = () => {
-        let userName = this.state.userName.toLowerCase();
-        let password = this.state.password
-        if (userName === "bogoodski" && password === "tobibobi") {
-            this.setState({ redirect: true });
-        } else {
-            return alert("This is the login for BoGoodSki")
-        }
+        const password = this.state.password;
+
+        fetch('/api/chat/dashboard', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(password)
+        })
+            .then(res => res.json())
+            .then(response => {
+
+                if (response === "true") {
+                    this.setState({ redirect: true });
+                } else {
+                    return alert("This is the login for BoGoodSki");
+                }
+            })
+            .catch(err => console.log(`Error: ${err}`));
     }
 
     onSaveStatus = () => {

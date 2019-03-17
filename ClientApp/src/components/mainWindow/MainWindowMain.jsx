@@ -10,16 +10,6 @@ import MainWindowRun from './MainWindowRun';
 import MainWindowDating from './MainWindowDating';
 import MainWindowChat from './MainWindowChat';
 
-const screenSize = window.screen.availWidth;
-let paddingTop; 
-if (screenSize <= 320)  {
-    paddingTop = '25vh';
-} else if (screenSize > 320 && screenSize < 415) {
-    paddingTop = '20vh';
-} else {
-    paddingTop = '10vh';
-};
-
 const styles = theme => ({
     background: {
         background: 'linear-gradient(#dcedc8 70%, #e4ff54)'       
@@ -32,7 +22,6 @@ const styles = theme => ({
         flexDirection: 'column',
         marginLeft: '2%', 
         marginRight: '2%',
-        paddingTop: paddingTop
     },
     fab: {
         margin: theme.spacing.unit *1,

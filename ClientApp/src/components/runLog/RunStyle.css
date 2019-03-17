@@ -9,11 +9,6 @@
     padding-bottom: 1vh;
 }
 
-.runnerIcon {
-    font-size: 18vh;
-    opacity: 1;
-}
-
 .runnerAnimated {
     position: relative;
     font-size: 25vh;
@@ -43,12 +38,12 @@
         .runnerAnimated {
             position: relative;
             font-size: 25vh;
-            animation-name: move;
-            animation-duration: 2s;
-            animation-fill-mode: forwards;
             -webkit-animation-name: move;
             -webkit-animation-duration: 2s;
             -webkit-animation-fill-mode: forwards;
+            animation-name: move;
+            animation-duration: 2s;
+            animation-fill-mode: forwards;
         }
     }
 

@@ -48,7 +48,7 @@ function PotusMeme(props) {
             </div>
             <Typography variant="caption" gutterBottom>
                 {`You should follow `}
-                <a href="https://twitter.com/dasharez0ne" target="_blank">
+                <a href="https://twitter.com/dasharez0ne" target="_blank" rel="noopener noreferrer">
                     {`daSharez0ne`}
                 </a>
                 {` on twitter. Also, you probably shouldn't.`}

@@ -5,7 +5,37 @@
 
 **In Progress** 
 
-<p>This is what the feature on the chat branch looks like, so far (as of Mar. 6, 2019):</p>
+
+
+
+
+
+
+This is what is currently being built on the chat branch (using SignalR), as of Mar. 11, 2019:
+
+
+
+
+
+
+
+![Imgur](https://i.imgur.com/0ov78tf.gif)
+
+
+
+
+
+
+If embedded gif is too long for GitHub, but you can view it here: 
+
+
+
+
+
+[Currently in Progress Mar. 11, 2019](https://i.imgur.com/0ov78tf.gif)
+
+
+
 
 
 

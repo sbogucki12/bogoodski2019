@@ -32,7 +32,12 @@ const styles = theme => ({
 });
 
 function MainWindowResume(props) {
-    const { classes } = props;   
+    const { classes } = props; 
+    const months = [ "Jan.", "Feb.", "Mar.", "Apr.", "May", "Jun.", "Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."]
+    const date = new Date();
+    const monthIndex = date.getMonth(); 
+    const month = months[monthIndex]; 
+    const day = date.getDate(); 
 
     return ( 
         <div className={classes.root}>
@@ -43,7 +48,10 @@ function MainWindowResume(props) {
                     </h1>
                 </center>
                 <Typography variant="body2" gutterBottom className={classes.bio}>
-                    Long Beach. Born near Philadelphia, raised in North Dakota; California is home.  Runner. Perpetually curious.  Web developer.  Dog spoiler.  I like techno. Other music, too. Vet. &#9774; #TrustTheProcess
+                    Long Beach. Born near Philadelphia, raised in North Dakota; California is home.  Runner. Perpetually curious.  Web developer.  Dog spoiler.  I like techno. Other music, too. Vet. ☮️ #TrustTheProcess
+                </Typography>
+                <Typography variant="caption" gutterBottom className={classes.bio}>
+                    <b>{`${month} ${day}:`}</b> <i>{` Currently Available For Hire.`}</i>
                 </Typography>
                 <center>
                     <Button variant="contained" color="primary" className={classes.button} component={Link} to="/resume">

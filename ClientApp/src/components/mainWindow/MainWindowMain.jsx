@@ -8,27 +8,20 @@ import Fab from '@material-ui/core/Fab';
 import MessageIcon from '@material-ui/icons/MessageTwoTone';
 import MainWindowRun from './MainWindowRun';
 import MainWindowDating from './MainWindowDating';
-
-const screenSize = window.screen.availWidth;
-let marginTop; 
-if (screenSize <= 320)  {
-    marginTop = '25vh';
-} else if (screenSize > 320 && screenSize < 415) {
-    marginTop = '20vh';
-} else {
-    marginTop = '10vh';
-};
+import MainWindowChat from './MainWindowChat';
 
 const styles = theme => ({
+    background: {
+        background: 'linear-gradient(#dcedc8 70%, #e4ff54)'       
+    },
     root: {        
         paddingTop: theme.spacing.unit * 2,
         paddingBottom: theme.spacing.unit * 2,
         display: 'flex',
         justifyContent: 'center', 
-        flexDirection: 'column', 
-        marginTop: marginTop,  
+        flexDirection: 'column',
         marginLeft: '2%', 
-        marginRight: '2%'
+        marginRight: '2%',
     },
     fab: {
         margin: theme.spacing.unit *1,
@@ -66,14 +59,18 @@ class MainWindowMain extends React.Component {
                 </Fab >
 
         return (
-            <div className={classes.root} >
-                <MainWindowResume />
-                <MainWindowBlog />
-                <MainWindowRun /> 
-                <MainWindowDating />
-                <MainWindowRoux /> 
-                {isContactBar ? <MainWindowContact toggleContact={this.toggleContact} /> : contactFab}
+            <div className={classes.background}>
+                <div className={classes.root} >
+                    <MainWindowResume />
+                    <MainWindowChat />
+                    <MainWindowBlog />
+                    <MainWindowRun /> 
+                    <MainWindowDating />
+                    <MainWindowRoux /> 
+                    {isContactBar ? <MainWindowContact toggleContact={this.toggleContact} /> : contactFab}
+                </div>
             </div>
+
         );
     }
 }

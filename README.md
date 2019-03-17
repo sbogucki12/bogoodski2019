@@ -10,6 +10,7 @@
 
 
 
+
 This is what is currently being built on the chat branch (using SignalR), as of Mar. 11, 2019:
 
 
@@ -39,19 +40,19 @@ If embedded gif is too long for GitHub, but you can view it here:
 
 
 
+![Currently in Progress Mar. 6 2019](https://i.imgur.com/bXdU92y.jpg)
 
 
 
-**Day Three**
+![Currently in Progress Mar. 6 2019](https://i.imgur.com/j1pxvIU.jpg)
 
 
-![Main Window](https://media.giphy.com/media/5hd957SElM6qRMYrUC/giphy.gif  "Resume Component Soon")
 
 
-**Day Two** 
+![Currently in Progress Mar. 6 2019](https://i.imgur.com/U43fgAK.jpg)
 
 
-![Roux Component](https://media.giphy.com/media/t5YniwfzGllDAiFuL4/giphy.gif "Roux Component")
+
 
 
 

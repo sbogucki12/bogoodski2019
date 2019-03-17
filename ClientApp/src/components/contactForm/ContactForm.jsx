@@ -141,6 +141,7 @@ class ContactForm extends React.Component {
                     sitekey={key}
                     onChange={this.submitCaptcha}
                     className={classes.captcha}
+                    size="compact"
                 />
                 <ContactButton onSubmit={this.onSubmit} /> 
             </form>

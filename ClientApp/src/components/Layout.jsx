@@ -11,15 +11,19 @@ import BlogFullArchive from './blog/BlogFullArchive';
 import DatingQuestionHome from './dating/datingQuestionaire/DatingQuestionHome';
 import BlogPostLayout from './blog/posts/BlogPostLayout';
 import DatingQuestionSetLayout from './dating/datingQuestionaire/DatingQuestionSetLayout';
+import PotusDesktopLayout from './potus/PotusDesktopLayout';
+import PotusLanding from './potus/PotusLanding';
+import ChatHome from './chat/ChatHome';
+import ChatUserLogin from './chat/ChatUserLogin';
+import MyDashboardRoot from './chat/MyDashboardRoot';
 
-const styles = theme => ({
+const styles = {
     root: {
         display: 'flex',        
-        alignItems: 'flex-start',        
-        backgroundImage: 'linear-gradient(#dcedc8 70%, #e4ff54)',
+        alignItems: 'flex-start',  
         minHeight: '100%'
     }
-});
+};
 
 class Layout extends Component {
     displayName = Layout.name
@@ -31,7 +35,12 @@ class Layout extends Component {
                 <div className={classes.root}>
                     <TopBar className="sticky" />                    
                     <Router>
-                        <div >
+                        <div>
+                            <Route exact path="/chat/home" component={ChatUserLogin} />
+                            <Route exact path="/chat/room" component={ChatHome} />
+                            <Route exact path="/chat/mydashboard" component={MyDashboardRoot} />
+                            <Route exact path="/potus/home" component={PotusDesktopLayout} />
+                            <Route exact path="/potus/intro" component={PotusLanding} />
                             <Route exact path="/dating/getyourmatch" component={DatingQuestionSetLayout} />
                             <Route exact path="/dating/app" component={DatingQuestionHome} />
                             <Route exact path="/blog/posts/layout" component={BlogPostLayout} />

@@ -27,17 +27,46 @@ const styles = {
 
 class Layout extends Component {
     displayName = Layout.name
+    constructor(props) {
+        super(props);
+        this.state = {
+            isOnline: ""
+        }
+    }
+
+    componentDidMount() {
+        fetch("/api/chat/isonline")
+            .then(res => res.json())
+            .then(data => data.isOnline)
+            .then(onlineStatus => {
+                this.setState({
+                    isOnline: onlineStatus
+                })
+            })
+            .catch(err => console.error(`${err}`));
+    }
 
     render() {
         const { classes } = this.props;
+        const onlineStatus = this.state.isOnline;
+
+        let chatRoutes = null; 
+
+        if (onlineStatus === "yes") {
+            chatRoutes =
+                <React.Fragment>
+                    <Route exact path="/chat/home" component={ChatUserLogin} />
+                    <Route exact path="/chat/room" component={ChatHome} />
+                </React.Fragment>
+        }
+
         return (
             <React.Fragment>
                 <div className={classes.root}>
                     <TopBar className="sticky" />                    
                     <Router>
-                        <div>
-                            <Route exact path="/chat/home" component={ChatUserLogin} />
-                            <Route exact path="/chat/room" component={ChatHome} />
+                        <div>                            
+                            {chatRoutes}
                             <Route exact path="/chat/mydashboard" component={MyDashboardRoot} />
                             <Route exact path="/potus/home" component={PotusDesktopLayout} />
                             <Route exact path="/potus/intro" component={PotusLanding} />

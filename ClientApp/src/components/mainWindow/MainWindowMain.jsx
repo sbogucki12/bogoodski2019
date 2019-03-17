@@ -21,7 +21,7 @@ const styles = theme => ({
         justifyContent: 'center', 
         flexDirection: 'column',
         marginLeft: '2%', 
-        marginRight: '2%',
+        marginRight: '2%',       
     },
     fab: {
         margin: theme.spacing.unit *1,

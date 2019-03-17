@@ -11,7 +11,8 @@ const styles = theme => ({
         background: 'linear-gradient(to bottom right, #1b5e20, white)',
         display: 'flex', 
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginTop: '18vh'
     },
     text: {
         maxWidth: '60vw',

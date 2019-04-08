@@ -9,6 +9,7 @@ import MessageIcon from '@material-ui/icons/MessageTwoTone';
 import MainWindowRun from './MainWindowRun';
 import MainWindowDating from './MainWindowDating';
 import MainWindowChat from './MainWindowChat';
+import MainWindowDj from './MainWindowDJ';
 
 const styles = theme => ({
     background: {
@@ -64,8 +65,9 @@ class MainWindowMain extends React.Component {
                     <MainWindowResume />
                     <MainWindowChat />
                     <MainWindowBlog />
-                    <MainWindowRun /> 
                     <MainWindowDating />
+                    <MainWindowRun />                     
+                    <MainWindowDj />
                     <MainWindowRoux /> 
                     {isContactBar ? <MainWindowContact toggleContact={this.toggleContact} /> : contactFab}
                 </div>

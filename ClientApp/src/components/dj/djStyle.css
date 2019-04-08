@@ -1,0 +1,12 @@
+﻿.djBackground {
+    width: 90%;    
+    min-height: 280px;
+    background: #222222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, #ff80ff, #000000);
+    background: -webkit-linear-gradient(to right, #ff80ff, #000000);
+    background: -moz-linear-gradient(to right, #ff80ff, #000000);    
+    background: -o-linear-gradient(to right, #ff80ff, #000000);
+}

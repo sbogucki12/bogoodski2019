@@ -4,6 +4,7 @@ import CheatCodeCoverVol1 from '../dj/images/CheatCodeVol1Cover.jpg';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import '../dj/djStyle.css';
+import { Link } from 'react-router-dom';
 
 const styles = theme =>  ({
     root: {
@@ -60,7 +61,13 @@ function MainWindowDj(props) {
                 </div>
                 <div className={classes.rightBox}>
                     <div className={classes.rightBoxTop}>
-                        <Button variant="contained" color="secondary" className={classes.button}>
+                        <Button
+                            variant="contained"
+                            color="secondary"
+                            className={classes.button}
+                            component={Link}
+                            to="/dj/djmain"
+                        >
                             {`Enter`}
                         </Button>
                     </div>

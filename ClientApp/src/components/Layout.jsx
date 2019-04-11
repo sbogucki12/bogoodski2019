@@ -16,6 +16,7 @@ import PotusLanding from './potus/PotusLanding';
 import ChatHome from './chat/ChatHome';
 import ChatUserLogin from './chat/ChatUserLogin';
 import MyDashboardRoot from './chat/MyDashboardRoot';
+import DjMain from './dj/DjMain';
 
 const styles = {
     root: {
@@ -66,8 +67,9 @@ class Layout extends Component {
                     <TopBar className="sticky" />                    
                     <Router>
                         <div>                            
-                            {chatRoutes}
+                            {chatRoutes}                            
                             <Route exact path="/chat/mydashboard" component={MyDashboardRoot} />
+                            <Route exact path="/dj/djmain" component={DjMain} />                            
                             <Route exact path="/potus/home" component={PotusDesktopLayout} />
                             <Route exact path="/potus/intro" component={PotusLanding} />
                             <Route exact path="/dating/getyourmatch" component={DatingQuestionSetLayout} />

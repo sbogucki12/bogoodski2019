@@ -12,7 +12,7 @@ const styles = theme => ({
         display: 'flex', 
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: '18vh'
+        marginTop: '25vh'
     },
     text: {
         maxWidth: '60vw',

@@ -7,7 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import CurrentPostImage from './images/runwithme.JPG';
+import CurrentPostImage from './images/decBlogTitleLogo.jpg';
 
 const styles = theme => ({
     card: {
@@ -20,7 +20,7 @@ const styles = theme => ({
     readButton: {
         display: 'flex',
         justifyContent: 'flex-end'
-    }, 
+    },
     link: {
         textDecoration: `none`
     }
@@ -28,7 +28,7 @@ const styles = theme => ({
 
 function CurrentPostMainWindowDesktop(props) {
     const { classes } = props;
-    const currentPostUrl = "https://medium.com/@sbogucki12/live-blogging-the-development-of-a-new-feature-via-reactjs-and-net-core-part-6-656f81be66c9";
+    const currentPostUrl = "/blog/blogmain";
 
     return (
         <Card className={classes.card}>
@@ -44,10 +44,10 @@ function CurrentPostMainWindowDesktop(props) {
                         variant="h6"
                         component="h2"
                     >
-                        {`Live Blogging the Development of a New Feature: via ReactJS and .NET Core. Part 6.`}
+                        {`This is a true story that, by nature, will require over-sharing... `}
                     </Typography>
                     <Typography component="p">
-                        {`(Feb. 20, 2019) Today, let’s explore some thoughts about unit tests...`}
+                        {`(Apr. 17, 2019) Blog post opens in a new window.`}
                     </Typography>
                 </CardContent>
             </CardActionArea>
@@ -55,7 +55,7 @@ function CurrentPostMainWindowDesktop(props) {
                 <a
                     href={currentPostUrl}
                     target="_blank"
-                    className={classes.link}                    
+                    className={classes.link}
                 >
                     <Button size="small" color="secondary" >
                         {`Read`}

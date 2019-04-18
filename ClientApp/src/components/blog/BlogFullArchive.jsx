@@ -8,13 +8,6 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { Link } from 'react-router-dom';
-import Fab from '@material-ui/core/Fab';
-import RightIcon from '@material-ui/icons/SkipNextTwoTone';
-import LeftIcon from '@material-ui/icons/SkipPreviousTwoTone';
-
-const miscSeries = [{
-    "id": 0, "name": "Post Title", "date": "Post date", "url": "url", "seriesTitle": "BoGoodSki: Misc. Thoughts"
-}]
 
 const styles = theme => ({
     root: {
@@ -60,76 +53,51 @@ const styles = theme => ({
 class BlogFullArchive extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            home: true
-        }
     }
-
-    toggleHome = () => {
-        this.setState((prevState) => ({
-            home: !prevState.home
-        }))
-    };
 
     render() {
         const { classes } = this.props;
+        return (
+            <div className={classes.background}>
 
-        let displayList;
-        if (this.state.home) {
-            displayList = blogList
-        } else {
-            displayList = miscSeries
-        }
-
-        const seriesTitle = displayList[0].seriesTitle;
-
-        return (            
-                <div className={classes.background}>
-                    <Paper className={classes.root} elevation={6}>
-                        <div className={classes.navContainer}>
-                            <Fab color="secondary" aria-label="Add" className={classes.fab} onClick={this.toggleHome}>
-                                <LeftIcon />
-                            </Fab>
-                            <Button
-                                variant="contained"
-                                color="secondary"
-                                className={classes.button}
-                                component={Link}
-                                to="/"
-                            >
-                                {`Home`}
-                            </Button>
-                            <Fab color="secondary" aria-label="Add" className={classes.fab} onClick={this.toggleHome}>
-                                <RightIcon />
-                            </Fab>
-                        </div>
-                        <Paper className={classes.blogPaper} elevation={6}>
-                            <Typography
-                                variant="subtitle1"
-                                className={classes.text}
-                                align="center"
-                            >
-                                {seriesTitle}
-                            </Typography>
-                        </Paper>
-                        <Paper className={classes.blogPaper} elevation={6}>
-                            <List component="nav" dense>
-                                {displayList.map(blog => (
-                                    <a
-                                        href={blog.url}
-                                        target="_blank"
-                                        className={classes.text}
-                                        key={blog.id}
-                                    >
-                                        <ListItem button >
-                                            <ListItemText primary={blog.name} secondary={blog.date} />
-                                        </ListItem>
-                                    </a>
-                                ))}
-                            </List>
-                        </Paper>
+                <Paper className={classes.root} elevation={6}>
+                    <Paper style={{ margin: '2%', padding: '2%' }} elevation={6}>
+                        <Typography variant="h4" align="center" gutterBottom>
+                            {`Blog Archive`}
+                        </Typography>
+                        <Typography variant="caption" align="center" gutterBottom>
+                            {`Posts Opens in New Window`}
+                        </Typography>
                     </Paper>
-                </div>      
+
+                    <Paper className={classes.blogPaper} elevation={6}>
+                        <List component="nav" dense>
+                            {blogList.map(blog => (
+                                <a
+                                    href={blog.url}
+                                    target="_blank"
+                                    className={classes.text}
+                                    key={blog.id}
+                                >
+                                    <ListItem button style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', textAlign: 'center' }}>
+                                        <ListItemText primary={blog.seriesTitle} style={{ fontStyle: 'italic' }} />
+                                        <ListItemText primary={blog.name} secondary={blog.date} />
+                                    </ListItem>
+                                </a>
+                            ))}
+                        </List>
+                    </Paper>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        className={classes.button}
+                        component={Link}
+                        to="/"
+                    >
+                        {`Home`}
+                    </Button>
+                </Paper>
+            </div>
         );
     }
 }

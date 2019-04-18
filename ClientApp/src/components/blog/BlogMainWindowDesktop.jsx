@@ -4,27 +4,27 @@ import CurrentPostMainWindowDesktop from './CurrentPostMainWindowDesktop';
 import BlogArchiveListMainWindow from './BlogArchiveListMainWindow';
 
 const styles = theme => ({
-    root: {        
+    root: {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'column',
-        backgroundColor: "black", 
-        width: '100%'              
+        backgroundColor: "black",
+        width: '100%'
     },
     content: {
-        border: `1px solid #1b5e20`, 
+        border: `1px solid #1b5e20`,
         borderRadius: `5px`,
-        width: '90%',        
+        width: '90%',
         marginTop: theme.spacing.unit * 2,
-        marginBottom: theme.spacing.unit * 2, 
-        display: 'flex', 
+        marginBottom: theme.spacing.unit * 2,
+        display: 'flex',
         justifyContent: `center`,
         alignItems: `center`
-    }, 
+    },
     title: {
         height: `50%`,
-        fontFamily: `'Nova Flat', cursive`, 
+        fontFamily: `'Nova Flat', cursive`,
         margin: theme.spacing.unit * 2
     },
     currentPost: {
@@ -39,10 +39,10 @@ class BlogMainWindowDesktop extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            
-        }        
+
+        }
     };
-   
+
     render() {
         const { classes } = this.props;
 
@@ -58,7 +58,7 @@ class BlogMainWindowDesktop extends React.Component {
                     <div className={classes.archiveList}>
                         <BlogArchiveListMainWindow />
                     </div>
-                </div>               
+                </div>
             </div>
         );
     }

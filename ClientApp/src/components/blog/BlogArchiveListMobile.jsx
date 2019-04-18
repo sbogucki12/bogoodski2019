@@ -43,7 +43,8 @@ function BlogArchiveListMobile(props) {
                             className={classes.text}
                             key={blog.id}
                         >
-                            <ListItem button >
+                            <ListItem button style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', flexDirection: 'column'}}>
+                                <ListItemText primary={blog.seriesTitle} style={{ fontStyle: 'italic' }} />
                                 <ListItemText primary={blog.name} secondary={blog.date} />
                             </ListItem>
                         </a>

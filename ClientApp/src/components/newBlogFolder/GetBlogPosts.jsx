@@ -4,12 +4,12 @@ import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
     title: {
-        display: 'flex', 
-        alignItems: 'center', 
-        justifyContent: 'center', 
-        margin: '2%', 
-        fontFamily: `'Bungee Inline', cursive`, 
-        fontSize: '4vh', 
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: '2%',
+        fontFamily: `'Bungee Inline', cursive`,
+        fontSize: '4vh',
         textAlign: 'center'
     },
 });
@@ -25,12 +25,12 @@ class GetBlogPosts extends React.Component {
     componentDidMount() {
         fetch('/api/getblog?id=0')
             .then(res => res.json())
-            .then(myJson => this.setState({data: myJson}))               
+            .then(myJson => this.setState({ data: myJson }))
     }
 
     render() {
         const { classes } = this.props;
-        const body = this.state.data.blogContent; 
+        const body = this.state.data.blogContent;
         const title = this.state.data.blogTitle;
         const date = this.state.data.publishDate
         var html = { __html: body };
@@ -46,11 +46,6 @@ class GetBlogPosts extends React.Component {
                 <div dangerouslySetInnerHTML={html} style={{ fontFamily: `font-family: 'Roboto', sans-serif` }} />
             </div>
         )
-            
-
-            
-
-       
     }
 }
 

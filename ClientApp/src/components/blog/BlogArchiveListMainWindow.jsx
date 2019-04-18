@@ -8,23 +8,23 @@ import { Link } from 'react-router-dom';
 const styles = {
     root: {
         width: '100%',
-        maxWidth: 360, 
-        color: '#dcedc8'        
+        maxWidth: 360,
+        color: '#dcedc8'
     },
     listContainer: {
-        display: 'flex', 
-        flexDirection: 'column', 
+        display: 'flex',
+        flexDirection: 'column',
         justifyContent: 'flex-start',
         textDecoration: 'none',
-        color: '#dcedc8' 
-    }, 
+        color: '#dcedc8'
+    },
     text: {
-        margin: 0, 
-        padding: 0, 
-        fontFamily: `'Nova Flat', cursive`, 
-        fontSize: '1.5vh', 
+        margin: 0,
+        padding: 0,
+        fontFamily: `'Nova Flat', cursive`,
+        fontSize: '1.5vh',
         textDecoration: 'none',
-        color: '#dcedc8'  
+        color: '#dcedc8'
     }
 };
 
@@ -43,16 +43,16 @@ function BlogArchiveListMainWindow(props) {
                             target="_blank"
                             className={classes.listContainer}
                         >
-                            <p className={classes.text}> 
-                                {blog.name}
+                            <p className={classes.text}>
+                                {blog.seriesTitle}{' '}{blog.name}
                             </p>
                             <p className={classes.text}>
-                                {blog.date}  
+                                {blog.date}
                             </p>
                         </a>
                     </ListItem>
-                    )
-                )}  
+                )
+                )}
                 <ListItem button>
                     <Link to="/blog/archive" className={classes.text}>
                         <p className={classes.text}>
@@ -60,7 +60,7 @@ function BlogArchiveListMainWindow(props) {
                         </p>
                     </Link>
                 </ListItem>
-            </List>           
+            </List>
         </div>
     );
 }

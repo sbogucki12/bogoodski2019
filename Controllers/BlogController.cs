@@ -25,6 +25,5 @@ namespace Bogoodski2019.Controllers
 
             return NotFound("Blog Not Found");
         }
-
     }
 }

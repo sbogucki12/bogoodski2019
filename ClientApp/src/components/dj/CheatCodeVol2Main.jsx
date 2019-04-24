@@ -1,11 +1,11 @@
 ﻿import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
-import cheatCodeVol1Cover from './images/CheatCodeVol1Cover.jpg';
+import cheatCodeVol2Cover from './images/cheatCodeVol2Cover.jpg';
 import Button from '@material-ui/core/Button';
-import CheatCodeVol1 from './CheatCodeVol1';
+import CheatCodeVol2 from './CheatCodeVol2';
 import { Link } from 'react-router-dom';
-import ArrowRight from '@material-ui/icons/ArrowRightSharp';
+import ArrowLeft from '@material-ui/icons/ArrowLeftSharp';
 
 const styles = theme => ({
     root: {
@@ -41,13 +41,13 @@ const styles = theme => ({
         flexDirection: 'row',
         fontFamily: `'Nova Flat', cursive`,
         fontSize: '5vw',
-        textShadow: `2px 2px #BB00AA`,
-        color: "#00FF00",
+        textShadow: `2px 2px #0099AA`,
+        color: "#000000",
         marginTop: 0,
         paddingTop: 0
     },
     bogoodskiStyle: {
-        color: '#AA00AA',
+        color: '#0099AA',
         fontFamily: `'Bungee Inline', cursive`,
         fontSize: '4vw',
         marginBottom: 0,
@@ -63,8 +63,8 @@ const styles = theme => ({
     button: {
         margin: theme.spacing.unit,
     },
-    rightIcon: {
-        marginLeft: theme.spacing.unit,
+    leftIcon: {
+        marginRight: theme.spacing.unit,
     }
 });
 
@@ -85,7 +85,7 @@ class CheatCodeVol1Main extends React.Component {
     render() {
         const { classes } = this.props;
         let showTracklist = this.state.showTracklist;
-        let trackList = showTracklist ? <CheatCodeVol1 /> : null;
+        let trackList = showTracklist ? <CheatCodeVol2 /> : null;
 
         return (
             <div className={classes.root}>
@@ -100,18 +100,18 @@ class CheatCodeVol1Main extends React.Component {
                         </span>
                     </div>
                     <div className={classes.titleBox}>
-                        {`Cheat Code Radio. Vol. 1`}
+                        {`Cheat Code Radio. Vol. 2`}
                     </div>
-                    <img src={cheatCodeVol1Cover} alt="Cheat Code Radio Volume 1" className={classes.imgStyle} />
+                    <img src={cheatCodeVol2Cover} alt="Cheat Code Radio Volume 2" className={classes.imgStyle} />
                     <iframe
                         style={{ marginBottom: '2%' }}
-                        title="Cheat Code Radio Volume 1"
+                        title="Cheat Code Radio Volume 2"
                         width="100%"
                         height="166"
                         scrolling="no"
                         frameBorder="no"
                         allow="autoplay"
-                        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/602485644&color=%2384569a&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
+                        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/609949467&color=%232d2d65&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
                     </iframe>
                     <Button
                         variant="outlined"
@@ -123,6 +123,15 @@ class CheatCodeVol1Main extends React.Component {
                     </Button>
                     {trackList}
                     <div style={{ flexDirection: 'row' }}>
+                        <Button
+                            variant="contained"
+                            color="secondary"
+                            className={classes.button}
+                            onClick={this.props.getVol1}
+                        >
+                            <ArrowLeft className={classes.leftIcon} />
+                            {`Vol. 1`}
+                        </Button>
                         <a
                             href="https://soundcloud.com/sbogucki12"
                             target="_blank"
@@ -134,7 +143,7 @@ class CheatCodeVol1Main extends React.Component {
                                 className={classes.button}
                                 style={
                                     {
-                                        background: 'linear-gradient(45deg, #00FF77 30%, #A7569a 90%)',
+                                        background: 'linear-gradient(45deg, #0099AA 30%, #000000 90%)',
                                         boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
                                         color: '#FFFFFF',
                                         borderRadius: 3,
@@ -145,15 +154,6 @@ class CheatCodeVol1Main extends React.Component {
                                 {`More Music`}
                             </Button>
                         </a>
-                        <Button
-                            variant="contained"
-                            color="secondary"
-                            className={classes.button}
-                            onClick={this.props.getVol2}
-                        >
-                            {`Vol. 2`}
-                            <ArrowRight className={classes.rightIcon} />
-                        </Button>
                     </div>
                 </Paper>
                 <Button

@@ -1,6 +1,6 @@
 ﻿import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import CheatCodeCoverVol1 from '../dj/images/CheatCodeVol1Cover.jpg'; 
+import CheatCodeCoverVol2 from '../dj/images/cheatCodeVol2Cover.jpg'; 
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import '../dj/djStyle.css';
@@ -17,7 +17,7 @@ const styles = theme =>  ({
         justifyContent: 'center', 
         borderStyle: 'solid', 
         borderWidth: '1px',
-        borderColor: '#ff80ff'
+        borderColor: '#0099AA'
     },    
     leftBox: {
         display: 'flex', 
@@ -57,7 +57,7 @@ function MainWindowDj(props) {
         <div className={classes.root}>
             <div className="djBackground">
                 <div className={classes.leftBox}>
-                    <img src={CheatCodeCoverVol1} className={classes.imgStyle} alt="Cheat Code Volume 1" />
+                    <img src={CheatCodeCoverVol2} className={classes.imgStyle} alt="Cheat Code Volume 2" />
                 </div>
                 <div className={classes.rightBox}>
                     <div className={classes.rightBoxTop}>

@@ -5,11 +5,11 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 
 const styles = theme => ({
-    root: {       
+    root: {
         backgroundColor: theme.palette.background.paper,
         display: 'flex',
-        flexDirection: 'column', 
-        justifyContent: 'flex-start', 
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
         alignItems: 'flex-start'
     },
 });
@@ -30,7 +30,7 @@ class CheatCodeVol1 extends React.Component {
             .then(myJson => {
                 this.setState({
                     data: myJson
-                })                
+                })
             });
     }
 

@@ -14,7 +14,7 @@ const styles = theme => ({
     },
 });
 
-class CheatCodeVol1 extends React.Component {
+class CheatCodeVol2 extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -23,7 +23,7 @@ class CheatCodeVol1 extends React.Component {
     }
 
     componentDidMount() {
-        fetch('/api/getmusic?name=cheatcodevol1')
+        fetch('/api/getmusic?name=cheatcodevol2')
             .then(response => {
                 return response.json();
             })
@@ -58,4 +58,4 @@ class CheatCodeVol1 extends React.Component {
     }
 }
 
-export default withStyles(styles)(CheatCodeVol1);
+export default withStyles(styles)(CheatCodeVol2);

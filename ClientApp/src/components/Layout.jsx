@@ -71,7 +71,7 @@ class Layout extends Component {
                             {chatRoutes}                            
                             <Route exact path="/chat/mydashboard" component={MyDashboardRoot} />
                             <Route exact path="/blog/blogmain" component={BlogMain} />
-                            <Route exact path="/dj/djmain" component={DjMain} />                            
+                            <Route exact path="/dj/djmain" component={DjMain} />                             
                             <Route exact path="/potus/home" component={PotusDesktopLayout} />
                             <Route exact path="/potus/intro" component={PotusLanding} />
                             <Route exact path="/dating/getyourmatch" component={DatingQuestionSetLayout} />

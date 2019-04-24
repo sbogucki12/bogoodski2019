@@ -18,6 +18,7 @@ import ChatUserLogin from './chat/ChatUserLogin';
 import MyDashboardRoot from './chat/MyDashboardRoot';
 import DjMain from './dj/DjMain';
 import BlogMain from './newBlogFolder/BlogMain';
+import CheatCodeVol2 from './dj/CheatCodeVol2';
 
 const styles = {
     root: {
@@ -71,7 +72,8 @@ class Layout extends Component {
                             {chatRoutes}                            
                             <Route exact path="/chat/mydashboard" component={MyDashboardRoot} />
                             <Route exact path="/blog/blogmain" component={BlogMain} />
-                            <Route exact path="/dj/djmain" component={DjMain} />                            
+                            <Route exact path="/dj/djmain" component={DjMain} /> 
+                            <Route exact path="/test" component={CheatCodeVol2} />
                             <Route exact path="/potus/home" component={PotusDesktopLayout} />
                             <Route exact path="/potus/intro" component={PotusLanding} />
                             <Route exact path="/dating/getyourmatch" component={DatingQuestionSetLayout} />

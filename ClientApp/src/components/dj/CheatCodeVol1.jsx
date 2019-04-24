@@ -23,7 +23,7 @@ class CheatCodeVol1 extends React.Component {
     }
 
     componentDidMount() {
-        fetch('/api/getmusic?name=cheatCodeVol1')
+        fetch('/api/getmusic?name=cheatcodevol1')
             .then(response => {
                 return response.json();
             })

@@ -19,7 +19,7 @@ namespace Bogoodski2019.Models
             BlogTitle = blogTitle;
             PublishDate = publishDate;
             BlogContent = blogContent;
-            BlogLink = blogLink;
-        }
+            BlogLink = blogLink;            
+        }                
     }
 }

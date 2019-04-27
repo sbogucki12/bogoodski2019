@@ -22,6 +22,11 @@ namespace Bogoodski2019.Controllers
                 BlogClass blog = WhatHappenedInDecember.blog;
                 return Ok(blog);
             }
+            if(id == 1)
+            {
+                BlogClass blog = MajorKey.blog;
+                return Ok(blog);
+            }
 
             return NotFound("Blog Not Found");
         }

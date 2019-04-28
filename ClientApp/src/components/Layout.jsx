@@ -18,6 +18,7 @@ import ChatUserLogin from './chat/ChatUserLogin';
 import MyDashboardRoot from './chat/MyDashboardRoot';
 import DjMain from './dj/DjMain';
 import BlogMain from './newBlogFolder/BlogMain';
+import GetBlogPostHook from './newBlogFolder/GetBlogPostHook';
 
 const styles = {
     root: {
@@ -70,6 +71,7 @@ class Layout extends Component {
                         <div>                            
                             {chatRoutes}                            
                             <Route exact path="/chat/mydashboard" component={MyDashboardRoot} />
+                            <Route exact path="/test" component={GetBlogPostHook} />
                             <Route exact path="/blog/blogmain" component={BlogMain} />
                             <Route exact path="/dj/djmain" component={DjMain} />                             
                             <Route exact path="/potus/home" component={PotusDesktopLayout} />

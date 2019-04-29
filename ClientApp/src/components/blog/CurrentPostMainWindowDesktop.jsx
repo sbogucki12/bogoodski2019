@@ -7,7 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import CurrentPostImage from './images/decBlogTitleLogo.jpg';
+import CurrentPostImage from './images/majorKeyLogo.jpg';
 
 const styles = theme => ({
     card: {
@@ -16,6 +16,9 @@ const styles = theme => ({
     },
     media: {
         height: 140,
+        borderStyle: 'solid',
+        borderWidth: 1,
+        borderColor: '#cc9900'
     },
     readButton: {
         display: 'flex',
@@ -33,23 +36,33 @@ function CurrentPostMainWindowDesktop(props) {
     return (
         <Card className={classes.card}>
             <CardActionArea>
-                <CardMedia
-                    className={classes.media}
-                    image={CurrentPostImage}
-                    title="Current Post"
-                />
-                <CardContent>
-                    <Typography
-                        gutterBottom
-                        variant="h6"
-                        component="h2"
-                    >
-                        {`This is a true story that, by nature, will require over-sharing... `}
-                    </Typography>
-                    <Typography component="p">
-                        {`(Apr. 17, 2019) Blog post opens in a new window.`}
-                    </Typography>
-                </CardContent>
+                <a
+                    href={currentPostUrl}
+                    target="_blank"
+                    className={classes.link}
+                >
+                    <CardMedia
+                        className={classes.media}
+                        image={CurrentPostImage}
+                        title="Current Post"
+                    />
+                    <CardContent>
+                        <Typography
+                            gutterBottom
+                            variant="h6"
+                            align="center"
+
+                        >
+                            {`(Apr. 27, 2019)`}
+                        </Typography>
+                        <Typography component="p" gutterBottom>
+                            {`The single, powerful characteristic that will prevent the inevitable lows in life from descending to irrecoverable depths... `}
+                        </Typography>
+                        <Typography variant="caption">
+                            {`Blog opens in new window.`}
+                        </Typography>
+                    </CardContent>
+                </a>
             </CardActionArea>
             <CardActions className={classes.readButton}>
                 <a

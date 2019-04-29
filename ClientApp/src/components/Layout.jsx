@@ -18,12 +18,12 @@ import ChatUserLogin from './chat/ChatUserLogin';
 import MyDashboardRoot from './chat/MyDashboardRoot';
 import DjMain from './dj/DjMain';
 import BlogMain from './newBlogFolder/BlogMain';
-import GetBlogPostHook from './newBlogFolder/GetBlogPostHook';
+import WhatHappenedInDec from './newBlogFolder/WhatHappenedInDec';
 
 const styles = {
     root: {
-        display: 'flex',        
-        alignItems: 'flex-start',  
+        display: 'flex',
+        alignItems: 'flex-start',
         minHeight: '100%'
     }
 };
@@ -53,7 +53,7 @@ class Layout extends Component {
         const { classes } = this.props;
         const onlineStatus = this.state.isOnline;
 
-        let chatRoutes = null; 
+        let chatRoutes = null;
 
         if (onlineStatus === "yes") {
             chatRoutes =
@@ -66,14 +66,14 @@ class Layout extends Component {
         return (
             <React.Fragment>
                 <div className={classes.root}>
-                    <TopBar className="sticky" />                    
+                    <TopBar className="sticky" />
                     <Router>
-                        <div>                            
-                            {chatRoutes}                            
+                        <div>
+                            {chatRoutes}
                             <Route exact path="/chat/mydashboard" component={MyDashboardRoot} />
-                            <Route exact path="/test" component={GetBlogPostHook} />
+                            <Route exact path="/blog/decblog" component={WhatHappenedInDec} />
                             <Route exact path="/blog/blogmain" component={BlogMain} />
-                            <Route exact path="/dj/djmain" component={DjMain} />                             
+                            <Route exact path="/dj/djmain" component={DjMain} />
                             <Route exact path="/potus/home" component={PotusDesktopLayout} />
                             <Route exact path="/potus/intro" component={PotusLanding} />
                             <Route exact path="/dating/getyourmatch" component={DatingQuestionSetLayout} />

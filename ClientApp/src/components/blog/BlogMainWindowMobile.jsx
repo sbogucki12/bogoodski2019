@@ -5,19 +5,19 @@ import Button from '@material-ui/core/Button';
 import BlogArchiveListMobile from './BlogArchiveListMobile';
 
 const styles = theme => ({
-    root: {        
+    root: {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'column',
         backgroundColor: "black",
-        width: '100%', 
+        width: '100%',
         minHeight: `20vh`
     },
     titleContainer: {
         margin: theme.spacing.unit * 2,
-        border: `1px solid #1b5e20`,
-        borderRadius: `5px`,  
+        border: `1px solid #cc9900`,
+        borderRadius: `5px`,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -37,8 +37,8 @@ class BlogMainWindowMobile extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            showArchives: false            
-        }        
+            showArchives: false
+        }
     };
 
     toggleArchives = () => {
@@ -46,10 +46,10 @@ class BlogMainWindowMobile extends React.Component {
             showArchives: !prevState.showArchives
         }))
     };
-   
+
     render() {
-        const { classes } = this.props;   
-        const showArchives = this.state.showArchives;    
+        const { classes } = this.props;
+        const showArchives = this.state.showArchives;
 
         return (
             <div className={classes.root}>
@@ -67,7 +67,7 @@ class BlogMainWindowMobile extends React.Component {
                 >
                     {showArchives ? "Hide Posts" : "Previous Posts"}
                 </Button>
-                {showArchives ? <BlogArchiveListMobile /> : null}               
+                {showArchives ? <BlogArchiveListMobile /> : null}
             </div>
         );
     }

@@ -13,7 +13,7 @@ const styles = theme => ({
         width: '100%'
     },
     content: {
-        border: `1px solid #1b5e20`,
+        border: `1px solid #cc9900`,
         borderRadius: `5px`,
         width: '90%',
         marginTop: theme.spacing.unit * 2,

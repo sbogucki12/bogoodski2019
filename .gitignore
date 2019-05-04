@@ -1,6 +1,7 @@
 /Properties/launchSettings.json
 /appsettings.Development.json
 appsettings.json
+/ClientApp/build
 
 
 ## Ignore Visual Studio temporary files, build results, and

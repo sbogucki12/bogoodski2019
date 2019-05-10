@@ -10,25 +10,26 @@ import MainWindowRun from './MainWindowRun';
 import MainWindowDating from './MainWindowDating';
 import MainWindowChat from './MainWindowChat';
 import MainWindowDj from './MainWindowDJ';
+import MainWindow2Do from './MainWindow2Do';
 
 const styles = theme => ({
     background: {
-        background: 'linear-gradient(#dcedc8 70%, #e4ff54)'       
+        background: 'linear-gradient(#dcedc8 70%, #e4ff54)'
     },
-    root: {        
+    root: {
         paddingTop: theme.spacing.unit * 2,
         paddingBottom: theme.spacing.unit * 2,
         display: 'flex',
-        justifyContent: 'center', 
+        justifyContent: 'center',
         flexDirection: 'column',
-        marginLeft: '2%', 
-        marginRight: '2%',       
+        marginLeft: '2%',
+        marginRight: '2%',
     },
     fab: {
-        margin: theme.spacing.unit *1,
+        margin: theme.spacing.unit * 1,
         position: 'sticky',
         bottom: theme.spacing.unit * 2,
-        right: theme.spacing.unit * 2,        
+        right: theme.spacing.unit * 2,
     },
     icon: {
         color: '#dcedc8'
@@ -55,9 +56,9 @@ class MainWindowMain extends React.Component {
         const isContactBar = this.state.showContactBar;
 
         const contactFab =
-                <Fab color="secondary" size="small" aria-label="Add" className={classes.fab} onClick={this.toggleContact}>
-                    <MessageIcon className={classes.icon} />
-                </Fab >
+            <Fab color="secondary" size="small" aria-label="Add" className={classes.fab} onClick={this.toggleContact}>
+                <MessageIcon className={classes.icon} />
+            </Fab >
 
         return (
             <div className={classes.background}>
@@ -65,10 +66,11 @@ class MainWindowMain extends React.Component {
                     <MainWindowResume />
                     <MainWindowChat />
                     <MainWindowBlog />
-                    <MainWindowDating />
-                    <MainWindowRun />                     
                     <MainWindowDj />
-                    <MainWindowRoux /> 
+                    <MainWindow2Do />
+                    <MainWindowRun />
+                    <MainWindowDating />
+                    <MainWindowRoux />
                     {isContactBar ? <MainWindowContact toggleContact={this.toggleContact} /> : contactFab}
                 </div>
             </div>

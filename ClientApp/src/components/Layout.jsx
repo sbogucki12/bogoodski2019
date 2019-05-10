@@ -19,6 +19,7 @@ import MyDashboardRoot from './chat/MyDashboardRoot';
 import DjMain from './dj/DjMain';
 import BlogMain from './newBlogFolder/BlogMain';
 import WhatHappenedInDec from './newBlogFolder/WhatHappenedInDec';
+import ToDoSwitchPage from './toDo/ToDoSwitchPage';
 
 const styles = {
     root: {
@@ -71,6 +72,7 @@ class Layout extends Component {
                         <div>
                             {chatRoutes}
                             <Route exact path="/chat/mydashboard" component={MyDashboardRoot} />
+                            <Route exact path="/todo/switch" component={ToDoSwitchPage} />
                             <Route exact path="/blog/decblog" component={WhatHappenedInDec} />
                             <Route exact path="/blog/blogmain" component={BlogMain} />
                             <Route exact path="/dj/djmain" component={DjMain} />

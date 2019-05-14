@@ -20,6 +20,7 @@ import DjMain from './dj/DjMain';
 import BlogMain from './newBlogFolder/BlogMain';
 import WhatHappenedInDec from './newBlogFolder/WhatHappenedInDec';
 import ToDoSwitchPage from './toDo/ToDoSwitchPage';
+import RunArchiveListPrimary from './runLog/archive/RunArchiveListPrimary';
 
 const styles = {
     root: {
@@ -82,6 +83,7 @@ class Layout extends Component {
                             <Route exact path="/dating/app" component={DatingQuestionHome} />
                             <Route exact path="/blog/posts/layout" component={BlogPostLayout} />
                             <Route exact path="/blog/archive" component={BlogFullArchive} />
+                            <Route exact path="/runlog/archive/test" component={RunArchiveListPrimary} />
                             <Route exact path="/runlog/upload" component={RunUploader} />
                             <Route exact path="/runlog" component={RunLogMain} />
                             <Route exact path="/resume" component={ResumeMain} />

@@ -7,6 +7,7 @@ import './RunStyle.css';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import RunMoreInfo from './RunMoreInfo';
+import RunArchiveListPrimary from './archive/RunArchiveListPrimary';
 
 const styles = theme => ({
     root: {
@@ -15,7 +16,7 @@ const styles = theme => ({
         minWidth: '100vw',
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center', 
+        alignItems: 'center',
         flexDirection: 'column'
     },
     paperRoot: {
@@ -23,8 +24,15 @@ const styles = theme => ({
         paddingTop: theme.spacing.unit * 2,
         paddingBottom: theme.spacing.unit * 2,
         minWidth: '80vw',
-        minHeight: '80%', 
+        minHeight: '80%',
         marginTop: '15vh'
+    },
+    topPaper: {
+        ...theme.mixins.gutters(),
+        paddingTop: theme.spacing.unit * 2,
+        paddingBottom: theme.spacing.unit * 2,
+        width: '100%',
+        marginBottom: '2%'
     },
     content: {
         display: 'flex',
@@ -55,8 +63,8 @@ const styles = theme => ({
         minHeight: '50%'
     },
     date: {
-        display: 'flex', 
-        alignItems: 'center', 
+        display: 'flex',
+        alignItems: 'center',
         justifyContent: 'center',
         margin: theme.spacing.unit,
         paddingTop: theme.spacing.unit
@@ -92,8 +100,8 @@ class RunLogMain extends React.Component {
                     this.setState({
                         date: text
                     })
-                })               
-            })            
+                })
+            })
             .catch(err => console.error(err));
     }
 
@@ -116,11 +124,12 @@ class RunLogMain extends React.Component {
                         <Typography variant="h4" gutterBottom>
                             {date}
                         </Typography>
-                    </div>                    
+                    </div>
                     <div className={classes.contentMobile}>
                         <span className={runnerIconStyle}>{RunnerIcon}</span>
                         <span><img src={RunPic} className={classes.image} alt="Run Pic" /></span>
                     </div>
+                    <RunArchiveListPrimary />
                     <RunMoreInfo />
                 </Paper>
                 <Button
@@ -137,15 +146,18 @@ class RunLogMain extends React.Component {
         const desktop =
             <div className={classes.root}>
                 <Paper className={classes.paperRoot} elevation={6}>
+                    <Paper className={classes.topPaper} elevation={6}>
                         <div className={classes.date}>
-                        <Typography variant="h2" gutterBottom>
-                            {date}
-                        </Typography>
-                        </div>                    
-                    <div className={classes.content}>
-                        <span className="runnerAnimated">{RunnerIcon}</span>
-                        <span><img src={RunPic} className={classes.image} alt="Run Pic" /></span>
-                    </div>
+                            <Typography variant="h2" gutterBottom>
+                                {date}
+                            </Typography>
+                        </div>
+                        <div className={classes.content}>
+                            <span className="runnerAnimated">{RunnerIcon}</span>
+                            <span><img src={RunPic} className={classes.image} alt="Run Pic" /></span>
+                        </div>
+                    </Paper>
+                    <RunArchiveListPrimary />
                     <RunMoreInfo />
                 </Paper>
                 <Button
@@ -163,7 +175,9 @@ class RunLogMain extends React.Component {
         const isMobile = this.state.isMobile;
 
         return (
-            isMobile ? mobile : desktop 
+            <div>
+                {isMobile ? mobile : desktop}
+            </div>
         );
     }
 }

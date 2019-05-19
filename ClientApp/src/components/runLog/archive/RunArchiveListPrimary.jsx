@@ -1,5 +1,6 @@
 ﻿import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
@@ -11,12 +12,22 @@ import Moment from 'react-moment';
 
 const styles = theme => ({
     root: {
-        width: '100vw',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginBottom: '2%'
+    },
+    paperRoot: {
         backgroundColor: theme.palette.background.paper,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        ...theme.mixins.gutters(),
+        paddingTop: theme.spacing.unit * 2,
+        paddingBottom: theme.spacing.unit * 2,
+        width: '100%'
     },
     button: {
         margin: theme.spacing.unit,
@@ -25,16 +36,16 @@ const styles = theme => ({
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center',       
+        justifyContent: 'center',
         width: '100%',
-        margin: '1%'
+        margin: '1%',
     },
     listItemStyle: {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         width: '100%',
-        flexDirection: 'column', 
+        flexDirection: 'column',
         margin: '1%'
     }
 });
@@ -101,7 +112,7 @@ class RunArchiveListPrimary extends React.Component {
             sliceIndex: sliceIndex,
             runData: sliceData
         });
-    }
+    };
 
     componentDidMount() {
         let dataToSlice = runArchiveData.sort((a, b) => {
@@ -135,46 +146,47 @@ class RunArchiveListPrimary extends React.Component {
 
         const listDisplay =
             listData.map(item => (
-                <ListItem key={item.id} style={{ flexDirection: 'row'}}>
-                    <span style={{ width: '20%' }}><Moment format="MM/DD/YY">{item.date}</Moment></span>
-                    <span style={{ width: '20%' }}>{item.distance}</span>
-                    <span style={{ width: '20%' }}>{item.duration}</span>
-                    <span style={{ width: '20%' }}>{(item.duration / item.distance).toFixed(2)}</span>
-                    <span style={{ width: '20%' }}>{item.comment}</span>
+                <ListItem key={item.id} style={{ flexDirection: 'row', fontSize: '3vw' }}>
+                    <span style={{ width: '20%', textAlign: 'center' }}><Moment format="MM/DD/YY">{item.date}</Moment></span>
+                    <span style={{ width: '20%', textAlign: 'center' }}>{item.distance}</span>
+                    <span style={{ width: '20%', textAlign: 'center' }}>{item.duration}</span>
+                    <span style={{ width: '20%', textAlign: 'center' }}>{(item.duration / item.distance).toFixed(2)}</span>
+                    <span style={{ width: '20%', textAlign: 'center' }}>{item.comment}</span>
                 </ListItem>
             ));
 
         return (
-            <div className={classes.root}>                
-                <Typography variant="subtitle" style={{ fontSize: '4vw', marginTop: '25vh' }} gutterBottom>
+            <div className={classes.root}>
+                <Paper className={classes.paperRoot} elevation={6} >
+                    <Typography variant="subtitle" style={{ fontSize: '4vw' }} gutterBottom>
                         {`Archive`}
-                </Typography>
-                <Typography variant="caption" style={{ fontSize: '2vw' }} gutterBottom>
-                    {`Sort By:`}
-                </Typography>
-                <div style={{ flexDirection: 'row' }}>
-                    <Button variant="outlined" color="secondary" size="small" className={classes.button} onClick={() => this.handleSort('date')}>
-                        {`Date`}
-                    </Button>
-                    <Button variant="outlined" color="secondary" size="small" className={classes.button} onClick={() => this.handleSort('distance')}>
-                        {`Distance`}
-                    </Button>
-                    <Button variant="outlined" color="secondary" size="small" className={classes.button} onClick={() => this.handleSort('pace')}>
-                        {`Pace`}
-                    </Button>                    
-                </div>  
-                <div className={classes.listHeader}>
-                    <span style={{ width: '18%', marginLeft: '1%' }}>{`Date`}</span>
-                    <span style={{ width: '19%' }}>{`Distance (in miles)`}</span>
-                    <span style={{ width: '21%' }}>{`Duration (in minutes)`}</span>
-                    <span style={{ width: '21%' }}>{`Pace (min per mile)`}</span>
-                    <span style={{ width: '21%' }}>{`Comment`}</span>
-                </div>                    
-                <List className={classes.listItemStyle}>
-                    {listDisplay}
-                </List>
-
-                {showButton}
+                    </Typography>
+                    <Typography variant="caption" style={{ fontSize: '2vw' }} gutterBottom>
+                        {`Sort By:`}
+                    </Typography>
+                    <div style={{ flexDirection: 'row', textAlign: 'center' }}>
+                        <Button variant="outlined" color="secondary" size="small" className={classes.button} onClick={() => this.handleSort('date')}>
+                            {`Date`}
+                        </Button>
+                        <Button variant="outlined" color="secondary" size="small" className={classes.button} onClick={() => this.handleSort('distance')}>
+                            {`Distance`}
+                        </Button>
+                        <Button variant="outlined" color="secondary" size="small" className={classes.button} onClick={() => this.handleSort('pace')}>
+                            {`Pace`}
+                        </Button>
+                    </div>
+                    <div className={classes.listHeader}>
+                        <span style={{ width: '20%', textAlign: 'center' }}><Typography variant="caption" style={{ fontSize: '2vw' }} gutterBottom>{`Date`}</Typography></span>
+                        <span style={{ width: '20%', textAlign: 'center' }}><Typography variant="caption" style={{ fontSize: '2vw' }} gutterBottom>{`Distance (in miles)`}</Typography></span>
+                        <span style={{ width: '20%', textAlign: 'center' }}><Typography variant="caption" style={{ fontSize: '2vw' }} gutterBottom>{`Duration (in minutes)`}</Typography></span>
+                        <span style={{ width: '20%', textAlign: 'center' }}><Typography variant="caption" style={{ fontSize: '2vw' }} gutterBottom>{`Pace (min per mile)`}</Typography></span>
+                        <span style={{ width: '20%', textAlign: 'center' }}><Typography variant="caption" style={{ fontSize: '2vw' }} gutterBottom>{`Comment`}</Typography></span>
+                    </div>
+                    <List className={classes.listItemStyle}>
+                        {listDisplay}
+                    </List>
+                    {showButton}
+                </Paper>
             </div>
         );
     }

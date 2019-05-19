@@ -1,7 +1,11 @@
 ﻿import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
+import ExpandMore from '@material-ui/icons/ExpandMoreRounded';
+import ExpandLess from '@material-ui/icons/ExpandLessRounded';
 import runArchiveData from './runArchiveData.json';
 import Moment from 'react-moment';
 
@@ -14,20 +18,24 @@ const styles = theme => ({
         alignItems: 'center',
         justifyContent: 'center'
     },
+    button: {
+        margin: theme.spacing.unit,
+    },
     listHeader: {
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: '25vh',
-        width: '90%'
+        justifyContent: 'center',       
+        width: '100%',
+        margin: '1%'
     },
     listItemStyle: {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        width: '90%',
-        flexDirection: 'column'
+        width: '100%',
+        flexDirection: 'column', 
+        margin: '1%'
     }
 });
 
@@ -107,30 +115,27 @@ class RunArchiveListPrimary extends React.Component {
     }
 
     render() {
-
         const { classes } = this.props;
         const listData = this.state.runData;
         let showButton = null;
-        console.log(`listdata: ${listData.length}`)
-        console.log(`archiveData: ${runArchiveData.length}`)
 
         if (listData.length >= runArchiveData.length - 9) {
             showButton =
-                <button onClick={this.showLess}>
+                <ExpandLess className={classes.button} onClick={this.showLess}>
                     {`Most Recent Ten`}
-                </button>;
+                </ExpandLess>;
         }
 
         if (listData.length <= runArchiveData.length - 10) {
             showButton =
-                <button onClick={this.showMore}>
+                <ExpandMore className={classes.button} onClick={this.showMore}>
                     {`Show Ten More`}
-                </button>;
+                </ExpandMore>;
         }
 
         const listDisplay =
             listData.map(item => (
-                <ListItem key={item.id} style={{ flexDirection: 'row' }}>
+                <ListItem key={item.id} style={{ flexDirection: 'row'}}>
                     <span style={{ width: '20%' }}><Moment format="MM/DD/YY">{item.date}</Moment></span>
                     <span style={{ width: '20%' }}>{item.distance}</span>
                     <span style={{ width: '20%' }}>{item.duration}</span>
@@ -140,29 +145,36 @@ class RunArchiveListPrimary extends React.Component {
             ));
 
         return (
-            <div className={classes.root}>
+            <div className={classes.root}>                
+                <Typography variant="subtitle" style={{ fontSize: '4vw', marginTop: '25vh' }} gutterBottom>
+                        {`Archive`}
+                </Typography>
+                <Typography variant="caption" style={{ fontSize: '2vw' }} gutterBottom>
+                    {`Sort By:`}
+                </Typography>
+                <div style={{ flexDirection: 'row' }}>
+                    <Button variant="outlined" color="secondary" size="small" className={classes.button} onClick={() => this.handleSort('date')}>
+                        {`Date`}
+                    </Button>
+                    <Button variant="outlined" color="secondary" size="small" className={classes.button} onClick={() => this.handleSort('distance')}>
+                        {`Distance`}
+                    </Button>
+                    <Button variant="outlined" color="secondary" size="small" className={classes.button} onClick={() => this.handleSort('pace')}>
+                        {`Pace`}
+                    </Button>                    
+                </div>  
                 <div className={classes.listHeader}>
-                    <span style={{ width: '20%' }}>{`Date`}</span>
-                    <span style={{ width: '20%' }}>{`Distance (in miles)`}</span>
-                    <span style={{ width: '20%' }}>{`Duration (in minutes)`}</span>
-                    <span style={{ width: '20%' }}>{`Pace (min per mile)`}</span>
-                    <span style={{ width: '20%' }}>{`Comment`}</span>
-                </div>
+                    <span style={{ width: '18%', marginLeft: '1%' }}>{`Date`}</span>
+                    <span style={{ width: '19%' }}>{`Distance (in miles)`}</span>
+                    <span style={{ width: '21%' }}>{`Duration (in minutes)`}</span>
+                    <span style={{ width: '21%' }}>{`Pace (min per mile)`}</span>
+                    <span style={{ width: '21%' }}>{`Comment`}</span>
+                </div>                    
                 <List className={classes.listItemStyle}>
                     {listDisplay}
                 </List>
-                <div style={{ flexDirection: 'row' }}>
-                    <button onClick={() => this.handleSort('distance')}>
-                        {`Sort by distance`}
-                    </button>
-                    <button onClick={() => this.handleSort('pace')}>
-                        {`Sort by pace`}
-                    </button>
-                    <button onClick={() => this.handleSort('date')}>
-                        {`Sort by date`}
-                    </button>
-                    {showButton}
-                </div>
+
+                {showButton}
             </div>
         );
     }

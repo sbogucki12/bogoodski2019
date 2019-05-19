@@ -1,5 +1,12 @@
 [
   {
+    "comment": "outdoor",
+    "date": "05/18/2019",
+    "distance": 4.37,
+    "duration": 29.54,
+    "id": 84
+  },
+  {
     "comment": "treadmill",
     "date": "05/17/2019",
     "distance": 3.00,

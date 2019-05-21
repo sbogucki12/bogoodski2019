@@ -99,6 +99,8 @@ namespace Bogoodski2019.RunLogArchiveContent
 
         public static List<RunArchiveData> RunArchiveDataList = new List<RunArchiveData>
         {
+            run87,
+            run86,
             run85,
             run84,
             run83,

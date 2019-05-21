@@ -7,7 +7,6 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ExpandMore from '@material-ui/icons/ExpandMoreRounded';
 import ExpandLess from '@material-ui/icons/ExpandLessRounded';
-import runArchiveData from './runArchiveData.json';
 import Moment from 'react-moment';
 
 const styles = theme => ({
@@ -54,80 +53,88 @@ class RunArchiveListPrimary extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            runData: runArchiveData,
+            runData: [],
+            listData: [],
             sliceIndex: 10
         }
     };
 
     handleSort = name => {
         if (name === 'distance') {
-            const listData = this.state.runData;
+            const listData = this.state.listData;
             const sortedListData = listData.sort((a, b) => {
                 return a.distance - b.distance
             });
 
             this.setState({
-                runData: sortedListData
+                listData: sortedListData
             });
         };
         if (name === 'date') {
-            const listData = this.state.runData;
+            const listData = this.state.listData;
             const sortedListData = listData.sort((a, b) => {
                 return b.id - a.id
             });
 
             this.setState({
-                runData: sortedListData
+                listData: sortedListData
             });
         };
         if (name === 'pace') {
-            const listData = this.state.runData;
+            const listData = this.state.listData;
             const sortedListData = listData.sort((a, b) => {
                 return (a.duration / a.distance) - (b.duration / b.distance)
             });
 
             this.setState({
-                runData: sortedListData
+                listData: sortedListData
             });
         };
     };
 
     showMore = () => {
-        let sliceData = runArchiveData;
+        let sliceData = this.state.runData;
         let sliceIndex = this.state.sliceIndex + 10;
 
         sliceData = sliceData.slice(0, sliceIndex);
         this.setState({
             sliceIndex: sliceIndex,
-            runData: sliceData
+            listData: sliceData
         });
     };
 
     showLess = () => {
-        let sliceData = runArchiveData;
+        let sliceData = this.state.runData;
         let sliceIndex = 10
 
         sliceData = sliceData.slice(0, sliceIndex);
         this.setState({
             sliceIndex: sliceIndex,
-            runData: sliceData
+            listData: sliceData
         });
     };
 
     componentDidMount() {
-        let dataToSlice = runArchiveData.sort((a, b) => {
-            b.id - a.id
-        });
-        let sliceIndex = this.state.sliceIndex;
-        dataToSlice = dataToSlice.slice(0, sliceIndex);
-        this.setState({
-            runData: dataToSlice
-        });
+        fetch('/api/run/getarchive')
+            .then(res => res.json())
+            .then(json => {
+                let dataToSlice = json.value.sort((a, b) => {
+                    b.id - a.id
+                });
+                let sliceIndex = this.state.sliceIndex;
+                dataToSlice = dataToSlice.slice(0, sliceIndex);
+                this.setState({
+                    runData: json.value,
+                    listData: dataToSlice
+                });
+            })
     }
 
     render() {
         const { classes } = this.props;
-        const listData = this.state.runData;
+        let listData = this.state.listData;
+        let runArchiveData = this.state.runData;
+
         let showButton = null;
 
         if (listData.length >= runArchiveData.length - 9) {
@@ -193,4 +200,3 @@ class RunArchiveListPrimary extends React.Component {
 };
 
 export default withStyles(styles)(RunArchiveListPrimary);
-

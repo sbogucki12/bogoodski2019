@@ -1,9 +1,5 @@
-﻿using Bogoodski2019.Controllers;
-using Bogoodski2019.Models;
-using System;
+﻿using Bogoodski2019.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Bogoodski2019.DjContent
 {

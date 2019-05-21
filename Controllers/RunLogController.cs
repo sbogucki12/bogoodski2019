@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using Bogoodski2019.RunLogArchiveContent;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -144,6 +146,22 @@ namespace Bogoodski2019.Controllers
             {
                 string message = "exception";
                 return message;
+            }
+        }
+
+        [HttpGet]
+        [Route("api/run/getarchive")]
+        public IActionResult GetArchive()
+        {
+            try
+            {
+                JsonResult json = new JsonResult(RunLogArchiveData.RunArchiveDataList);
+                return Ok(json);
+            }
+            catch
+            {
+                string message = "exception";
+                return NotFound(message);
             }
         }
     }   

@@ -20,6 +20,7 @@ import DjMain from './dj/DjMain';
 import BlogMain from './newBlogFolder/BlogMain';
 import WhatHappenedInDec from './newBlogFolder/WhatHappenedInDec';
 import ToDoSwitchPage from './toDo/ToDoSwitchPage';
+import TicTacToeBoardPrimary from './tictactoe/TicTacToeBoardPrimary';
 
 const styles = {
     root: {
@@ -72,6 +73,7 @@ class Layout extends Component {
                         <div>
                             {chatRoutes}
                             <Route exact path="/chat/mydashboard" component={MyDashboardRoot} />
+                            <Route exact path="/tictactoe/test" component={TicTacToeBoardPrimary} />
                             <Route exact path="/todo/switch" component={ToDoSwitchPage} />
                             <Route exact path="/blog/decblog" component={WhatHappenedInDec} />
                             <Route exact path="/blog/blogmain" component={BlogMain} />

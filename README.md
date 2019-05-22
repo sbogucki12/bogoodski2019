@@ -9,6 +9,14 @@
 <p>Created an archive for the run log to collect historical running data.  The data is maintained serve-side and delivered via a .NET Web API controller.  In the React app, it (or, well, "they"; I guess "data" is plural, right?) is consumed by a fetch() call.</p>
 <p>Currently, in order to add run data to the archive, I have to enter the data into the source code.  Obviously, this is not the prefered course of action.  So, in time, I will update the functionality.  The code is currently set so that I can upload the image for the current run from any device. I have a simple little password-protected upload page for that.  I'm going to create the same functionality for adding historical runs to the archive.  Just not today - because I have something else that I'm about to begin.</p>
 <p>The runlog is located <a href="https://bogoodski2019.azurewebsites.net/runlog" rel="noopener noreferrer" target="_blank">HERE</a>.</p>
+<p>On the <i>tic tac toe</i> branch, I'm building ... wait for it...</p>
+<p>a tic tac toe game.</p>
+<p>Single player, versus the computer.</p>
+
+<p align="center">
+	<img src="http://g.recordit.co/9zjPYesMRd.gif" alt="tic tac toe Day One">
+</p>
+
 
 
 

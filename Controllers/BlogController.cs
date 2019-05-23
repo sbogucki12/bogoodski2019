@@ -19,12 +19,7 @@ namespace Bogoodski2019.Controllers
         {
             if(id == 0)
             {
-                BlogClass blog = WhatHappenedInDecember.blog;
-                return Ok(blog);
-            }
-            if(id == 1)
-            {
-                BlogClass blog = MajorKey.blog;
+                BlogClass blog = Update.blog;
                 return Ok(blog);
             }
 

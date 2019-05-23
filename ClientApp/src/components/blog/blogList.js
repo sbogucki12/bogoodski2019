@@ -1,6 +1,5 @@
-﻿const blogList = [
-    { "id": 9, "name": "The Major Key 🔑 to Overcoming Obstacles During Recovery", "date": "Apr. 27, 2019", "url": "/blog/blogmain", "seriesTitle": "BoGoodSki: Misc. Thoughts:" },
-    { "id": 8, "name": "What happened in December", "date": "Apr. 17, 2019", "url": "/blog/decblog", "seriesTitle": "BoGoodSki: Misc. Thoughts:"},
+﻿const blogList = [    
+    { "id": 8, "name": "#Update", "date": "May 23, 2019", "url": "/blog/updatemay232019", "seriesTitle": "BoGoodSki: Misc. Thoughts:"},
     { "id": 7, "name": "Part 6: Intro to Unit Tests", "date": "Feb. 20, 2019", "url": "https://medium.com/@sbogucki12/live-blogging-the-development-of-a-new-feature-via-reactjs-and-net-core-part-6-656f81be66c9", "seriesTitle": "Live Blogging the Development of a New Feature:"},
     { "id": 6, "name": "Part 5.1: Staff Meeting", "date": "Feb. 18, 2019", "url": "https://medium.com/@sbogucki12/live-blogging-the-development-of-a-new-feature-via-reactjs-and-net-core-part-5-1-989995253ec2", "seriesTitle": "Live Blogging the Development of a New Feature:" },
     { "id": 5, "name": "Part 5: Blob Metadata", "date": "Feb. 15, 2019", "url": "https://medium.com/@sbogucki12/live-blogging-the-development-of-a-new-feature-via-reactjs-and-net-core-part-5-570aced6ef5b", "seriesTitle": "Live Blogging the Development of a New Feature:"},

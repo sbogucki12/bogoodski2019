@@ -8,6 +8,7 @@ namespace Bogoodski2019.RunLogArchiveContent
 {
     public class RunLogArchiveData
     {
+        public static RunArchiveData run89 = new RunArchiveData("outdoor", "5/23/2019", 4.50, 30.31, 89);
         public static RunArchiveData run88 = new RunArchiveData("outdoor", "5/22/2019", 5.00, 33.41, 88);
         public static RunArchiveData run87 = new RunArchiveData("outdoor", "5/21/2019", 4.10, 27.55, 87);
         public static RunArchiveData run86 = new RunArchiveData("outdoor", "5/20/2019", 5.05, 35.28, 86);
@@ -100,6 +101,7 @@ namespace Bogoodski2019.RunLogArchiveContent
 
         public static List<RunArchiveData> RunArchiveDataList = new List<RunArchiveData>
         {
+            run89,
             run88,
             run87,
             run86,

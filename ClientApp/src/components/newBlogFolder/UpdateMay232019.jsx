@@ -1,7 +1,7 @@
 ﻿import React, { useState, useEffect } from 'react';
-import PicOfMe from './images/picofme.jpg';
-import DrumRoll from './images/drumroll.gif';
-import RollerCoaster from './images/rollercoaster.png';
+import RunArchive from './images/runArchive.JPG';
+import ToDoApp from './images/2DoApp.JPG';
+import TicTacToe from './images/tictactoe.gif';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
@@ -35,9 +35,9 @@ function useFetch(url) {
     return [data];
 }
 
-function BlogMain(props) {
+function UpdateMay232019(props) {
     const { classes } = props;
-    const data = useFetch('api/getblog?id=1');
+    const data = useFetch('api/getblog?id=0');
     let body = data[0].blogContent;
     let bodyPart2 = data[0].blogContentPart2;
     let bodyPart3 = data[0].blogContentPart3;
@@ -57,22 +57,28 @@ function BlogMain(props) {
                     <b>{title}</b>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: `font-family: 'Roboto', sans-serif`, fontSize: 10, textAlign: 'center' }}>
-                    <i>{`Apr. 27, 2019`}</i>
+                    <i>{`May 23, 2019`}</i>
                 </div>
                 <div dangerouslySetInnerHTML={html} style={{ fontFamily: `font-family: 'Roboto', sans-serif` }} />
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
-                    <img src={PicOfMe} alt="Me" style={{ height: 400, width: 225 }} />
+                    <img src={RunArchive} alt="Run Archive" style={{ height: 275, width: 285 }} />
                     <p style={{ fontStyle: 'italic', fontSize: 10, textAlign: 'center' }}>
-                        {`Unfortunately, for the poor soul at Trader Joe's, "How is your day?" was a loaded question.`}
+                        {`New Run Archive`}
                     </p>
                 </div>
                 <div dangerouslySetInnerHTML={htmlPart2} style={{ fontFamily: `font-family: 'Roboto', sans-serif` }} />
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <img src={DrumRoll} alt="Drum Roll" style={{ height: 225, width: 225, alignSelf: 'center' }} />
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
+                    <img src={ToDoApp} alt="Two Do App" style={{ height: 225, width: 225, alignSelf: 'center' }} />
+                    <p style={{ fontStyle: 'italic', fontSize: 10, textAlign: 'center' }}>
+                        {`2Do App`}
+                    </p>
                 </div>
                 <div dangerouslySetInnerHTML={htmlPart3} style={{ fontFamily: `font-family: 'Roboto', sans-serif` }} />
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <img src={RollerCoaster} alt="Roller Coaster" style={{ height: 225, width: 225, alignSelf: 'center' }} />
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
+                    <img src={TicTacToe} alt="Roller Coaster" style={{ height: 275, width: 285, alignSelf: 'center' }} />
+                    <p style={{ fontStyle: 'italic', fontSize: 10, textAlign: 'center' }}>
+                        {`Tic Tac Toe`}
+                    </p>
                 </div>
                 <div dangerouslySetInnerHTML={htmlPart4} style={{ fontFamily: `font-family: 'Roboto', sans-serif` }} />
             </Paper>
@@ -85,5 +91,5 @@ function BlogMain(props) {
     );
 }
 
-export default withStyles(styles)(BlogMain);
+export default withStyles(styles)(UpdateMay232019);
 

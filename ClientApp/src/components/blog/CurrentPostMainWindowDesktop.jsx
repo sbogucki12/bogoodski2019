@@ -7,7 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import CurrentPostImage from './images/majorKeyLogo.jpg';
+import CurrentPostImage from './images/updateLogo.jpg';
 
 const styles = theme => ({
     card: {
@@ -31,7 +31,7 @@ const styles = theme => ({
 
 function CurrentPostMainWindowDesktop(props) {
     const { classes } = props;
-    const currentPostUrl = "/blog/blogmain";
+    const currentPostUrl = "/blog/updatemay232019";
 
     return (
         <Card className={classes.card}>
@@ -53,10 +53,10 @@ function CurrentPostMainWindowDesktop(props) {
                             align="center"
 
                         >
-                            {`(Apr. 27, 2019)`}
+                            {`(May 23, 2019)`}
                         </Typography>
                         <Typography component="p" gutterBottom>
-                            {`The single, powerful characteristic that will prevent the inevitable lows in life from descending to irrecoverable depths... `}
+                            {`Reporting progress on some things on which I've been working.`}
                         </Typography>
                         <Typography variant="caption">
                             {`Blog opens in new window.`}

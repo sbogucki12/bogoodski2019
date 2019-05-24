@@ -27,7 +27,8 @@ namespace Bogoodski2019.BlogContent
             <p>As a code challenge, I was given about three and a half days to implement a ""To-Do"" app.  The only requirements: use font icons, implement simple animation, save the to-do list to local storage, and make the app ""your own"".  I came up with this: <a href=""https://bogoodski2019.azurewebsites.net/todo/switch"" target=""_blank"" rel=""noreferrer noopener""><i>Not Just Another</i> <b>2Do App</b>.</p>";
 
         public static string blogContentPart3 =
-            @"<p>My current little side project is building a one-player (versus the computer) tic tac toe game.</p>";
+            @"<p><b>Tic-Tac-Toe:</b></p>
+            <p>My current little side project is building a one-player (versus the computer) tic tac toe game.</p>";
 
         public static string blogContentPart4 =
             @"<p>Tic Tac Toe is a simplistic game, but the coding challenges it presents are sufficient for great learning opportunity. The most obvious, of course, will be the creation of the computer player's gameplay.  Initially, I plan for the computer player to be ""dumb"".  The computer player will select which tic-tac-toe square in which to place its ""O"" using JavaScript's Math.Random() method. The initial simplicity will be necessary as I will already have the challenge of setting the appropriate timeout calls and gameplay logic in order to simulate something like human behavior from the computer player.  After getting the first implementation of the game functioning correctly, I will then work on trying to improve the ""intelligence"" of the computer player; not with any fancy machine learning modeling or what-not, but via some simple conditional statements, and the like. </p>

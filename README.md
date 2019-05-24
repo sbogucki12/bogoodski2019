@@ -4,6 +4,19 @@
 
 
 <h2>Update</h2>
+
+<p><i>May 23, 2019:</i></p>
+
+<ul>
+<li>Added a new blog post.</li>
+<li>Working on adding functionlity to submit run archive data from any device</li>
+</ul>
+<p align="center">
+	<img src="http://g.recordit.co/zjzuE2lsyy.gif" alt="Controller Code">
+</p>
+<p><i>TODO: Gonna have to spin up a document DB to make that list persist.</i></p>
+
+
 <p><i>May 22, 2019:</i></p>
 
 <p>Created an archive for the run log to collect historical running data.  The data is maintained serve-side and delivered via a .NET Web API controller.  In the React app, it (or, well, "they"; I guess "data" is plural, right?) is consumed by a fetch() call.</p>

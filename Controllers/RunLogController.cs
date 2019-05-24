@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
+using Bogoodski2019.Models;
 using Bogoodski2019.RunLogArchiveContent;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -146,6 +148,36 @@ namespace Bogoodski2019.Controllers
             {
                 string message = "exception";
                 return message;
+            }
+        }
+
+        [HttpPost]
+        [Route("api/run/postarchive")]
+        public IActionResult CreateNewRun(string comment, string date, double distance, double duration)
+        {
+            string Token = Request.Headers["code"];
+
+            string key = Environment.GetEnvironmentVariable("UPLOADKEY");
+
+            try
+            {
+                if (Token == key)
+                {
+                    int id = RunLogArchiveData.RunArchiveDataList.Count + 1;
+                    var newRun = new RunArchiveData(comment, date, distance, duration, id);
+                    RunLogArchiveData.RunArchiveDataList.Add(newRun);
+                    var list = RunLogArchiveData.RunArchiveDataList.OrderByDescending(r => r.Id);
+                    return Ok(list);
+                }
+                else
+                {
+                    string message = "Wrong password";
+                    return BadRequest(message);
+                }
+            }
+            catch 
+            {
+                throw new Exception();
             }
         }
 

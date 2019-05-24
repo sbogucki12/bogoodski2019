@@ -14,6 +14,7 @@
 <p align="center">
 	<img src="http://g.recordit.co/zjzuE2lsyy.gif" alt="Controller Code">
 </p>
+<p>Gif available here: <a href="http://g.recordit.co/zjzuE2lsyy.gif" target="_blank" rel="noreferrer noopener">http://g.recordit.co/zjzuE2lsyy.gif</a>.</p>
 <p><i>TODO: Gonna have to spin up a document DB to make that list persist.</i></p>
 
 

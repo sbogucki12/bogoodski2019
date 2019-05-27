@@ -1,33 +1,26 @@
 ﻿import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
 
 const styles = theme => ({
     root: {
         width: '100vw',
         minHeight: '100vh',
-        display: 'flex', 
-        alignItems: 'center', 
-        justifyContent: 'center', 
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
         flexDirection: 'column'
     },
     paperRoot: {
         ...theme.mixins.gutters(),
         paddingTop: theme.spacing.unit * 2,
         paddingBottom: theme.spacing.unit * 2,
-        marginTop: '25vh', 
+        marginTop: '25vh',
         width: 290
     },
     topRow: {
         display: 'flex',
-        flexDirection: 'row', 
+        flexDirection: 'row',
         width: '100%',
         alignItems: 'center',
         justifyContent: 'center',
@@ -55,101 +48,123 @@ class TicTacToeBoardPrimary extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            box0: "",
-            box1: "",
-            box2: "",
-            box3: "",
-            box4: "",
-            box5: "",
-            box6: "",
-            box7: "",
-            box8: "", 
-            winner: false
+            boxes: ["", "", "", "", "", "", "", "", ""]
         }
+    };
+
+    getRandomIndex = (max) => {
+        return Math.floor(Math.random() * Math.floor(max));
+    }
+
+    computerMakesMove = () => {
+        let newBoxes = [...this.state.boxes];
+        let index = this.getRandomIndex(9);
+        if (this.state.boxes[0] &&
+            this.state.boxes[1] &&
+            this.state.boxes[2] &&
+            this.state.boxes[3] &&
+            this.state.boxes[4] &&
+            this.state.boxes[5] &&
+            this.state.boxes[6] &&
+            this.state.boxes[7] && this.state.boxes[8]) {
+            newBoxes = ["", "", "", "", "", "", "", "", ""];
+            this.setState({
+                boxes: newBoxes
+            });
+
+            return;
+        };
+
+        if (this.state.boxes[index] === "") {
+            newBoxes[index] = "O";
+            setTimeout(() => {
+                this.setState({
+                    boxes: newBoxes
+                })
+            }, 1000)
+        } else if (this.state.boxes[index] === "X" || this.state.boxes[index] === "O") {
+            index = this.getRandomIndex();
+            this.computerMakesMove();
+        };
     };
 
     onBoxSelect = value => {
-        if (this.state.box0 === "X" && this.state.box1 === "X" && value === 2) {
-            this.setState({
-                box1: "X", 
-                winner: true
-            })
-        }
         if (value === 0) {
+            let myBoxes = [...this.state.boxes];
+            myBoxes[0] = "X"
             this.setState({
-                box0: "X"
-            })
-        };
+                boxes: myBoxes
+            }, () => this.computerMakesMove());
+        }
         if (value === 1) {
+            let myBoxes = [...this.state.boxes];
+            myBoxes[1] = "X"
             this.setState({
-                box1: "X"
-            })
+                boxes: myBoxes
+            }, () => this.computerMakesMove())
         };
         if (value === 2) {
+            let myBoxes = [...this.state.boxes];
+            myBoxes[2] = "X"
             this.setState({
-                box2: "X"                
-            })
+                boxes: myBoxes
+            }, () => this.computerMakesMove())
         };
         if (value === 3) {
+            let myBoxes = [...this.state.boxes];
+            myBoxes[3] = "X"
             this.setState({
-                box3: "X"
-            })
+                boxes: myBoxes
+            }, () => this.computerMakesMove())
         };
         if (value === 4) {
+            let myBoxes = [...this.state.boxes];
+            myBoxes[4] = "X"
             this.setState({
-                box4: "X"
-            })
+                boxes: myBoxes
+            }, () => this.computerMakesMove())
         };
         if (value === 5) {
+            let myBoxes = [...this.state.boxes];
+            myBoxes[5] = "X"
             this.setState({
-                box5: "X"
-            })
+                boxes: myBoxes
+            }, () => this.computerMakesMove())
         };
         if (value === 6) {
+            let myBoxes = [...this.state.boxes];
+            myBoxes[6] = "X"
             this.setState({
-                box6: "X"
-            })
+                boxes: myBoxes
+            }, () => this.computerMakesMove())
         };
         if (value === 7) {
+            let myBoxes = [...this.state.boxes];
+            myBoxes[7] = "X"
             this.setState({
-                box7: "X"
-            })
+                boxes: myBoxes
+            }, () => this.computerMakesMove())
         };
         if (value === 8) {
+            let myBoxes = [...this.state.boxes];
+            myBoxes[8] = "X"
             this.setState({
-                box8: "X"
-            })
+                boxes: myBoxes
+            }, () => this.computerMakesMove())
         };
-    };
-
-
-
-    handleClose = () => {
-        this.setState({
-            box0: "",
-            box1: "",
-            box2: "", 
-            box3: "",
-            box4: "",
-            box5: "",
-            box6: "",
-            box7: "",
-            box8: "",
-            winner: false
-        });
     };
 
     render() {
         const { classes } = this.props;
-        const box0 = this.state.box0;
-        const box1 = this.state.box1;
-        const box2 = this.state.box2;
-        const box3 = this.state.box3;
-        const box4 = this.state.box4;
-        const box5 = this.state.box5;
-        const box6 = this.state.box6;
-        const box7 = this.state.box7;
-        const box8 = this.state.box8;   
+        const box0 = this.state.boxes[0];
+        const box1 = this.state.boxes[1];
+        const box2 = this.state.boxes[2];
+        const box3 = this.state.boxes[3];
+        const box4 = this.state.boxes[4];
+        const box5 = this.state.boxes[5];
+        const box6 = this.state.boxes[6];
+        const box7 = this.state.boxes[7];
+        const box8 = this.state.boxes[8];
 
         return (
             <div className={classes.root}>
@@ -187,28 +202,10 @@ class TicTacToeBoardPrimary extends React.Component {
                             {box8}
                         </button>
                     </div>
-                    <Dialog
-                        open={this.state.winner}
-                        onClose={this.handleClose}
-                        aria-labelledby="You win!"
-                        aria-describedby="You won this game of Tic Tac Toe"
-                    >
-                        <DialogTitle id="alert-dialog-title">{`Congratulations!`}</DialogTitle>
-                        <DialogContent>
-                            <DialogContentText id="You win!">
-                                {`You've won this game of Tic Tac Toe!`}
-                            </DialogContentText>
-                        </DialogContent>
-                        <DialogActions>
-                            <Button onClick={this.handleClose} color="primary" autoFocus>
-                                {`🎉`}
-                            </Button>
-                        </DialogActions>
-                    </Dialog>
                 </Paper>
             </div>
         );
-    };    
+    };
 }
 
 export default withStyles(styles)(TicTacToeBoardPrimary);

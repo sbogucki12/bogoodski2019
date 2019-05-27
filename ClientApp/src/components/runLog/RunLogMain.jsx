@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import RunMoreInfo from './RunMoreInfo';
 import RunArchiveListPrimary from './archive/RunArchiveListPrimary';
+import igicon from '../appbar/socialImages/igicon.png'
 
 const styles = theme => ({
     root: {
@@ -34,6 +35,25 @@ const styles = theme => ({
         width: '100%',
         marginBottom: '2%'
     },
+    titleBox: {
+        border: `2px solid ${theme.palette.primary.main}`,
+        borderRadius: 5,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    logoStyle: {
+        color: theme.palette.secondary.main,
+        fontFamily: `'Bungee Inline', cursive`,
+        textShadow: `2px 2px ${theme.palette.primary.main}`,
+        marginTop: '1%'
+    },
+    linkStyle: {
+        textDecoration: 'none',
+        color: '#000000',
+        textShadow: `1px 1px ${theme.palette.primary.main}`
+    },
     content: {
         display: 'flex',
         flexDirection: 'row',
@@ -44,9 +64,10 @@ const styles = theme => ({
         maxHeight: '600px',
         marginTop: theme.spacing.unit * 5,
         marginBottom: theme.spacing.unit * 5,
-        maxWidth: '290px',
+        maxWidth: '270px',
         position: 'relative',
-        //transform: 'rotate(90deg)'
+        border: `5px solid ${theme.palette.primary.main}`,
+        borderRadius: 5
     },
     contentMobile: {
         display: 'flex',
@@ -120,15 +141,28 @@ class RunLogMain extends React.Component {
         const mobile =
             <div className={classes.root}>
                 <Paper className={classes.paperRootMobile} elevation={6}>
-                    <div className={classes.date}>
-                        <Typography variant="h4" gutterBottom>
-                            {date}
-                        </Typography>
-                    </div>
-                    <div className={classes.contentMobile}>
-                        <span className={runnerIconStyle}>{RunnerIcon}</span>
-                        <span><img src={RunPic} className={classes.image} alt="Run Pic" /></span>
-                    </div>
+                    <Paper className={classes.topPaper} elevation={6}>
+                        <div className={classes.titleBox}>
+                            <Typography variant="h2" className={classes.logoStyle} style={{ fontSize: '15vw', textAlign: 'center' }} gutterBottom>
+                                {`Run Log`}
+                            </Typography>
+                            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginBottom: '1%' }}>
+                                <span><img src={igicon} alt="BoGoodSki Runs on Instagram" style={{ height: 28, width: 28 }} /></span>
+                                <span><a href="https://www.instagram.com/bogoodskiruns/" target="_blank" rel="noreferrer noopener" className={classes.linkStyle}>{` -BoGoodSkiRuns`}</a></span>
+                            </div>
+                        </div>
+                    </Paper>
+                    <Paper className={classes.topPaper} elevation={6}>
+                        <div className={classes.date}>
+                            <Typography variant="h4" gutterBottom>
+                                {date}
+                            </Typography>
+                        </div>
+                        <div className={classes.contentMobile}>
+                            <span className={runnerIconStyle}>{RunnerIcon}</span>
+                            <span><img src={RunPic} className={classes.image} alt="Run Pic" /></span>
+                        </div>
+                    </Paper>
                     <RunArchiveListPrimary />
                     <RunMoreInfo />
                 </Paper>
@@ -146,6 +180,17 @@ class RunLogMain extends React.Component {
         const desktop =
             <div className={classes.root}>
                 <Paper className={classes.paperRoot} elevation={6}>
+                    <Paper className={classes.topPaper} elevation={6}>
+                        <div className={classes.titleBox}>
+                            <Typography variant="h2" className={classes.logoStyle} gutterBottom>
+                                {`Run Log`}
+                            </Typography>
+                            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginBottom: '1%' }}>
+                                <span><img src={igicon} alt="BoGoodSki Runs on Instagram" style={{ height: 28, width: 28 }} /></span>
+                                <span><a href="https://www.instagram.com/bogoodskiruns/" target="_blank" rel="noreferrer noopener" className={classes.linkStyle}>{` -BoGoodSkiRuns`}</a></span>
+                            </div>
+                        </div>
+                    </Paper>
                     <Paper className={classes.topPaper} elevation={6}>
                         <div className={classes.date}>
                             <Typography variant="h2" gutterBottom>

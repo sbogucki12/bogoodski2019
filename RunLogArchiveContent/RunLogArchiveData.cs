@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 namespace Bogoodski2019.RunLogArchiveContent
 {
     public class RunLogArchiveData
-    {     
+    {
+        public static RunArchiveData run92 = new RunArchiveData("treadmill", "5/26/2019", 3.00, 19.15, 92);
+        public static RunArchiveData run91 = new RunArchiveData("outdoor", "5/25/2019", 5.94, 40.16, 91);
+        public static RunArchiveData run90 = new RunArchiveData("outdoor", "5/24/2019", 4.24, 27.44, 90);
         public static RunArchiveData run89 = new RunArchiveData("outdoor", "5/23/2019", 4.50, 30.31, 89);
         public static RunArchiveData run88 = new RunArchiveData("outdoor", "5/22/2019", 5.00, 33.41, 88);
         public static RunArchiveData run87 = new RunArchiveData("outdoor", "5/21/2019", 4.10, 27.55, 87);
@@ -101,6 +104,9 @@ namespace Bogoodski2019.RunLogArchiveContent
 
         public static List<RunArchiveData> RunArchiveDataList = new List<RunArchiveData>
         {
+            run92,
+            run91,
+            run90,
             run89,
             run88,
             run87,

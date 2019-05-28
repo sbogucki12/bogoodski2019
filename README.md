@@ -9,11 +9,16 @@
 
 <p>On the <b>tictactoe</b> branch, I'm working on a ... tic-tac-toe game.</p>
 <p align="center">
-	<img src="http://g.recordit.co/DvDWTi0HGx.gif" alt="tic tac toe">
+	<img src="http://g.recordit.co/mutnfF18oH.gif" alt="tic tac toe">
 </p>
 
-<p>Gif also available <a href="http://g.recordit.co/DvDWTi0HGx.gif" target="_blank" rel="noreferrer noopener">HERE<a>.</p>
-<p>Totally violating DRY.  For now.  <i>Premature optimization is the root of all evil.</i>  But, for real, every day I learn a bit more about how React works (did you know that you can chain callbacks to setState()?).  And, every night, with my reading, I'm learning more and more about the JavaScript language itself (last night, I discovered that JavaScript does all sorts of funky type conversions, like when doing equality checks.  It's interesting).</p>
+<p>Gif also available <a href="http://g.recordit.co/mutnfF18oH.gif" target="_blank" rel="noreferrer noopener">HERE<a>.</p>
+<p><b>Next Steps:</b></p>
+<ol>
+<li>Give the computer player a graphical likeness.</li>
+<li>Make the computer player more strategic.</li>
+<li>Refactor: eliminate redundant code, make more efficient, add better error handling, implement tests.</li>
+</ol>
 
 
 <p><i>May 23, 2019:</i></p>

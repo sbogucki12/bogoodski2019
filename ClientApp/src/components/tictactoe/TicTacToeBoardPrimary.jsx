@@ -1,6 +1,12 @@
 ﻿import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
     root: {
@@ -48,7 +54,9 @@ class TicTacToeBoardPrimary extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            boxes: ["", "", "", "", "", "", "", "", ""]
+            boxes: ["", "", "", "", "", "", "", "", ""],
+            computerWins: false,
+            youWin: false
         }
     };
 
@@ -56,8 +64,130 @@ class TicTacToeBoardPrimary extends React.Component {
         return Math.floor(Math.random() * Math.floor(max));
     }
 
+    checkForComputerWin = () => {
+        if (this.state.boxes[0] === "O" && this.state.boxes[1] === "O" && this.state.boxes[2] === "O") {
+            this.setState({
+                computerWins: true
+            });
+            return;
+        }
+
+        if (this.state.boxes[3] === "O" && this.state.boxes[4] === "O" && this.state.boxes[5] === "O") {
+            this.setState({
+                computerWins: true
+            });
+            return;
+        }
+
+        if (this.state.boxes[6] === "O" && this.state.boxes[7] === "O" && this.state.boxes[8] === "O") {
+            this.setState({
+                computerWins: true
+            });
+            return;
+        }
+
+        if (this.state.boxes[0] === "O" && this.state.boxes[3] === "O" && this.state.boxes[6] === "O") {
+            this.setState({
+                computerWins: true
+            });
+            return;
+        }
+
+        if (this.state.boxes[1] === "O" && this.state.boxes[4] === "O" && this.state.boxes[7] === "O") {
+            this.setState({
+                computerWins: true
+            });
+            return;
+        }
+
+        if (this.state.boxes[2] === "O" && this.state.boxes[5] === "O" && this.state.boxes[8] === "O") {
+            this.setState({
+                computerWins: true
+            });
+            return;
+        }
+
+        if (this.state.boxes[0] === "O" && this.state.boxes[4] === "O" && this.state.boxes[8] === "O") {
+            this.setState({
+                computerWins: true
+            });
+            return;
+        }
+
+        if (this.state.boxes[2] === "O" && this.state.boxes[4] === "O" && this.state.boxes[6] === "O") {
+            this.setState({
+                computerWins: true
+            });
+            return;
+        }
+    };
+
+    handleClose = () => {
+        this.setState({
+            computerWins: false,
+            youWin: false,
+            boxes: ["", "", "", "", "", "", "", "", ""]
+        });
+    };
+
     computerMakesMove = () => {
         let newBoxes = [...this.state.boxes];
+        if (this.state.boxes[0] === "X" && this.state.boxes[1] === "X" && this.state.boxes[2] === "X") {
+            this.setState({
+                youWin: true
+            });
+            return;
+        }
+
+        if (this.state.boxes[3] === "X" && this.state.boxes[4] === "X" && this.state.boxes[5] === "X") {
+            this.setState({
+                youWin: true
+            });
+            return;
+        }
+
+        if (this.state.boxes[6] === "X" && this.state.boxes[7] === "X" && this.state.boxes[8] === "X") {
+            this.setState({
+                youWin: true
+            });
+            return;
+        }
+
+        if (this.state.boxes[0] === "X" && this.state.boxes[3] === "X" && this.state.boxes[6] === "X") {
+            this.setState({
+                youWin: true
+            });
+            return;
+        }
+
+        if (this.state.boxes[1] === "X" && this.state.boxes[4] === "X" && this.state.boxes[7] === "X") {
+            this.setState({
+                youWin: true
+            });
+            return;
+        }
+
+        if (this.state.boxes[2] === "X" && this.state.boxes[5] === "X" && this.state.boxes[8] === "X") {
+            this.setState({
+                youWin: true
+            });
+            return;
+        }
+
+        if (this.state.boxes[0] === "X" && this.state.boxes[4] === "X" && this.state.boxes[8] === "X") {
+            this.setState({
+                youWin: true
+            });
+            return;
+        }
+
+        if (this.state.boxes[2] === "X" && this.state.boxes[4] === "X" && this.state.boxes[6] === "X") {
+            this.setState({
+                youWin: true
+            });
+            return;
+        }
+
         let index = this.getRandomIndex(9);
         if (this.state.boxes[0] &&
             this.state.boxes[1] &&
@@ -80,8 +210,10 @@ class TicTacToeBoardPrimary extends React.Component {
             setTimeout(() => {
                 this.setState({
                     boxes: newBoxes
-                })
-            }, 1000)
+                });
+                this.checkForComputerWin();
+            }, 1000);
+
         } else if (this.state.boxes[index] === "X" || this.state.boxes[index] === "O") {
             index = this.getRandomIndex();
             this.computerMakesMove();
@@ -89,69 +221,74 @@ class TicTacToeBoardPrimary extends React.Component {
     };
 
     onBoxSelect = value => {
-        if (value === 0) {
-            let myBoxes = [...this.state.boxes];
-            myBoxes[0] = "X"
-            this.setState({
-                boxes: myBoxes
-            }, () => this.computerMakesMove());
+        if (this.state.boxes[value]) {
+            alert("try another box");
+            return;
+        } else {
+            if (value === 0) {
+                let myBoxes = [...this.state.boxes];
+                myBoxes[0] = "X"
+                this.setState({
+                    boxes: myBoxes
+                }, () => this.computerMakesMove());
+            }
+            if (value === 1) {
+                let myBoxes = [...this.state.boxes];
+                myBoxes[1] = "X"
+                this.setState({
+                    boxes: myBoxes
+                }, () => this.computerMakesMove())
+            };
+            if (value === 2) {
+                let myBoxes = [...this.state.boxes];
+                myBoxes[2] = "X"
+                this.setState({
+                    boxes: myBoxes
+                }, () => this.computerMakesMove())
+            };
+            if (value === 3) {
+                let myBoxes = [...this.state.boxes];
+                myBoxes[3] = "X"
+                this.setState({
+                    boxes: myBoxes
+                }, () => this.computerMakesMove())
+            };
+            if (value === 4) {
+                let myBoxes = [...this.state.boxes];
+                myBoxes[4] = "X"
+                this.setState({
+                    boxes: myBoxes
+                }, () => this.computerMakesMove())
+            };
+            if (value === 5) {
+                let myBoxes = [...this.state.boxes];
+                myBoxes[5] = "X"
+                this.setState({
+                    boxes: myBoxes
+                }, () => this.computerMakesMove())
+            };
+            if (value === 6) {
+                let myBoxes = [...this.state.boxes];
+                myBoxes[6] = "X"
+                this.setState({
+                    boxes: myBoxes
+                }, () => this.computerMakesMove())
+            };
+            if (value === 7) {
+                let myBoxes = [...this.state.boxes];
+                myBoxes[7] = "X"
+                this.setState({
+                    boxes: myBoxes
+                }, () => this.computerMakesMove())
+            };
+            if (value === 8) {
+                let myBoxes = [...this.state.boxes];
+                myBoxes[8] = "X"
+                this.setState({
+                    boxes: myBoxes
+                }, () => this.computerMakesMove())
+            };
         }
-        if (value === 1) {
-            let myBoxes = [...this.state.boxes];
-            myBoxes[1] = "X"
-            this.setState({
-                boxes: myBoxes
-            }, () => this.computerMakesMove())
-        };
-        if (value === 2) {
-            let myBoxes = [...this.state.boxes];
-            myBoxes[2] = "X"
-            this.setState({
-                boxes: myBoxes
-            }, () => this.computerMakesMove())
-        };
-        if (value === 3) {
-            let myBoxes = [...this.state.boxes];
-            myBoxes[3] = "X"
-            this.setState({
-                boxes: myBoxes
-            }, () => this.computerMakesMove())
-        };
-        if (value === 4) {
-            let myBoxes = [...this.state.boxes];
-            myBoxes[4] = "X"
-            this.setState({
-                boxes: myBoxes
-            }, () => this.computerMakesMove())
-        };
-        if (value === 5) {
-            let myBoxes = [...this.state.boxes];
-            myBoxes[5] = "X"
-            this.setState({
-                boxes: myBoxes
-            }, () => this.computerMakesMove())
-        };
-        if (value === 6) {
-            let myBoxes = [...this.state.boxes];
-            myBoxes[6] = "X"
-            this.setState({
-                boxes: myBoxes
-            }, () => this.computerMakesMove())
-        };
-        if (value === 7) {
-            let myBoxes = [...this.state.boxes];
-            myBoxes[7] = "X"
-            this.setState({
-                boxes: myBoxes
-            }, () => this.computerMakesMove())
-        };
-        if (value === 8) {
-            let myBoxes = [...this.state.boxes];
-            myBoxes[8] = "X"
-            this.setState({
-                boxes: myBoxes
-            }, () => this.computerMakesMove())
-        };
     };
 
     render() {
@@ -165,6 +302,21 @@ class TicTacToeBoardPrimary extends React.Component {
         const box6 = this.state.boxes[6];
         const box7 = this.state.boxes[7];
         const box8 = this.state.boxes[8];
+        let dialogTitle = "";
+        let dialogText = "";
+        let dialogIcon = "";
+        const computerWins = this.state.computerWins;
+        if (computerWins) {
+            dialogTitle = "Sorry...";
+            dialogText = "You lost.";
+            dialogIcon = "🙁";
+        };
+        const youWin = this.state.youWin;
+        if (youWin) {
+            dialogTitle = "Congratulations!";
+            dialogText = "You won!";
+            dialogIcon = "🎉";
+        };
 
         return (
             <div className={classes.root}>
@@ -203,6 +355,24 @@ class TicTacToeBoardPrimary extends React.Component {
                         </button>
                     </div>
                 </Paper>
+                <Dialog
+                    open={this.state.computerWins || this.state.youWin}
+                    onClose={this.handleClose}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                >
+                    <DialogTitle id="alert-dialog-title">{dialogTitle}</DialogTitle>
+                    <DialogContent>
+                        <DialogContentText id="alert-dialog-description">
+                            {dialogText}
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={this.handleClose} color="primary" autoFocus>
+                            {dialogIcon}
+                        </Button>
+                    </DialogActions>
+                </Dialog>
             </div>
         );
     };

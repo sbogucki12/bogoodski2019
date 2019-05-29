@@ -12,13 +12,13 @@ namespace Bogoodski2019
 {
     public class Startup
     {
-   
+
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);            
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -27,6 +27,17 @@ namespace Bogoodski2019
             });
 
             services.AddSignalR();
+
+            services.Configure<Settings>(
+                options =>
+                {
+                    options.ConnectionString = "mongodb://sbogucki:snb123@ds016718.mlab.com:16718/bogoodskirunarchive";
+                    options.Database = "bogoodskirunarchive"; 
+                });
+
+            services.AddTransient<IRunArchiveContext, RunArchiveContext>();
+
+            services.AddTransient<IRunArchiveRepository, RunArchiveRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,7 +52,7 @@ namespace Bogoodski2019
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
-                        
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SignalRChat.Hubs;
+using System;
 
 namespace Bogoodski2019
 {
@@ -15,10 +16,24 @@ namespace Bogoodski2019
 
         public IConfiguration Configuration { get; }
 
+        public static IHostingEnvironment _environment;
+
+        public Startup(IHostingEnvironment environment)
+        {
+            _environment = environment;
+        }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);            
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.Configure<Settings>(
+                options =>
+                {
+                    options.ConnectionString = Environment.GetEnvironmentVariable("mongoconnectionstring");
+                    options.Database = "bogoodskirunarchive";
+                });
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -27,13 +42,6 @@ namespace Bogoodski2019
             });
 
             services.AddSignalR();
-
-            services.Configure<Settings>(
-                options =>
-                {
-                    options.ConnectionString = "mongodb://sbogucki:snb123@ds016718.mlab.com:16718/bogoodskirunarchive";
-                    options.Database = "bogoodskirunarchive"; 
-                });
 
             services.AddTransient<IRunArchiveContext, RunArchiveContext>();
 

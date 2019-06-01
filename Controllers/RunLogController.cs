@@ -12,16 +12,16 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace Bogoodski2019.Controllers
-{   
+{
     [ApiController]
     public class RunLogController : ControllerBase
     {
-        public static IHostingEnvironment _environment;      
+        public static IHostingEnvironment _environment;
 
         public RunLogController(IHostingEnvironment environment)
         {
-            _environment = environment;          
-        }        
+            _environment = environment;
+        }
 
         [HttpGet]
         [Route("api/runlog/getimage")]
@@ -61,10 +61,10 @@ namespace Bogoodski2019.Controllers
         {
             try
             {
-                string Token = Request.Headers["code"];                
+                string Token = Request.Headers["code"];
 
                 string key = Environment.GetEnvironmentVariable("UPLOADKEY");
-                
+
                 if (Token == key)
                 {
                     string storageConnectionString = Environment.GetEnvironmentVariable("storageconnectionstring");
@@ -96,7 +96,7 @@ namespace Bogoodski2019.Controllers
         public async Task<IActionResult> PostDate(string date)
         {
             try
-            {                
+            {
                 using (var reader = new StreamReader(Request.Body))
                 {
                     date = reader.ReadToEnd();
@@ -105,13 +105,13 @@ namespace Bogoodski2019.Controllers
                 string storageConnectionString = Environment.GetEnvironmentVariable("storageconnectionstring");
                 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(storageConnectionString);
                 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-                CloudBlobContainer container = blobClient.GetContainerReference("runlog");                
+                CloudBlobContainer container = blobClient.GetContainerReference("runlog");
                 CloudBlockBlob blob = container.GetBlockBlobReference("runpic.jpg");
                 blob.Metadata["date"] = date;
                 await blob.SetMetadataAsync();
 
                 return Ok(blob.Metadata);
-                
+
             }
             catch (Exception ex)
             {
@@ -175,7 +175,7 @@ namespace Bogoodski2019.Controllers
                     return BadRequest(message);
                 }
             }
-            catch 
+            catch
             {
                 throw new Exception();
             }
@@ -196,5 +196,5 @@ namespace Bogoodski2019.Controllers
                 return NotFound(message);
             }
         }
-    }   
+    }
 }

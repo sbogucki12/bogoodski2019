@@ -9,6 +9,7 @@ const styles = theme => ({
         ...theme.mixins.gutters(),
         paddingTop: theme.spacing.unit * 2,
         paddingBottom: theme.spacing.unit * 2,
+        marginTop: '25vh'
     },
     root: {
         minWidth: '100vw',
@@ -34,7 +35,8 @@ const styles = theme => ({
     formContainer: {
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        flexDirection: 'column'
     }
 });
 
@@ -44,11 +46,11 @@ class RunUploader extends React.Component {
         this.state = {
             image: '',
             code: '',
-            date: '', 
-            lastKey: 0, 
+            date: '',
+            lastKey: 0,
             newKey: 0,
             newComment: '',
-            newDistance: 0, 
+            newDistance: 0,
             newDuration: 0,
             newDate: ''
         };
@@ -67,42 +69,42 @@ class RunUploader extends React.Component {
     };
 
     //TO DO: Refactor these into one function:
-    handleArchiveDateChange(e) {        
+    handleArchiveDateChange(e) {
         this.setState({
             newDate: e.target.value
         })
         e.preventDefault()
     };
 
-    handleArchiveCommentChange(e) {        
+    handleArchiveCommentChange(e) {
         this.setState({
             newComment: e.target.value
         })
         e.preventDefault()
     };
 
-    handleArchiveKeyChange(e) {        
+    handleArchiveKeyChange(e) {
         this.setState({
             newKey: e.target.value
         })
         e.preventDefault()
     };
 
-    handleArchiveDurationChange(e) {        
+    handleArchiveDurationChange(e) {
         this.setState({
             newDuration: e.target.value
         })
         e.preventDefault()
     };
 
-    handleArchiveDistanceChange(e) {        
+    handleArchiveDistanceChange(e) {
         this.setState({
             newDistance: e.target.value
         })
         e.preventDefault()
     };
 
-    handleDateChange(e) {        
+    handleDateChange(e) {
         this.setState({
             date: e.target.value
         })
@@ -130,8 +132,8 @@ class RunUploader extends React.Component {
     };
 
     handleSubmit(e) {
-        const secret = this.state.code;        
-        const formData = new FormData();        
+        const secret = this.state.code;
+        const formData = new FormData();
         const fileField = document.getElementById('contained-button-file').files[0];
         formData.append('file', fileField);
 
@@ -158,9 +160,9 @@ class RunUploader extends React.Component {
     }
 
     handleDateSubmit(e) {
-        const date = this.state.date;  
+        const date = this.state.date;
         fetch('/api/run/postdate', {
-            method: 'POST',            
+            method: 'POST',
             body: date
         })
             .then(response => {
@@ -187,7 +189,7 @@ class RunUploader extends React.Component {
         const code = this.state.code;
 
         fetch('/api/runarchive/', {
-            method: 'POST',            
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'code': code
@@ -215,19 +217,19 @@ class RunUploader extends React.Component {
         e.preventDefault();
     }
 
-    componentDidMount() {        
+    componentDidMount() {
         fetch('/api/runarchive/')
             .then(res => res.json())
             .then(json => {
                 let dataToSort = json.value;
                 dataToSort.sort(function (a, b) {
                     return b.key - a.key;
-                });                
+                });
                 let lastKey = dataToSort[0].key
                 this.setState({
                     lastKey: lastKey
                 })
-            })            
+            })
     }
 
     render() {
@@ -258,7 +260,7 @@ class RunUploader extends React.Component {
                         value={this.state.date}
                         onChange={this.handleDateChange}
                     />
-                </form>                
+                </form>
                 {`Last Key: ${lastKey}`}
                 <form style={{ display: 'flex', flexDirection: 'column' }}>
                     {`Archive:`}
@@ -301,7 +303,7 @@ class RunUploader extends React.Component {
                         margin="normal"
                         value={this.state.newDistance}
                         onChange={this.handleArchiveDistanceChange}
-                    />                    
+                    />
                     <TextField
                         id="standard-password-input"
                         label="Password"
@@ -311,7 +313,7 @@ class RunUploader extends React.Component {
                         margin="normal"
                         value={this.state.code}
                         onChange={this.handleCodeChange}
-                    />   
+                    />
                     <Button
                         variant="contained"
                         component="span"
@@ -320,7 +322,7 @@ class RunUploader extends React.Component {
                     >
                         {`Update Archive`}
                     </Button>
-                    </form>                
+                </form>
             </div>
 
         const image = this.state.image;
@@ -342,7 +344,7 @@ class RunUploader extends React.Component {
                     onClick={this.handleDateSubmit}
                 >
                     {`Submit Date`}
-                </Button>               
+                </Button>
             </React.Fragment> : null;
 
         return (
@@ -364,7 +366,7 @@ class RunUploader extends React.Component {
                             <Button
                                 variant="contained"
                                 component="span"
-                                className={classes.button}                                
+                                className={classes.button}
                             >
                                 {`Browse`}
                             </Button>

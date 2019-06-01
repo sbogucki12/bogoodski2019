@@ -14,7 +14,7 @@ namespace Bogoodski2019.Controllers
     {
         private readonly IRunArchiveRepository _runArchiveRepository;
 
-        public static IHostingEnvironment _environment;      
+        public static IHostingEnvironment _environment;
 
         public RunArchiveController(IRunArchiveRepository runArchiveRepository, IHostingEnvironment environment)
         {
@@ -40,7 +40,7 @@ namespace Bogoodski2019.Controllers
 
             string key = Environment.GetEnvironmentVariable("UPLOADKEY");
 
-            if(Token == key)
+            if (Token == key)
             {
                 await _runArchiveRepository.Create(runData);
                 return new OkObjectResult(runData);

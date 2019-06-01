@@ -8,9 +8,9 @@ namespace Bogoodski2019
     public interface IRunArchiveRepository
     {
         Task<IEnumerable<RunData>> GetAllRunDatas();
-        Task<RunData> GetRunData(string date);
+        Task<RunData> GetRunData(int key);
         Task Create(RunData runData);
         Task<bool> Update(RunData runData);
-        Task<bool> Delete(string date);
+        Task<bool> Delete(int key);
     }
 }

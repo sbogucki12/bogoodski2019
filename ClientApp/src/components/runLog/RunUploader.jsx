@@ -44,19 +44,65 @@ class RunUploader extends React.Component {
         this.state = {
             image: '',
             code: '',
-            date: ''
+            date: '', 
+            lastKey: 0, 
+            newKey: 0,
+            newComment: '',
+            newDistance: 0, 
+            newDuration: 0,
+            newDate: ''
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleDateChange = this.handleDateChange.bind(this);
         this.handleDateSubmit = this.handleDateSubmit.bind(this);
         this.handleCodeChange = this.handleCodeChange.bind(this);
+        this.handleArchiveSubmit = this.handleArchiveSubmit.bind(this);
+        this.handleArchiveDateChange = this.handleArchiveDateChange.bind(this);
+        this.handleArchiveCommentChange = this.handleArchiveCommentChange.bind(this);
+        this.handleArchiveKeyChange = this.handleArchiveKeyChange.bind(this);
+        this.handleArchiveDurationChange = this.handleArchiveDurationChange.bind(this);
+        this.handleArchiveDistanceChange = this.handleArchiveDistanceChange.bind(this);
         this.fileInput = React.createRef();
     };
 
     //TO DO: Refactor these into one function:
-    handleDateChange(e) {
-        console.log(e.target.value)
+    handleArchiveDateChange(e) {        
+        this.setState({
+            newDate: e.target.value
+        })
+        e.preventDefault()
+    };
+
+    handleArchiveCommentChange(e) {        
+        this.setState({
+            newComment: e.target.value
+        })
+        e.preventDefault()
+    };
+
+    handleArchiveKeyChange(e) {        
+        this.setState({
+            newKey: e.target.value
+        })
+        e.preventDefault()
+    };
+
+    handleArchiveDurationChange(e) {        
+        this.setState({
+            newDuration: e.target.value
+        })
+        e.preventDefault()
+    };
+
+    handleArchiveDistanceChange(e) {        
+        this.setState({
+            newDistance: e.target.value
+        })
+        e.preventDefault()
+    };
+
+    handleDateChange(e) {        
         this.setState({
             date: e.target.value
         })
@@ -132,8 +178,61 @@ class RunUploader extends React.Component {
         e.preventDefault();
     }
 
+    handleArchiveSubmit(e) {
+        const newKey = this.state.newKey;
+        const newDate = this.state.newDate.toString();
+        const newComment = this.state.newComment.toString();
+        const newDistance = this.state.newDistance;
+        const newDuration = this.state.newDuration;
+        const code = this.state.code;
+
+        fetch('/api/runarchive/', {
+            method: 'POST',            
+            headers: {
+                'Content-Type': 'application/json',
+                'code': code
+            },
+            body: JSON.stringify({
+                "key": newKey,
+                "date": newDate,
+                "comment": newComment,
+                "distance": newDistance,
+                "duration": newDuration
+            })
+        })
+            .then(response => {
+                if (response.status === 200) {
+                    alert(`Archive Updated`);
+                }
+                else {
+                    alert(`Archive Update failed`)
+                }
+            })
+            .catch(error => {
+                alert(`Error: ${error}`)
+            })
+
+        e.preventDefault();
+    }
+
+    componentDidMount() {        
+        fetch('/api/runarchive/')
+            .then(res => res.json())
+            .then(json => {
+                let dataToSort = json.value;
+                dataToSort.sort(function (a, b) {
+                    return b.key - a.key;
+                });                
+                let lastKey = dataToSort[0].key
+                this.setState({
+                    lastKey: lastKey
+                })
+            })            
+    }
+
     render() {
         const { classes } = this.props;
+        const lastKey = this.state.lastKey;
         const displayForm =
             <div className={classes.formContainer}>
                 <form>
@@ -159,7 +258,69 @@ class RunUploader extends React.Component {
                         value={this.state.date}
                         onChange={this.handleDateChange}
                     />
-                </form>
+                </form>                
+                {`Last Key: ${lastKey}`}
+                <form style={{ display: 'flex', flexDirection: 'column' }}>
+                    {`Archive:`}
+                    <TextField
+                        id="standard-name"
+                        label="Date for Archive"
+                        className={classes.textField}
+                        margin="normal"
+                        value={this.state.newDate}
+                        onChange={this.handleArchiveDateChange}
+                    />
+                    <TextField
+                        id="standard-name"
+                        label="Comment for Archive"
+                        className={classes.textField}
+                        margin="normal"
+                        value={this.state.newComment}
+                        onChange={this.handleArchiveCommentChange}
+                    />
+                    <TextField
+                        id="standard-name"
+                        label="Key for Archive"
+                        className={classes.textField}
+                        margin="normal"
+                        value={this.state.newKey}
+                        onChange={this.handleArchiveKeyChange}
+                    />
+                    <TextField
+                        id="standard-name"
+                        label="Duration for Archive"
+                        className={classes.textField}
+                        margin="normal"
+                        value={this.state.newDuration}
+                        onChange={this.handleArchiveDurationChange}
+                    />
+                    <TextField
+                        id="standard-name"
+                        label="Distance for Archive"
+                        className={classes.textField}
+                        margin="normal"
+                        value={this.state.newDistance}
+                        onChange={this.handleArchiveDistanceChange}
+                    />                    
+                    <TextField
+                        id="standard-password-input"
+                        label="Password"
+                        className={classes.textField}
+                        type="password"
+                        autoComplete="current-password"
+                        margin="normal"
+                        value={this.state.code}
+                        onChange={this.handleCodeChange}
+                    />   
+                    <Button
+                        variant="contained"
+                        component="span"
+                        className={classes.button}
+                        onClick={this.handleArchiveSubmit}
+                    >
+                        {`Update Archive`}
+                    </Button>
+                    </form>                
             </div>
 
         const image = this.state.image;
@@ -181,7 +342,7 @@ class RunUploader extends React.Component {
                     onClick={this.handleDateSubmit}
                 >
                     {`Submit Date`}
-                </Button>
+                </Button>               
             </React.Fragment> : null;
 
         return (

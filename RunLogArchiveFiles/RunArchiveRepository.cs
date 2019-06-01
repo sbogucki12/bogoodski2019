@@ -20,7 +20,7 @@ namespace Bogoodski2019
                             .Find(_ => true)
                             .ToListAsync();
         }
-        public Task<RunData> GetRunData(string key)
+        public Task<RunData> GetRunData(int key)
         {
             FilterDefinition<RunData> filter = Builders<RunData>.Filter.Eq(m => m.Key, key);
             return _context
@@ -44,9 +44,9 @@ namespace Bogoodski2019
             return updateResult.IsAcknowledged
                     && updateResult.ModifiedCount > 0;
         }
-        public async Task<bool> Delete(string key)
+        public async Task<bool> Delete(int key)
         {
-            FilterDefinition<RunData> filter = Builders<RunData>.Filter.Eq(m => m.Date, key);
+            FilterDefinition<RunData> filter = Builders<RunData>.Filter.Eq(m => m.Key, key);
             DeleteResult deleteResult = await _context
                                                 .RunDatas
                                                 .DeleteOneAsync(filter);

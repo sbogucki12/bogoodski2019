@@ -5,16 +5,24 @@
 
 <h2>Update</h2>
 
+<p><i>May 31, 2019:</i></p>
+
+<p>Now, I have the UI in place to allow the functionality of uploading the Run Archive from my mobile device.  ReactJS to .NET Web API (via fetch) to MongoDB (via mLab). See gif:</p>
+
+<p align="center">
+	<img src="http://g.recordit.co/11WSL3BzTB.gif" alt="React to Dot Net to MongoDB">
+</p>
+
+<p>Gif also available <a href="http://g.recordit.co/11WSL3BzTB.gif" target="_blank" rel="noreferrer noopener">HERE<a>.</p>
+
+
+
 <p><i>May 29, 2019:</i></p>
 
 <p>The goal is to allow for adding data to the run log archive from my mobile devices.  Currently the run log data is (are?) stored in a list in the .NET solution.  I'm going to move the data to a MongoDB instance. Today, on the <i>dbsetup</i> branch, I set up the instance on mLab and connected it to the .NET solution.  See gif:</p>
 
 
-<p align="center">
-	<img src="http://g.recordit.co/t0B5ERQRu0.gif" alt="MongoDB via mLab">
-</p>
 
-<p>Gif also available <a href="http://g.recordit.co/t0B5ERQRu0.gif" target="_blank" rel="noreferrer noopener">HERE<a>.</p>
 
 
 <p><i>May 27, 2019:</i></p>

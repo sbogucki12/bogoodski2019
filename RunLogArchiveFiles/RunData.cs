@@ -15,6 +15,6 @@ namespace Bogoodski2019
         public double Distance { get; set; }
         public double Duration { get; set; }
         public string Date { get; set; }
-        public string Key { get; set; }
+        public int Key { get; set; }
     }
 }

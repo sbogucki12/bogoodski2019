@@ -72,8 +72,8 @@ class RunArchiveListPrimary extends React.Component {
         };
         if (name === 'date') {
             const listData = this.state.listData;
-            const sortedListData = listData.sort((a, b) => {
-                return b.id - a.id
+            const sortedListData = listData.sort(function (a, b) {
+                return b.key - a.key;            
             });
 
             this.setState({
@@ -114,13 +114,14 @@ class RunArchiveListPrimary extends React.Component {
         });
     };
 
-    componentDidMount() {
-        fetch('/api/run/getarchive')
+    componentDidMount() {        
+        fetch('/api/runarchive/')
             .then(res => res.json())
-            .then(json => {
-                let dataToSlice = json.value.sort((a, b) => {
-                    b.id - a.id
-                });
+            .then(json => {                
+                let dataToSlice = json.value;
+                dataToSlice.sort(function (a, b) {
+                    return b.key - a.key;
+                });                
                 let sliceIndex = this.state.sliceIndex;
                 dataToSlice = dataToSlice.slice(0, sliceIndex);
                 this.setState({

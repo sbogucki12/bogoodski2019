@@ -19,10 +19,7 @@ const WritesMainMobile = props => {
         <div className={classes.root}>
             <p>
                 {`Mobile`}
-            </p>
-            <button onClick={e => props.makeDesktop(e)}>
-                {`Make Desktop`}
-            </button>
+            </p>            
     </div>;
     return content;
 }

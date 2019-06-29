@@ -45,6 +45,7 @@
   <ItemGroup>
     <Folder Include="BlogContent\images\" />
     <Folder Include="ClientApp\src\components\toDo\images\" />
+    <Folder Include="ClientApp\src\sandbox\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

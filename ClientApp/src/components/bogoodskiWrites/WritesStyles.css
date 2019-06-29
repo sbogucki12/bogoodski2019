@@ -1,0 +1,39 @@
+﻿@keyframes example {
+    from {
+        margin-left: 0;
+        width: 100%;
+        opacity: 1;
+    }
+
+    to {
+        margin-left: 0%;
+        width: 300%;
+        opacity: 0;
+    }
+}
+
+#fadingBox {
+    animation-duration: 4s;
+}
+
+#root {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000000;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+#pageBox {
+    width: 300px;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-style: solid;
+    border-color: #FFFFFF;
+    border-width: 5px;
+    border-radius: 5px;
+    margin: 5%;
+}

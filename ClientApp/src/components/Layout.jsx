@@ -71,7 +71,7 @@ class Layout extends Component {
                     <Router>
                         <div>
                             {chatRoutes}
-                            <Route exact path="/chat/mydashboard" component={MyDashboardRoot} />
+                            <Route exact path="/chat/mydashboard" component={MyDashboardRoot} />                            
                             <Route exact path="/todo/switch" component={ToDoSwitchPage} /> 
                             <Route exact path="/writes/test" component={BogoodskiWritesMain} />                           
                             <Route exact path="/blog/updatemay232019" component={UpdateMay232019} />

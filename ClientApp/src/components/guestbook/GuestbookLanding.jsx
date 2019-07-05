@@ -59,12 +59,10 @@ const GuestbookLanding = props => {
 
     const setCurrentRecordComment = (e) => {
         e.preventDefault();
-        onSetCurrentRecordComment(e.target.value);
-        if (currentRecordComment.length > 25) {
-            alert("That's too many characters");
-            return;
-        }
+
+        onSetCurrentRecordComment(e.target.value);  
         console.log("Current Record Comment: " + currentRecordComment);
+        
     }
     const classes = useStyles();
 

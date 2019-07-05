@@ -1,6 +1,7 @@
 ﻿import React from 'react';
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles(theme => ({
     container: {
@@ -8,28 +9,39 @@ const useStyles = makeStyles(theme => ({
         flexWrap: 'wrap', 
         flexDirection: 'column',
         justifyContent: 'center', 
-        alignItems: 'center'
-        
+        alignItems: 'center',
+        width: '90%'
     },
     textField: {
         marginLeft: theme.spacing(1),
         marginRight: theme.spacing(1),
+        width: '90%',
         borderRadius: 4,
         border: '1px solid',
         borderColor: theme.palette.primary.main,
         color: theme.palette.primary.main
     },
     input: {
-        color: "white"
+        color: "white", 
+        maxLength: 10
     }, 
     formHelperText: {
         color: theme.palette.secondary.main,
         marginBottom: '1%'
+    },
+    button: {
+        margin: theme.spacing(1),
     }
 }));
 
 const GuestbookSignBook = props => {
     const classes = useStyles();
+
+    let commentHelperText = "Comment";
+
+    if (props.currentRecordComment.length > 1) {
+        commentHelperText = "Max: 10 characters"
+    }
 
     const content =
         <div className={classes.container}>
@@ -48,7 +60,7 @@ const GuestbookSignBook = props => {
                 }}
                 helperText="Name"
                 onChange={(e) => props.setCurrentRecordName(e)}
-                autoFocus                
+                autoFocus
             />
            
             <TextField
@@ -65,7 +77,7 @@ const GuestbookSignBook = props => {
                 FormHelperTextProps={{
                     className: classes.formHelperText
                 }}
-                onChange={(e) => props.setCurrentRecordEmail(e)}
+                onChange={(e) => props.onSetCurrentRecordEmail(e)}
                 autoFocus
             />
 
@@ -77,17 +89,24 @@ const GuestbookSignBook = props => {
                 InputProps={{
                     className: classes.input
                 }}
+                inputProps={{
+                    maxLength: 10
+                }}
                 margin="normal"
                 variant="filled"
                 FormHelperTextProps={{
                     className: classes.formHelperText
                 }}
-                helperText="Comment"
+                helperText={commentHelperText}
                 onChange={(e) => props.onSetCurrentRecordComment(e)}
                 autoFocus
-                multiline                
-                rowsMax="5"
+                multiline 
+                rows="5"
             />
+            <p>{`CAPTCHA`}</p><br/>
+            <Button variant="contained" color="primary" className={classes.button}>
+                {`Post`}
+            </Button>
         </div>;
 
     return content;

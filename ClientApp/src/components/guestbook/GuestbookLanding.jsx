@@ -7,6 +7,9 @@ import GuestbookSignBook from "./GuestbookSignBook";
 import GuestbookViewBook from "./GuestbookViewBook";
 import { Link } from 'react-router-dom';
 
+const mockRecords = require('./GuestbookMockRecords.json');
+
+
 const useStyles = makeStyles(theme => ({    
     root: {
         display: "flex",
@@ -101,7 +104,7 @@ const GuestbookLanding = props => {
     };
 
     if (page === 2) {
-        mainContent = <GuestbookViewBook />;
+        mainContent = <GuestbookViewBook mockRecords={mockRecords} />;
         backButtonContent = <Button variant="outlined" color="secondary" className={classes.buttonAndIcon} onClick={() => onClickToSignOrViewBook(0)}>{`Back`}</Button>;
     }
 

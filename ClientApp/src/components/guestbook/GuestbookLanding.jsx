@@ -18,13 +18,14 @@ const useStyles = makeStyles(theme => ({
         color: '#FFFFFF',
         backgroundColor: '#000000',
         minHeight: '100vh',
-        minWidth: '100vw', 
-        flexDirection: 'column'
+        width: '100vw', 
+        flexDirection: 'column', 
+        paddingTop: '17vh'
     },
     buttonRowBorderBox: {
         backgroundColor: '#000000', 
         background: `linear-gradient(90deg, rgba(0,0,0,0.5214460784313726) 0%, rgba(18,230,39,1) 100%)`,
-        width: '90%',
+        width: '85%',
         minHeight: 225        
     },
     buttonRowContainer: {

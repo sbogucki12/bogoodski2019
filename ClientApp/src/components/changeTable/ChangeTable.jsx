@@ -109,8 +109,6 @@ const ChangeTable = props => {
                     </tr>
                     {userRows}
                 </table>
-
-
             </div>
         </div>
 

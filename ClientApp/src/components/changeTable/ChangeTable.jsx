@@ -36,8 +36,7 @@ const ChangeTable = props => {
     };
 
     const handleCheckbox = e => {
-        setIsActive(e.target.checked);
-        console.log(e.target.checked);
+        setIsActive(e.target.checked);        
     };
 
     let userRows = userData.map((user) =>

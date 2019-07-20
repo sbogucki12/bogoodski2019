@@ -54,11 +54,11 @@ const ChangeTable = props => {
     const onSubmit = e => {
         e.preventDefault();
         const result = userData.filter(user =>
-            user.name.includes(inputText)
-            || user.email.includes(inputText)
-            || user.address.includes(inputText)
-            || user.phone.includes(inputText)
-            || user.website.includes(inputText));
+            user.name.toLowerCase().includes(inputText.toLowerCase())
+            || user.email.toLowerCase().includes(inputText.toLowerCase())
+            || user.address.toLowerCase().includes(inputText.toLowerCase())
+            || user.phone.toLowerCase().includes(inputText.toLowerCase())
+            || user.website.toLowerCase().includes(inputText.toLowerCase()));
         setUserData(result);
         if (inputText == "") {
             setUserData(users.default);

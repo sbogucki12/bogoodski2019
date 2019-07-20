@@ -1,3 +1,4 @@
+using Bogoodski2019.GuestbookFiles;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -46,6 +47,10 @@ namespace Bogoodski2019
             services.AddTransient<IRunArchiveContext, RunArchiveContext>();
 
             services.AddTransient<IRunArchiveRepository, RunArchiveRepository>();
+
+            services.AddTransient<IGuestbookContext, GuestbookContext>();
+
+            services.AddTransient<IGuestbookRepository, GuestbookRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -70,7 +75,7 @@ namespace Bogoodski2019
             });
 
             app.UseMvc(routes =>
-            {
+            {               
                 routes.MapRoute(
                     name: "default",
                     template: "{controller}/{action=Index}/{id?}");

@@ -21,6 +21,7 @@ import UpdateMay232019 from './newBlogFolder/UpdateMay232019';
 import ToDoSwitchPage from './toDo/ToDoSwitchPage';
 import GuestbookLanding from './guestbook/GuestbookLanding';
 import CheatCodeTracklist from './dj/CheatCode3TrackList';
+import ChangeTable from './changeTable/ChangeTable';
 
 const styles = {
     root: {
@@ -74,6 +75,7 @@ class Layout extends Component {
                             {chatRoutes}
                             <Route exact path="/chat/mydashboard" component={MyDashboardRoot} />
                             <Route exact path="/guestbook/test" component={GuestbookLanding} />
+                            <Route exact path="/change/table" component={ChangeTable} />
                             <Route exact path="/cheatcode3/test" component={CheatCodeTracklist} />
                             <Route exact path="/todo/switch" component={ToDoSwitchPage} />                            
                             <Route exact path="/blog/updatemay232019" component={UpdateMay232019} />

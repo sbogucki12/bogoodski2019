@@ -22,6 +22,7 @@ import ToDoSwitchPage from './toDo/ToDoSwitchPage';
 import GuestbookLanding from './guestbook/GuestbookLanding';
 import CheatCodeTracklist from './dj/CheatCode3TrackList';
 import ChangeTable from './changeTable/ChangeTable';
+import CheatCodeVol4Main from './dj/CheatCodeVol4Main';
 
 const styles = {
     root: {
@@ -76,7 +77,7 @@ class Layout extends Component {
                             <Route exact path="/chat/mydashboard" component={MyDashboardRoot} />
                             <Route exact path="/guestbook/test" component={GuestbookLanding} />
                             <Route exact path="/change/table" component={ChangeTable} />
-                            <Route exact path="/cheatcode3/test" component={CheatCodeTracklist} />
+                            <Route exact path="/cheatcode4/test" component={CheatCodeVol4Main} />
                             <Route exact path="/todo/switch" component={ToDoSwitchPage} />                            
                             <Route exact path="/blog/updatemay232019" component={UpdateMay232019} />
                             <Route exact path="/dj/djmain" component={DjMain} />

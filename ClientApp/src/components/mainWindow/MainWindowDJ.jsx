@@ -1,4 +1,4 @@
-﻿import React from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import CheatCodeCoverVol4 from '../dj/images/cheatcodevol4soundcloud.jpg'; 
 import Button from '@material-ui/core/Button';
@@ -57,11 +57,13 @@ const styles = theme =>  ({
 function MainWindowDj(props) {
     const { classes } = props;
 
-    let imageWidth = '225px';
+    const [imageWidth, setImageWidth] = useState('225px');
 
-    if (window.innerWidth < 375) {
-        imageWidth = '85px'
-    }
+    useEffect(() => {
+        if (window.innerWidth < 375) {
+            setImageWidth('85px');
+        }
+    });
 
     return (
         <div className={classes.root}>

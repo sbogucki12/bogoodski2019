@@ -124,7 +124,7 @@ namespace Bogoodski2019.DjContent
         {
             Id = 14,
             artist = "Estiva",
-            trackTitle = "SSun Goes Down",
+            trackTitle = "Sun Goes Down",
             trackLink = "https://www.beatport.com/track/sun-goes-down-extended-mix/8332014"
         };
 

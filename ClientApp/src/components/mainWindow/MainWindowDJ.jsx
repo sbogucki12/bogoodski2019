@@ -1,6 +1,6 @@
 ﻿import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import CheatCodeCoverVol2 from '../dj/images/cheatCodeVol2Cover.jpg'; 
+import CheatCodeCoverVol4 from '../dj/images/cheatcodevol4soundcloud.jpg'; 
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import '../dj/djStyle.css';
@@ -46,18 +46,28 @@ const styles = theme =>  ({
         alignItems: 'center'        
     },
     imgStyle: {
-        maxHeight: '225px'        
+        maxHeight: '225px',        
+        borderWidth: '1px',
+        borderColor: 'orange',
+        borderStyle: 'solid',
+        borderRadius: '5px'
     }
 });
 
 function MainWindowDj(props) {
     const { classes } = props;
 
+    let imageWidth = '225px';
+
+    if (window.innerWidth < 375) {
+        imageWidth = '85px'
+    }
+
     return (
         <div className={classes.root}>
             <div className="djBackground">
                 <div className={classes.leftBox}>
-                    <img src={CheatCodeCoverVol2} className={classes.imgStyle} alt="Cheat Code Volume 2" />
+                    <img src={CheatCodeCoverVol4} className={classes.imgStyle} alt="Cheat Code Volume 4" style={{ maxWidth: `${imageWidth}` }}/>
                 </div>
                 <div className={classes.rightBox}>
                     <div className={classes.rightBoxTop}>
@@ -66,13 +76,13 @@ function MainWindowDj(props) {
                             color="secondary"
                             className={classes.button}
                             component={Link}
-                            to="/dj/djmain"
+                            to="/dj/cheatcodevol4/main"
                         >
                             {`Enter`}
                         </Button>
                     </div>
                     <div className={classes.rightBoxBottom}>
-                        <Typography variant="h5" style={{ color: '#FFFF66' }} gutterBottom>
+                        <Typography variant="h5" style={{ color: '#000000' }} gutterBottom>
                             {`🎵 DJ Archive`}
                         </Typography>
                     </div>

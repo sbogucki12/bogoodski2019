@@ -88,6 +88,5 @@
         address: "123 Internet Way, Stanford, CA",
         phone: "(800) 722-101",
         website: "http://jsisbeautiful.com"
-    },
-
+    }
 ]

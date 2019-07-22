@@ -20,9 +20,10 @@ import DjMain from './dj/DjMain';
 import UpdateMay232019 from './newBlogFolder/UpdateMay232019';
 import ToDoSwitchPage from './toDo/ToDoSwitchPage';
 import GuestbookLanding from './guestbook/GuestbookLanding';
-import CheatCodeTracklist from './dj/CheatCode3TrackList';
 import ChangeTable from './changeTable/ChangeTable';
+import CheatCodeVol3Main from './dj/CheatCodeVol3Main';
 import CheatCodeVol4Main from './dj/CheatCodeVol4Main';
+
 
 const styles = {
     root: {
@@ -77,7 +78,8 @@ class Layout extends Component {
                             <Route exact path="/chat/mydashboard" component={MyDashboardRoot} />
                             <Route exact path="/guestbook/test" component={GuestbookLanding} />
                             <Route exact path="/change/table" component={ChangeTable} />
-                            <Route exact path="/cheatcode4/test" component={CheatCodeVol4Main} />
+                            <Route exact path="/dj/cheatcodevol3/main" component={CheatCodeVol3Main} />
+                            <Route exact path="/dj/cheatcodevol4/main" component={CheatCodeVol4Main} />
                             <Route exact path="/todo/switch" component={ToDoSwitchPage} />                            
                             <Route exact path="/blog/updatemay232019" component={UpdateMay232019} />
                             <Route exact path="/dj/djmain" component={DjMain} />

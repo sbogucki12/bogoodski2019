@@ -6,9 +6,9 @@ class DjMain extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            album: 'cheatCodeVol1'
+            album: 'cheatCodeVol2'
         }
-    }
+    }    
 
     getVol2 = () => {
         this.setState({

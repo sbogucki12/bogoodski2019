@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import CheatCodeVol2 from './CheatCodeVol2';
 import { Link } from 'react-router-dom';
 import ArrowLeft from '@material-ui/icons/ArrowLeftSharp';
+import ArrowRight from '@material-ui/icons/ArrowRightSharp';
 
 const styles = theme => ({
     root: {
@@ -64,7 +65,10 @@ const styles = theme => ({
         margin: theme.spacing.unit,
     },
     leftIcon: {
-        marginRight: theme.spacing.unit,
+        marginRight: theme.spacing.unit
+    },
+    rightIcon: {
+        marginLeft: theme.spacing.unit
     }
 });
 
@@ -128,10 +132,24 @@ class CheatCodeVol1Main extends React.Component {
                             color="secondary"
                             className={classes.button}
                             onClick={this.props.getVol1}
+                            size="small"
                         >
                             <ArrowLeft className={classes.leftIcon} />
                             {`Vol. 1`}
                         </Button>
+                        <Button
+                            variant="contained"
+                            color="secondary"
+                            className={classes.button}
+                            size="small"
+                            component={Link}
+                            to="/dj/cheatcodevol3/main"
+                        >
+                            {`Vol. 3`}
+                            <ArrowRight className={classes.rightIcon} />                            
+                        </Button>
+                    </div>
+                    <div>
                         <a
                             href="https://soundcloud.com/sbogucki12"
                             target="_blank"
@@ -141,6 +159,7 @@ class CheatCodeVol1Main extends React.Component {
                                 variant="contained"
                                 color="inherit"
                                 className={classes.button}
+                                size="small"
                                 style={
                                     {
                                         background: 'linear-gradient(45deg, #0099AA 30%, #000000 90%)',

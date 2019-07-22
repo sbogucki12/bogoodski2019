@@ -3,12 +3,13 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Fab from '@material-ui/core/Fab';
 import LeftArrow from '@material-ui/icons/NavigateBeforeSharp';
-import CheatCodeVol4Cover from './images/cheatcodevol4soundcloud.jpg';
+import RightArrow from '@material-ui/icons/NavigateNextSharp';
+import CheatCodeVol3Cover from './images/cheatcodevol3cover.jpg';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { Link } from 'react-router-dom';
-import * as vol4TrackListData from './cheatCode4TrackData';
+import * as vol3TrackListData from './cheatCode3TrackData';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -55,10 +56,10 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function CheatCodeVol4Main(props) {
+function CheatCodeVol3Main(props) {
     const classes = useStyles();
 
-    const [trackListData, setTrackListData] = useState(vol4TrackListData.default);
+    const [trackListData, setTrackListData] = useState(vol3TrackListData.default);
 
     {/*useEffect(() => {
         fetch('/api/getmusic?name=cheatcodevol2')
@@ -108,22 +109,27 @@ function CheatCodeVol4Main(props) {
                 <span className={classes.bogoodskiStyle}>{`BoGoodSki `}</span><span style={{ display: 'flex', alignItems: 'flex-end', paddingBottom: '5%' }}><i>{`presents...`}</i></span>
             </div>
             <div>
-                <span className={classes.titleStyle}>{`Cheat Code Radio Vol. 4`}</span>
+                <span className={classes.titleStyle}>{`Cheat Code Radio Vol. 3`}</span>
             </div>
-            <p><img src={CheatCodeVol4Cover} className={classes.imageStyle} alt="Album Cover Art" title="Album Cover Art" /></p>
+            <p><img src={CheatCodeVol3Cover} className={classes.imageStyle} alt="Album Cover Art" title="Album Cover Art" /></p>
             <p style={{ width: '80%' }}>
-                <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/654152738&color=%23216631&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+                <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/650844842&color=%23216631&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
             </p>
             <Button variant="outlined" color="primary" className={classes.button} onClick={e => handleTrackListButton(e)}>
                 {`Tracklist`}
             </Button>
             {isTrackListDisplayed ? trackList : null}
+
             <div style={{ display: 'flex', flexDirection: 'row', marginTop: '2%' }}>
                 <span>
-                    <Fab color="secondary" aria-label="Back to Volume Three" className={classes.button} size="small" component={Link} to="/dj/cheatcodevol3/main">
+                    <Fab color="secondary" aria-label="Back to Volume Two" className={classes.button} size="small" component={Link} to="/dj/djmain">
                         <LeftArrow />
                     </Fab>
-                    {`Vol. 3`}
+                    {`Vol. 2`}{` | `}
+                    {`Vol. 4`}
+                    <Fab color="secondary" aria-label="To Volume Four" className={classes.button} size="small" component={Link} to="/dj/cheatcodevol4/main">
+                        <RightArrow />
+                    </Fab>
                 </span>
             </div>
             <hr style={{ width: '90%', marginBottom: '1%', marginTop: '1%' }} />
@@ -135,4 +141,4 @@ function CheatCodeVol4Main(props) {
     return content;
 }
 
-export default CheatCodeVol4Main;
+export default CheatCodeVol3Main;

@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+﻿import React  from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import CheatCodeCoverVol4 from '../dj/images/cheatcodevol4soundcloud.jpg'; 
 import Button from '@material-ui/core/Button';
@@ -46,7 +46,8 @@ const styles = theme =>  ({
         alignItems: 'center'        
     },
     imgStyle: {
-        maxHeight: '225px',        
+        maxHeight: '225px', 
+        width: '60%',
         borderWidth: '1px',
         borderColor: 'orange',
         borderStyle: 'solid',
@@ -57,19 +58,11 @@ const styles = theme =>  ({
 function MainWindowDj(props) {
     const { classes } = props;
 
-    const [imageWidth, setImageWidth] = useState('225px');
-
-    useEffect(() => {
-        if (window.innerWidth < 375) {
-            setImageWidth('85px');
-        }
-    });
-
     return (
         <div className={classes.root}>
             <div className="djBackground">
                 <div className={classes.leftBox}>
-                    <img src={CheatCodeCoverVol4} className={classes.imgStyle} alt="Cheat Code Volume 4" style={{ maxWidth: `${imageWidth}` }}/>
+                    <img src={CheatCodeCoverVol4} className={classes.imgStyle} alt="Cheat Code Volume 4" />
                 </div>
                 <div className={classes.rightBox}>
                     <div className={classes.rightBoxTop}>

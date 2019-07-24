@@ -23,6 +23,8 @@ import GuestbookLanding from './guestbook/GuestbookLanding';
 import ChangeTable from './changeTable/ChangeTable';
 import CheatCodeVol3Main from './dj/CheatCodeVol3Main';
 import CheatCodeVol4Main from './dj/CheatCodeVol4Main';
+import DashboardRoadtrip from './roadtrip/DashboardRoadtrip';
+import MainPageRoadtrip from './roadtrip/MainPageRoadtrip';
 
 
 const styles = {
@@ -77,6 +79,8 @@ class Layout extends Component {
                             {chatRoutes}
                             <Route exact path="/chat/mydashboard" component={MyDashboardRoot} />
                             <Route exact path="/guestbook/test" component={GuestbookLanding} />
+                            <Route exact path="/roadtrip/dashboard" component={DashboardRoadtrip} />
+                            <Route exact path="/roadtrip/main" component={MainPageRoadtrip} />
                             <Route exact path="/change/table" component={ChangeTable} />
                             <Route exact path="/dj/cheatcodevol3/main" component={CheatCodeVol3Main} />
                             <Route exact path="/dj/cheatcodevol4/main" component={CheatCodeVol4Main} />

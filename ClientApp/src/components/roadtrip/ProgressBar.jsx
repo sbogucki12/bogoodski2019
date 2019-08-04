@@ -12,12 +12,11 @@ const styles = {
 
 const ProgressBar = props => {
     const { classes } = props;
-    const currentProgress = props.currentProgress;
+    const currentProgress = props.currentProgress * 20;
 
     const content =
         <div className={classes.root}>
-            <p>{`Progress Bar`}</p>
-            <p>{currentProgress}</p>
+            {`You've currently read ${currentProgress}% of the blog.`}            
         </div>;
 
     return content;

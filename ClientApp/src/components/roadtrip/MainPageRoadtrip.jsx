@@ -2,6 +2,8 @@
 import { withStyles } from '@material-ui/styles';
 import ProgressBar from './ProgressBar';
 import Content from './Content';
+import TitleBox from './TitleBox';
+import Footer from './Footer';
 
 const styles = {
     root: {
@@ -12,8 +14,8 @@ const styles = {
         flexDirection: 'column'
     },
     titleBox: {
-        marginTop: '20vh',
-        minHeight: 200
+        marginTop: '25vh',
+        minHeight: 200       
     },
     progressBox: {
         minHeight: 200
@@ -25,7 +27,10 @@ const styles = {
         paddingRight: '5%'
     },
     footer: {
-        minHeight: 200
+        
+        width: '100%', 
+        position: 'fixed', 
+        bottom: 0
     }
 };
 
@@ -55,16 +60,16 @@ const MainPageRoadtrip = props => {
     const content =
         <div className={classes.root}>
             <div className={classes.titleBox}>
-                {`Title`}
+                <TitleBox />
+            </div>            
+            <div className={classes.contentBox}>
+                <Content currentProgress={currentProgress} handleSetCurrentProgress={handleSetCurrentProgress} />
             </div>
             <div className={classes.progressBox}>
                 <ProgressBar currentProgress={currentProgress} />
             </div>
-            <div className={classes.contentBox}>
-                <Content currentProgress={currentProgress} handleSetCurrentProgress={handleSetCurrentProgress} />
-            </div>
             <div className={classes.footer}>
-                {`Footer`}
+                <Footer />
             </div>
         </div>;
 

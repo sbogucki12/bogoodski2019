@@ -1,6 +1,7 @@
 ﻿import React from 'react';
 import { withStyles } from '@material-ui/styles';
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
 const styles = {
     root: {
@@ -95,7 +96,10 @@ const Content = props => {
 
     const content =
         <div className={classes.root}>
-            {dataDisplay}
+            <Typography variant="body1" gutterBottom>
+                {dataDisplay}
+            </Typography>
+
             {ButtonDisplay}
         </div>;
 

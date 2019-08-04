@@ -1,25 +1,74 @@
-﻿import React from 'react';
+﻿import React, { useState } from 'react';
 import { withStyles } from '@material-ui/styles';
+import ProgressBar from './ProgressBar';
+import Content from './Content';
 
 const styles = {
     root: {
-        display: 'flex', 
+        display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center', 
-        width: '100vw'
+        alignItems: 'center',
+        width: '100vw',
+        flexDirection: 'column'
     },
+    titleBox: {
+        marginTop: '20vh',
+        minHeight: 200
+    },
+    progressBox: {
+        minHeight: 200
+    },
+    contentBox: {
+        minHeight: 200,
+        maxWidth: '100%',
+        paddingLeft: '5%',
+        paddingRight: '5%'
+    },
+    footer: {
+        minHeight: 200
+    }
 };
 
 const MainPageRoadtrip = props => {
     const { classes } = props;
 
+    const [currentProgress, setCurrentProgress] = useState(1);
+
+    const handleSetCurrentProgress = e => {
+        e.preventDefault();
+        let newCurrentProgress = 1;
+        if (currentProgress === 1) {
+            newCurrentProgress = 2
+        };
+        if (currentProgress === 2) {
+            newCurrentProgress = 3
+        };
+        if (currentProgress === 3) {
+            newCurrentProgress = 4
+        };
+        if (currentProgress === 4) {
+            newCurrentProgress = 5
+        };
+        setCurrentProgress(newCurrentProgress);
+    }
 
     const content =
         <div className={classes.root}>
-            <h1 style={{ marginTop: '17vh' }}>{`Test`}</h1>
+            <div className={classes.titleBox}>
+                {`Title`}
+            </div>
+            <div className={classes.progressBox}>
+                <ProgressBar currentProgress={currentProgress} />
+            </div>
+            <div className={classes.contentBox}>
+                <Content currentProgress={currentProgress} handleSetCurrentProgress={handleSetCurrentProgress} />
+            </div>
+            <div className={classes.footer}>
+                {`Footer`}
+            </div>
         </div>;
 
-    return content; 
+    return content;
 };
 
 export default withStyles(styles)(MainPageRoadtrip); 

@@ -4,6 +4,7 @@ import ProgressBar from './ProgressBar';
 import Content from './Content';
 import TitleBox from './TitleBox';
 import Footer from './Footer';
+import ImageMap from './ImageMap';
 
 const styles = {
     root: {
@@ -26,8 +27,7 @@ const styles = {
         paddingLeft: '5%',
         paddingRight: '5%'
     },
-    footer: {
-        
+    footer: {        
         width: '100%', 
         position: 'fixed', 
         bottom: 0
@@ -57,7 +57,7 @@ const MainPageRoadtrip = props => {
         setCurrentProgress(newCurrentProgress);
     }
 
-    const content =
+    {/*const content =
         <div className={classes.root}>
             <div className={classes.titleBox}>
                 <TitleBox />
@@ -71,7 +71,19 @@ const MainPageRoadtrip = props => {
             <div className={classes.footer}>
                 <Footer />
             </div>
-        </div>;
+        </div>;*/}
+
+    const content = 
+        <div className={classes.root}>
+            <div className={classes.titleBox}>
+                <TitleBox />
+            </div>            
+            <ImageMap />
+        </div>
+
+
+
+
 
     return content;
 };

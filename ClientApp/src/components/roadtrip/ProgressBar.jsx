@@ -16,7 +16,7 @@ const ProgressBar = props => {
 
     const content =
         <div className={classes.root}>
-            {`You've currently read ${currentProgress}% of the blog.`}            
+            {`You've currently read ${currentProgress}% of the blog.`}
         </div>;
 
     return content;

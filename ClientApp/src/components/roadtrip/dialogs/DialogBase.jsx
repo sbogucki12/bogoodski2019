@@ -13,14 +13,8 @@ const styles = theme => ({
 });
 
 const DialogBase = props => {  
-
-    
-
     let dialogText = dialogContentArray.default[props.dialogNumber].text;
     let dialogTitle = dialogContentArray.default[props.dialogNumber].title;
-
-
-
     const content =
         <div>
             <Dialog

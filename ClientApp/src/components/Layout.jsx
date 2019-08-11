@@ -25,6 +25,7 @@ import CheatCodeVol3Main from './dj/CheatCodeVol3Main';
 import CheatCodeVol4Main from './dj/CheatCodeVol4Main';
 import DashboardRoadtrip from './roadtrip/DashboardRoadtrip';
 import MainPageRoadtrip from './roadtrip/MainPageRoadtrip';
+import PrydaRoot from './prydaSearch/PrydaRoot';
 
 
 const styles = {
@@ -78,6 +79,7 @@ class Layout extends Component {
                         <div>
                             {chatRoutes}
                             <Route exact path="/chat/mydashboard" component={MyDashboardRoot} />
+                            <Route exact path="/prydasearch/main" component={PrydaRoot} />
                             <Route exact path="/guestbook/test" component={GuestbookLanding} />
                             <Route exact path="/roadtrip/dashboard" component={DashboardRoadtrip} />
                             <Route exact path="/roadtrip/main" component={MainPageRoadtrip} />

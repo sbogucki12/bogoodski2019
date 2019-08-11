@@ -28,7 +28,7 @@ const styles = theme => ({
     },
     bio: {
         display: 'flex',
-        justifyContent: 'center'
+        justifyContent: 'center'        
     }
 });
 
@@ -52,7 +52,7 @@ function MainWindowResume(props) {
                     Long Beach. Born near Philadelphia, raised in North Dakota; California is home.  Runner. Perpetually curious.  Web developer.  Dog spoiler.  I like techno. Other music, too. Vet. ☮️ #TrustTheProcess
                 </Typography>
                 <Typography variant="caption" gutterBottom className={classes.bio}>
-                    <b>{`${month} ${day}:`}</b> <i>{` Currently Available For Hire.`}</i>
+                    <b>{`${month} ${day}:`}</b> <i>{` Currently: FTE JS (React) Dev @ healthcare company.`}</i>
                 </Typography>
                 <center>
                     <Button variant="contained" color="primary" className={classes.button} component={Link} to="/resume">

@@ -36,7 +36,7 @@ const ImageMap = props => {
                 style={{ width: 1000, height: 546 }}
                 alt="Road Trip Map With Links"
                 title="Click on Locations for Stories"                
-                usemap="#image-map"                
+                useMap="#image-map"                
             />
             <map name="image-map">
                 <area onClick={() => handleOpen(0)} alt="mullicaHill" title="mullicaHill"  coords="822, 218, 843, 239" shape="rect" />
@@ -51,9 +51,7 @@ const ImageMap = props => {
                 <area onClick={() => handleOpen(9)} alt="newMexico2" title="newMexico2" coords="259, 323, 288, 374" shape="rect" />
                 <area onClick={() => handleOpen(10)} alt="arizona" title="arizona" coords="166, 315, 242, 358" shape="rect" />
                 <area onClick={() => handleOpen(11)} alt="longBeach" title="longBeach" coords="73, 323, 134, 350" shape="rect" />                
-            </map>            
-
-            <button onClick={() => handleOpen(2)}>{`Open Dialog`}</button>
+            </map> 
             <DialogBase dialogNumber={dialogNumber} open={open} handleClose={handleClose}  />
         </div>            
 

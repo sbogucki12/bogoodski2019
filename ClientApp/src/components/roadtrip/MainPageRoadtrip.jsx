@@ -1,18 +1,19 @@
-﻿import React, { useState } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { withStyles } from '@material-ui/styles';
 import ProgressBar from './ProgressBar';
 import Content from './Content';
 import TitleBox from './TitleBox';
 import Footer from './Footer';
 import ImageMap from './ImageMap';
+import MobileCheckDialog from './dialogs/mobileCheckDialog';
 
-const styles = {
-    root: {
+const styles = {   
+    content: {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         width: '100vw',
-        flexDirection: 'column'
+        flexDirection: 'column', 
     },
     titleBox: {
         marginTop: '25vh',
@@ -26,62 +27,41 @@ const styles = {
         maxWidth: '100%',
         paddingLeft: '5%',
         paddingRight: '5%'
-    },
-    footer: {        
-        width: '100%', 
-        position: 'fixed', 
-        bottom: 0
-    }
+    }   
 };
 
 const MainPageRoadtrip = props => {
     const { classes } = props;
 
-    const [currentProgress, setCurrentProgress] = useState(1);
+    const innerWidth = window.innerWidth;
 
-    const handleSetCurrentProgress = e => {
+    const [openCheckMobileDialog, setOpenCheckMobileDialog] = useState(true);  
+
+    const handleClose = e => {
         e.preventDefault();
-        let newCurrentProgress = 1;
-        if (currentProgress === 1) {
-            newCurrentProgress = 2
-        };
-        if (currentProgress === 2) {
-            newCurrentProgress = 3
-        };
-        if (currentProgress === 3) {
-            newCurrentProgress = 4
-        };
-        if (currentProgress === 4) {
-            newCurrentProgress = 5
-        };
-        setCurrentProgress(newCurrentProgress);
+        setOpenCheckMobileDialog(false);
     }
 
-    {/*const content =
-        <div className={classes.root}>
-            <div className={classes.titleBox}>
-                <TitleBox />
-            </div>            
-            <div className={classes.contentBox}>
-                <Content currentProgress={currentProgress} handleSetCurrentProgress={handleSetCurrentProgress} />
-            </div>
-            <div className={classes.progressBox}>
-                <ProgressBar currentProgress={currentProgress} />
-            </div>
-            <div className={classes.footer}>
-                <Footer />
-            </div>
-        </div>;*/}
+    let showMobileDialog = null; 
 
-    const content = 
-        <div className={classes.root}>
-            <div className={classes.titleBox}>
-                <TitleBox />
-            </div>            
-            <ImageMap />
+    if (innerWidth < 450) {
+        showMobileDialog =
+            <div>
+                <MobileCheckDialog open={openCheckMobileDialog} handleClose={handleClose} />
+            </div>
+    };    
+
+    const content =
+        <div>
+            <div className={classes.content}>
+                <div className={classes.titleBox}>
+                    <TitleBox />
+                </div>
+                <ImageMap />
+                {showMobileDialog}
+            </div>
+            <Footer />
         </div>
-
-
 
 
 

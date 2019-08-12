@@ -31,7 +31,7 @@ const ImageMap = props => {
 
     const content =
         <div className={classes.root}>
-            <h4>{`Click on locations along the highlighted route for stories!`}</h4>
+            <h4>{`Click any of the stars along the route for stories!`}</h4>
             <img src={ImageMapJpg}
                 style={{ width: 1000, height: 546 }}
                 alt="Road Trip Map With Links"

@@ -10,7 +10,7 @@
     "eslint-plugin-react-hooks": "^1.6.0",
     "image-map-resizer": "^1.0.10",
     "immutability-helper": "^3.0.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "prettier": "^1.15.3",
     "react": "^16.8.6",
     "react-addons-update": "^15.6.2",
